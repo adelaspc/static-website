@@ -382,6 +382,7 @@ data "aws_iam_policy_document" "terraform_plan" {
       "cloudfront:GetDistributionConfig",
       "cloudfront:GetOriginAccessControl",
       "cloudfront:GetResponseHeadersPolicy",
+      "cloudfront:ListCachePolicies",
       "cloudfront:ListTagsForResource",
       "cloudwatch:DescribeAlarms",
       "iam:GetOpenIDConnectProvider",
@@ -391,6 +392,7 @@ data "aws_iam_policy_document" "terraform_plan" {
       "iam:ListAttachedRolePolicies",
       "iam:ListInstanceProfilesForRole",
       "iam:ListPolicyVersions",
+      "iam:ListRolePolicies",
       "sts:GetCallerIdentity",
     ]
 
