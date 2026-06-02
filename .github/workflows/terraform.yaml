@@ -84,7 +84,6 @@ jobs:
       TF_VAR_cloudflare_zone_name: ${{ vars.CLOUDFLARE_ZONE_NAME }}
       TF_VAR_domain_aliases: ${{ vars.DOMAIN_ALIASES_JSON }}
       TF_VAR_github_repository: ${{ github.repository }}
-      TF_VAR_github_deploy_branch: main
       TF_VAR_terraform_state_bucket_name: ${{ vars.TF_STATE_BUCKET }}
       TF_VAR_terraform_lock_table_name: ${{ vars.TF_LOCK_TABLE }}
 
@@ -157,7 +156,6 @@ jobs:
       TF_VAR_cloudflare_zone_name: ${{ vars.CLOUDFLARE_ZONE_NAME }}
       TF_VAR_domain_aliases: ${{ vars.DOMAIN_ALIASES_JSON }}
       TF_VAR_github_repository: ${{ github.repository }}
-      TF_VAR_github_deploy_branch: main
       TF_VAR_terraform_state_bucket_name: ${{ vars.TF_STATE_BUCKET }}
       TF_VAR_terraform_lock_table_name: ${{ vars.TF_LOCK_TABLE }}
     environment:

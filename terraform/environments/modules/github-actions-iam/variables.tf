@@ -13,11 +13,6 @@ variable "github_repository" {
   description = "GitHub repository allowed to assume the roles, in owner/repo format."
 }
 
-variable "github_deploy_branch" {
-  type        = string
-  description = "Branch allowed to assume the GitHub Actions roles."
-}
-
 variable "website_bucket_arn" {
   type        = string
   description = "ARN of the S3 bucket that stores the deployed frontend files."

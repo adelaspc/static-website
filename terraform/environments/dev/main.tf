@@ -43,7 +43,6 @@ module "github_actions_iam" {
   project                     = var.project
   environment                 = var.environment
   github_repository           = var.github_repository
-  github_deploy_branch        = var.github_deploy_branch
   website_bucket_arn          = module.s3.bucket_arn
   cloudfront_logs_bucket_arn  = module.s3.cloudfront_logs_bucket_arn
   cloudfront_distribution_arn = module.cloudfront.distribution_arn

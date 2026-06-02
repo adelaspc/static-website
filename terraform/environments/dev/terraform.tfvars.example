@@ -14,8 +14,6 @@ domain_aliases = [
 
 github_repository = "your-github-user/static-website"
 
-github_deploy_branch = "main"
-
 terraform_state_bucket_name = "example-static-website-terraform-state-dev"
 
 terraform_lock_table_name = "example-static-website-terraform-locks-dev"

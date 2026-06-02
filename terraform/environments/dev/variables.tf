@@ -70,17 +70,6 @@ variable "github_repository" {
   }
 }
 
-variable "github_deploy_branch" {
-  type        = string
-  description = "Branch allowed to assume the GitHub Actions deploy roles."
-  default     = "main"
-
-  validation {
-    condition     = can(regex("^[A-Za-z0-9._/-]+$", var.github_deploy_branch))
-    error_message = "github_deploy_branch must be a valid Git branch name."
-  }
-}
-
 variable "terraform_state_bucket_name" {
   type        = string
   description = "S3 bucket name used by the Terraform remote backend."
