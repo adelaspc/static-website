@@ -79,13 +79,14 @@ Workflow file:
 
 Triggers:
 
+- Pull requests that change `portfolio-site/**` or the workflow file. These run the build job only.
 - Pushes to `main` that change `portfolio-site/**` or the workflow file.
 - Manual `workflow_dispatch` runs.
 
 Jobs:
 
 - `build`: installs dependencies, runs the static site build, prepares a clean deploy directory, and uploads it as a GitHub Actions artifact.
-- `deploy`: downloads the build artifact, assumes the frontend deploy IAM role through AWS OIDC, syncs files to S3, applies cache headers, and creates a CloudFront invalidation.
+- `deploy`: runs only for `main` pushes or manual dispatches, downloads the build artifact, assumes the frontend deploy IAM role through AWS OIDC, syncs files to S3, applies cache headers, and creates a CloudFront invalidation.
 
 The GitHub Actions artifact is only an internal CI artifact. The S3 bucket stores the extracted static files, not a zip file, because CloudFront serves the HTML, CSS, JavaScript, images, fonts, and other assets directly from S3.
 
