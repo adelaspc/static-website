@@ -1,0 +1,69 @@
+You are reviewing a Terraform infrastructure repository that will be published on GitHub as part of a professional hiring portfolio.
+
+Please scan the entire repository and perform a thorough code and architecture review.
+
+Focus on the following areas:
+
+1. Terraform logic and correctness
+- Check whether the Terraform configuration is logically sound.
+- Identify any bugs, invalid assumptions, missing dependencies, ordering issues, or provider/resource misconfigurations.
+- Verify whether modules, variables, outputs, locals, and resources are used appropriately.
+- Look for places where the current implementation may work accidentally but could fail in real-world usage.
+
+2. Infrastructure design and best practices
+- Evaluate whether the infrastructure design follows Terraform and cloud-provider best practices.
+- Check for unnecessary duplication, overengineering, underengineering, or confusing abstractions.
+- Suggest improvements around module structure, naming conventions, variable design, outputs, state handling, provider configuration, and environment separation.
+- Flag any hardcoded values that should become variables or locals.
+
+3. Code optimization and maintainability
+- Look for ways to simplify or improve the Terraform code.
+- Suggest refactors that make the repository easier to understand, extend, and maintain.
+- Identify repeated patterns that could be extracted into modules or locals.
+- Point out resources, variables, or outputs that are unused, redundant, or unclear.
+
+4. Security and reliability
+- Review the configuration for security concerns, such as overly permissive IAM policies, public access, exposed secrets, weak defaults, missing encryption, or missing network restrictions.
+- Check whether sensitive variables are marked correctly.
+- Suggest reliability improvements such as backup policies, deletion protection, versioning, lifecycle rules, monitoring, logging, or alerting where relevant.
+- Mention any risks that should be documented if they are intentional trade-offs for a portfolio/demo project.
+
+
+5. Portfolio quality
+- Suggest improvements that would make the project more impressive but still realistic.
+- Point out anything that may look confusing, unfinished, too simple, too complex, or risky to a recruiter or technical interviewer.
+- Recommend additions such as architecture diagrams, example `.tfvars` files, CI validation, formatting checks, linting, security scanning, or cost estimation.
+
+6. Additional investigation
+- If you notice anything else worth reviewing, include it.
+- Consider Terraform formatting, validation, provider version pinning, secrets management, naming consistency, tagging strategy, and repository structure.
+
+Please return the review in this structure:
+
+## Executive summary
+Give a short overview of the repository quality and the most important findings.
+
+## Critical issues
+List anything that is broken, unsafe, or likely to fail.
+
+## Recommended improvements
+List meaningful improvements that would increase quality, maintainability, security, or recruiter appeal.
+
+## Nice-to-have improvements
+List optional improvements that would make the repository more polished.
+
+## Documentation and comments
+Suggest missing explanations, and specific places where comments would help.
+
+## Portfolio readiness score
+Give a score from 1 to 10 and explain what would raise it.
+
+## Action plan
+Provide a prioritized checklist of concrete next steps.
+
+When suggesting changes, be specific:
+- reference the relevant file or block when possible,
+- explain why the change matters,
+- provide example Terraform snippets where useful,
+- avoid vague advice,
+- do not make any code changes 
