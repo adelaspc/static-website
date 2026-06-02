@@ -1,0 +1,16 @@
+{
+  "name": "presentation-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/styles.css -o ./assets/styles.css --minify",
+    "build:dist": "node ./scripts/build-dist.mjs",
+    "inline-icons": "node ./scripts/inline-icons.mjs",
+    "build": "npm run inline-icons && npm run build:css && npm run build:dist"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.8",
+    "lucide": "^0.511.0",
+    "tailwindcss": "^4.1.8"
+  }
+}
