@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="min-h-screen text-slate-100 antialiased">
+    <main class="mx-auto flex w-full max-w-[1440px] flex-col gap-8 px-5 py-8 sm:px-8 lg:px-10">
+      <header class="flex flex-wrap items-center justify-between gap-5">
+        <a href="index.html" class="flex items-center gap-6">
+          <span class="grid h-12 w-12 place-items-center rounded border border-violet bg-violet/10 text-violet shadow-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" /></svg>
+          </span>
+          <span class="text-base font-extrabold tracking-normal text-white">NAME</span>
+        </a>
+
+        <nav class="flex flex-wrap items-center gap-x-9 gap-y-4 text-sm font-medium text-slate-300">
+          <a class="flex items-center gap-2.5 hover:text-white" href="#cv"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></svg>CV</a>
+          <a class="flex items-center gap-2.5 hover:text-white" href="#projects"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" /></svg>Projects</a>
+          <a class="flex items-center gap-2.5 hover:text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg>GitHub</a>
+          <a class="flex items-center gap-2.5 hover:text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>LinkedIn</a>
+          <a class="flex items-center gap-2.5 hover:text-white" href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg>Contact</a>
+        </nav>
+      </header>
+
+      <section class="shell rounded-xl border border-line p-8 shadow-glow sm:p-12 lg:p-16">
+        <div class="grid items-center gap-10 lg:grid-cols-[1fr_0.95fr]">
+          <div>
+            <span class="inline-flex rounded-full border border-violet/50 bg-violet/10 px-4 py-1.5 text-xs font-semibold uppercase text-violet">Portfolio</span>
+            <h1 class="mt-14 text-5xl font-extrabold leading-tight text-white sm:text-6xl lg:text-5xl">Name / DevOps</h1>
+            <p class="mt-8 max-w-xl text-xl leading-9 text-slate-300">Short intro about who you are, what you build, and the value you bring.</p>
+            <div class="mt-12 flex flex-wrap gap-8">
+              <a href="#contact" class="inline-flex min-h-14 items-center gap-3 rounded-lg bg-violet px-10 text-base font-bold text-white shadow-glow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /></svg>
+                Primary CTA
+              </a>
+              <a href="#projects" class="inline-flex min-h-14 items-center gap-3 rounded-lg border border-slate-500/60 px-10 text-base font-semibold text-slate-200 hover:border-violet/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                Secondary CTA
+              </a>
+            </div>
+          </div>
+
+          <div class="frosted grid min-h-[280px] place-items-center rounded-2xl border border-line p-10 sm:min-h-[360px]">
+            <div class="browser-illus relative h-48 w-full max-w-[290px] rounded-3xl border-slate-500/35 text-slate-500/55">
+              <div class="absolute -top-8 left-5 flex gap-3">
+                <span class="h-3 w-3 rounded-full bg-slate-500/50"></span>
+                <span class="h-3 w-3 rounded-full bg-slate-500/50"></span>
+                <span class="h-3 w-3 rounded-full bg-slate-500/50"></span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mt-10 h-24 w-24 stroke-[1.8]" aria-hidden="true" focusable="false"><path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" /></svg>
+              <div class="mx-auto mt-2 h-1.5 w-20 rounded soft-line"></div>
+              <div class="mx-auto mt-3 h-1.5 w-44 rounded soft-line"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell rounded-xl border border-line p-7 sm:p-10">
+        <div class="grid gap-8 lg:grid-cols-[1.35fr_1fr] lg:items-center">
+          <div>
+            <div class="flex items-center gap-4 text-sm font-bold uppercase text-violet">
+              <span class="grid h-11 w-11 place-items-center rounded-lg bg-violet/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></svg></span>
+              About Me
+            </div>
+            <div class="mt-8 space-y-5">
+              <div class="h-3 w-full max-w-[660px] rounded soft-line"></div>
+              <div class="h-3 w-full max-w-[620px] rounded soft-line"></div>
+              <div class="h-3 w-full max-w-[660px] rounded soft-line"></div>
+              <div class="h-3 w-full max-w-[520px] rounded soft-line"></div>
+            </div>
+          </div>
+
+          <dl class="grid gap-x-8 gap-y-8 border-slate-700/70 text-base text-slate-300 sm:grid-cols-[auto_1fr] lg:border-l lg:pl-20">
+            <div class="contents"><dt class="flex items-center gap-5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>Location</dt><dd class="text-white/80">Bucharest, Romania</dd></div>
+            <div class="contents"><dt class="flex items-center gap-5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><path d="M12 12h.01" /><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /><path d="M22 13a18.15 18.15 0 0 1-20 0" /><rect width="20" height="14" x="2" y="6" rx="2" /></svg>Experience</dt><dd class="text-white/80">0-1 years</dd></div>
+            <div class="contents"><dt class="flex items-center gap-5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>Availability</dt><dd class="text-white/80">Open to work</dd></div>
+            <div class="contents"><dt class="flex items-center gap-5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>Focus</dt><dd class="text-white/80">Building scalable apps</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="shell rounded-xl border border-line p-5 sm:p-8">
+        <div class="mb-8 flex items-center gap-4 text-sm font-bold uppercase text-violet">
+          <span class="grid h-11 w-11 place-items-center rounded-lg bg-violet/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M12 19h8" /><path d="m4 17 6-6-6-6" /></svg></span>
+          Skills Snapshot
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <article class="frosted rounded-xl border border-line p-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-violet" aria-hidden="true" focusable="false"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /><rect width="20" height="8" x="2" y="14" rx="2" ry="2" /><line x1="6" x2="6.01" y1="6" y2="6" /><line x1="6" x2="6.01" y1="18" y2="18" /></svg>
+            <h2 class="mt-6 text-base font-extrabold uppercase text-white">Certifications</h2>
+            <div class="mt-7 flex flex-wrap gap-3 text-sm font-medium text-slate-200">
+              <span class="rounded-lg bg-slate-700/45 px-4 py-2">AWS Certified Solutions Architect - Associate</span>
+            </div>
+          </article>
+          <article class="frosted rounded-xl border border-line p-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-violet" aria-hidden="true" focusable="false"><rect width="20" height="14" x="2" y="3" rx="2" /><line x1="8" x2="16" y1="21" y2="21" /><line x1="12" x2="12" y1="17" y2="21" /></svg>
+            <h2 class="mt-6 text-base font-extrabold uppercase text-white">Frontend</h2>
+            <div class="mt-7 flex flex-wrap gap-3 text-sm font-medium text-slate-200">
+              <span class="rounded-lg bg-slate-700/45 px-4 py-2">React</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">Next.js</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">TypeScript</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">Tailwind CSS</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">HTML/CSS</span>
+            </div>
+          </article>
+          <article class="frosted rounded-xl border border-line p-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-violet" aria-hidden="true" focusable="false"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>
+            <h2 class="mt-6 text-base font-extrabold uppercase text-white">DevOps / Cloud</h2>
+            <div class="mt-7 flex flex-wrap gap-3 text-sm font-medium text-slate-200">
+              <span class="rounded-lg bg-slate-700/45 px-4 py-2">AWS</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">Docker</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">Kubernetes</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">CI/CD</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">Terraform</span>
+            </div>
+          </article>
+          <article class="frosted rounded-xl border border-line p-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-violet" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
+            <h2 class="mt-6 text-base font-extrabold uppercase text-white">Tools</h2>
+            <div class="mt-7 flex flex-wrap gap-3 text-sm font-medium text-slate-200">
+              <span class="rounded-lg bg-slate-700/45 px-4 py-2">Git</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">VS Code</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">Postman</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">Figma</span><span class="rounded-lg bg-slate-700/45 px-4 py-2">ESLint</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="shell rounded-xl border border-line p-5 sm:p-8">
+        <div class="mb-8 flex items-center gap-4 text-sm font-bold uppercase text-violet">
+          <span class="grid h-11 w-11 place-items-center rounded-lg bg-violet/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" /></svg></span>
+          Featured Projects
+        </div>
+        <div class="grid gap-6 lg:grid-cols-2">
+          <article class="frosted rounded-xl border border-line p-6">
+            <div class="grid gap-8 sm:grid-cols-[1fr_260px] sm:items-center">
+              <div>
+                <span class="rounded-full border border-violet/50 bg-violet/10 px-4 py-1.5 text-xs font-bold uppercase text-violet">Project Card</span>
+                <h2 class="mt-5 text-2xl font-extrabold text-white">AWS Cloud Infrastructure Demo</h2>
+                <p class="mt-5 max-w-sm text-base leading-7 text-slate-300">A production-inspired cloud infrastructure project built on AWS, demonstrating real-world patterns used by engineering teams at scale.</p>
+                <h3 class="mt-7 text-xs font-extrabold uppercase text-violet">Tech Stack</h3>
+                <div class="mt-3 flex flex-wrap gap-3 text-sm text-slate-200">
+                  <span class="rounded-lg bg-slate-700/45 px-3 py-2">VPC</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">EC2</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">ALB</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">RDS</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">ACM</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">SSM Parameter Store</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">Route 53</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">CloudWatch</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">Terraform</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">Docker</span>
+                </div>
+              </div>
+              <div class="project-image min-h-56 rounded-xl border border-line"></div>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-5">
+              <a class="inline-flex min-h-12 items-center gap-3 rounded-lg border border-violet/60 px-7 font-semibold text-slate-100" href="project-1.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>View Case Study</a>
+              <a class="inline-flex min-h-12 items-center gap-3 rounded-lg border border-slate-500/50 px-7 font-semibold text-slate-100" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg>GitHub</a>
+            </div>
+          </article>
+
+          <article class="frosted rounded-xl border border-line p-6">
+            <div class="grid gap-8 sm:grid-cols-[1fr_260px] sm:items-center">
+              <div>
+                <span class="rounded-full border border-violet/50 bg-violet/10 px-4 py-1.5 text-xs font-bold uppercase text-violet">Project Card</span>
+                <h2 class="mt-5 text-2xl font-extrabold text-white">Project Two</h2>
+                <p class="mt-5 max-w-sm text-base leading-7 text-slate-300">Short description of the project goes here. What problem it solves and the impact.</p>
+                <h3 class="mt-7 text-xs font-extrabold uppercase text-violet">Tech Stack</h3>
+                <div class="mt-3 flex flex-wrap gap-3 text-sm text-slate-200">
+                  <span class="rounded-lg bg-slate-700/45 px-3 py-2">React</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">Node.js</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">PostgreSQL</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">AWS</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">Docker</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">TypeScript</span><span class="rounded-lg bg-slate-700/45 px-3 py-2">TypeScript</span>
+                </div>
+              </div>
+              <div class="project-image min-h-56 rounded-xl border border-line"></div>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-5">
+              <a class="inline-flex min-h-12 items-center gap-3 rounded-lg border border-violet/60 px-7 font-semibold text-slate-100" href="project-2.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>View Case Study</a>
+              <a class="inline-flex min-h-12 items-center gap-3 rounded-lg border border-slate-500/50 px-7 font-semibold text-slate-100" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg>GitHub</a>
+            </div>
+          </article>
+
+          <article class="mini-project-card rounded-xl border border-line/80 p-5 lg:col-span-2">
+            <div class="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-slate-600/70 bg-slate-800/40 text-slate-300"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /><path d="M20 3v4" /><path d="M22 5h-4" /><path d="M4 17v2" /><path d="M5 18H3" /></svg></span>
+                <div>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="rounded-full border border-slate-600/70 bg-slate-800/45 px-3 py-1 text-xs font-bold uppercase text-slate-300">Mini Project</span>
+                    <span class="text-xs font-semibold uppercase text-slate-500">Smaller scope</span>
+                  </div>
+                  <h2 class="mt-3 text-lg font-extrabold text-slate-100">Mini Project Title</h2>
+                  <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400">A focused small build or experiment. Use this space for a compact project without giving it the same visual weight as the full case studies above.</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3 md:justify-end">
+                <span class="rounded-lg bg-slate-800/60 px-3 py-2 text-xs font-medium text-slate-300">HTML/CSS</span>
+                <span class="rounded-lg bg-slate-800/60 px-3 py-2 text-xs font-medium text-slate-300">JavaScript</span>
+                <a class="inline-flex min-h-10 items-center gap-2 rounded-lg border border-slate-600/70 px-4 text-sm font-semibold text-slate-200 hover:border-violet/60 hover:text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>View</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="cv" class="shell rounded-xl border border-line p-8 sm:p-10">
+        <div class="grid gap-10 lg:grid-cols-[1.2fr_220px_320px] lg:items-center">
+          <div>
+            <div class="mb-8 flex items-center gap-4 text-sm font-bold uppercase text-violet">
+              <span class="grid h-11 w-11 place-items-center rounded-lg bg-violet/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></svg></span>
+              CV Preview
+            </div>
+            <div class="space-y-5">
+              <div class="h-3 w-full max-w-[520px] rounded soft-line"></div>
+              <div class="h-3 w-full max-w-[560px] rounded soft-line"></div>
+              <div class="h-3 w-full max-w-[510px] rounded soft-line"></div>
+              <div class="h-3 w-full max-w-[560px] rounded soft-line"></div>
+              <div class="h-3 w-full max-w-[230px] rounded soft-line"></div>
+            </div>
+          </div>
+
+          <div class="frosted mx-auto w-full max-w-[210px] rounded-xl border border-slate-500/50 p-8">
+            <div class="flex items-center gap-5"><span class="h-11 w-11 rounded-full bg-slate-500/35"></span><div class="space-y-3"><div class="h-2.5 w-20 rounded soft-line"></div><div class="h-2.5 w-14 rounded soft-line"></div></div></div>
+            <div class="mt-8 space-y-4"><div class="h-2.5 w-28 rounded soft-line"></div><div class="h-2.5 w-20 rounded soft-line"></div></div>
+            <div class="mt-8 space-y-4 text-slate-500/60">
+              <div class="flex items-center gap-4"><span class="h-1.5 w-1.5 rounded-full bg-current"></span><div class="h-2.5 w-28 rounded soft-line"></div></div>
+              <div class="flex items-center gap-4"><span class="h-1.5 w-1.5 rounded-full bg-current"></span><div class="h-2.5 w-24 rounded soft-line"></div></div>
+              <div class="flex items-center gap-4"><span class="h-1.5 w-1.5 rounded-full bg-current"></span><div class="h-2.5 w-20 rounded soft-line"></div></div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-5">
+            <a class="inline-flex min-h-14 items-center justify-center gap-3 rounded-lg bg-violet px-8 font-bold text-white shadow-glow" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></svg>View CV</a>
+            <a class="inline-flex min-h-14 items-center justify-center gap-3 rounded-lg border border-slate-500/50 px-8 font-semibold text-slate-200" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M12 15V3" /><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m7 10 5 5 5-5" /></svg>Download PDF</a>
+          </div>
+        </div>
+      </section>
+
+      <footer id="contact" class="shell rounded-xl border border-line p-8">
+        <div class="grid gap-10 lg:grid-cols-3 lg:divide-x lg:divide-slate-700/70">
+          <div>
+            <h2 class="text-sm font-extrabold uppercase text-violet">Get In Touch</h2>
+            <a class="mt-7 flex items-center gap-4 text-base text-slate-300" href="mailto:email@your-domain.dev"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg>email@your-domain.dev</a>
+            <div class="mt-6 flex gap-5">
+              <a class="grid h-14 w-14 place-items-center rounded-lg border border-line text-slate-200" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg></a>
+              <a class="grid h-14 w-14 place-items-center rounded-lg border border-line text-slate-200" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg></a>
+              <a class="grid h-14 w-14 place-items-center rounded-lg border border-line text-slate-200" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></a>
+              <a class="grid h-14 w-14 place-items-center rounded-lg border border-line text-slate-200" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg></a>
+            </div>
+          </div>
+          <div class="lg:px-12">
+            <h2 class="text-sm font-extrabold uppercase text-violet">Let's Connect</h2>
+            <div class="mt-8 space-y-4"><div class="h-3 w-full max-w-[360px] rounded soft-line"></div><div class="h-3 w-full max-w-[300px] rounded soft-line"></div></div>
+            <a class="mt-7 inline-flex min-h-12 items-center gap-3 rounded-lg border border-slate-500/50 px-8 font-semibold text-slate-200" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /><path d="m21.854 2.147-10.94 10.939" /></svg>Send a Message</a>
+          </div>
+          <div class="lg:pl-12">
+            <h2 class="text-sm font-extrabold uppercase text-violet">Made With</h2>
+            <p class="mt-8 flex items-center gap-4 text-base text-slate-300"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>Passion for building and learning.</p>
+            <p class="mt-8 text-base text-slate-400">© 2024 Your Name. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+</body>
+</html>
