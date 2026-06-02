@@ -25,20 +25,6 @@ env:
   TF_INPUT: false
   TF_WORKING_DIR: terraform/environments/dev
   AWS_REGION: ${{ vars.AWS_REGION || 'eu-central-1' }}
-  AWS_TERRAFORM_PLAN_ROLE_ARN: ${{ vars.AWS_TERRAFORM_PLAN_ROLE_ARN }}
-  TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
-  TF_STATE_KEY: ${{ vars.TF_STATE_KEY || 'static-website/dev/terraform.tfstate' }}
-  TF_LOCK_TABLE: ${{ vars.TF_LOCK_TABLE }}
-  TF_VAR_region: ${{ vars.AWS_REGION || 'eu-central-1' }}
-  TF_VAR_project: ${{ vars.TF_PROJECT }}
-  TF_VAR_environment: dev
-  TF_VAR_bucket_name: ${{ vars.TF_BUCKET_NAME }}
-  TF_VAR_cloudflare_zone_name: ${{ vars.CLOUDFLARE_ZONE_NAME }}
-  TF_VAR_domain_aliases: ${{ vars.DOMAIN_ALIASES_JSON }}
-  TF_VAR_github_repository: ${{ github.repository }}
-  TF_VAR_github_deploy_branch: main
-  TF_VAR_terraform_state_bucket_name: ${{ vars.TF_STATE_BUCKET }}
-  TF_VAR_terraform_lock_table_name: ${{ vars.TF_LOCK_TABLE }}
 
 jobs:
   validate:
@@ -86,6 +72,21 @@ jobs:
     runs-on: ubuntu-latest
     needs: validate
     if: github.event_name == 'pull_request'
+    env:
+      AWS_TERRAFORM_PLAN_ROLE_ARN: ${{ vars.AWS_TERRAFORM_PLAN_ROLE_ARN }}
+      TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+      TF_STATE_KEY: ${{ vars.TF_STATE_KEY || 'static-website/dev/terraform.tfstate' }}
+      TF_LOCK_TABLE: ${{ vars.TF_LOCK_TABLE }}
+      TF_VAR_region: ${{ vars.AWS_REGION || 'eu-central-1' }}
+      TF_VAR_project: ${{ vars.TF_PROJECT }}
+      TF_VAR_environment: dev
+      TF_VAR_bucket_name: ${{ vars.TF_BUCKET_NAME }}
+      TF_VAR_cloudflare_zone_name: ${{ vars.CLOUDFLARE_ZONE_NAME }}
+      TF_VAR_domain_aliases: ${{ vars.DOMAIN_ALIASES_JSON }}
+      TF_VAR_github_repository: ${{ github.repository }}
+      TF_VAR_github_deploy_branch: main
+      TF_VAR_terraform_state_bucket_name: ${{ vars.TF_STATE_BUCKET }}
+      TF_VAR_terraform_lock_table_name: ${{ vars.TF_LOCK_TABLE }}
 
     steps:
       - name: Checkout
@@ -93,6 +94,29 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+
+      - name: Check required GitHub variables
+        run: |
+          missing=()
+          check_required() {
+            if [ -z "$2" ]; then
+              missing+=("$1")
+            fi
+          }
+
+          check_required AWS_TERRAFORM_PLAN_ROLE_ARN "$AWS_TERRAFORM_PLAN_ROLE_ARN"
+          check_required TF_STATE_BUCKET "$TF_STATE_BUCKET"
+          check_required TF_LOCK_TABLE "$TF_LOCK_TABLE"
+          check_required TF_PROJECT "$TF_VAR_project"
+          check_required TF_BUCKET_NAME "$TF_VAR_bucket_name"
+          check_required CLOUDFLARE_ZONE_NAME "$TF_VAR_cloudflare_zone_name"
+          check_required DOMAIN_ALIASES_JSON "$TF_VAR_domain_aliases"
+
+          if [ "${#missing[@]}" -gt 0 ]; then
+            printf 'Missing required GitHub Actions variables for Terraform plan:\n'
+            printf '  - %s\n' "${missing[@]}"
+            exit 1
+          fi
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -121,6 +145,21 @@ jobs:
     runs-on: ubuntu-latest
     needs: validate
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    env:
+      AWS_TERRAFORM_ROLE_ARN: ${{ vars.AWS_TERRAFORM_ROLE_ARN }}
+      TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+      TF_STATE_KEY: ${{ vars.TF_STATE_KEY || 'static-website/dev/terraform.tfstate' }}
+      TF_LOCK_TABLE: ${{ vars.TF_LOCK_TABLE }}
+      TF_VAR_region: ${{ vars.AWS_REGION || 'eu-central-1' }}
+      TF_VAR_project: ${{ vars.TF_PROJECT }}
+      TF_VAR_environment: dev
+      TF_VAR_bucket_name: ${{ vars.TF_BUCKET_NAME }}
+      TF_VAR_cloudflare_zone_name: ${{ vars.CLOUDFLARE_ZONE_NAME }}
+      TF_VAR_domain_aliases: ${{ vars.DOMAIN_ALIASES_JSON }}
+      TF_VAR_github_repository: ${{ github.repository }}
+      TF_VAR_github_deploy_branch: main
+      TF_VAR_terraform_state_bucket_name: ${{ vars.TF_STATE_BUCKET }}
+      TF_VAR_terraform_lock_table_name: ${{ vars.TF_LOCK_TABLE }}
     environment:
       name: dev
 
@@ -131,10 +170,33 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      - name: Check required GitHub variables
+        run: |
+          missing=()
+          check_required() {
+            if [ -z "$2" ]; then
+              missing+=("$1")
+            fi
+          }
+
+          check_required AWS_TERRAFORM_ROLE_ARN "$AWS_TERRAFORM_ROLE_ARN"
+          check_required TF_STATE_BUCKET "$TF_STATE_BUCKET"
+          check_required TF_LOCK_TABLE "$TF_LOCK_TABLE"
+          check_required TF_PROJECT "$TF_VAR_project"
+          check_required TF_BUCKET_NAME "$TF_VAR_bucket_name"
+          check_required CLOUDFLARE_ZONE_NAME "$TF_VAR_cloudflare_zone_name"
+          check_required DOMAIN_ALIASES_JSON "$TF_VAR_domain_aliases"
+
+          if [ "${#missing[@]}" -gt 0 ]; then
+            printf 'Missing required GitHub Actions variables for Terraform apply:\n'
+            printf '  - %s\n' "${missing[@]}"
+            exit 1
+          fi
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ vars.AWS_TERRAFORM_ROLE_ARN }}
+          role-to-assume: ${{ env.AWS_TERRAFORM_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Terraform init
