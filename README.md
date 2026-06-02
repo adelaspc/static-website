@@ -93,7 +93,7 @@ In GitHub Actions, store this value as `CLOUDFLARE_API_TOKEN`. Cloudflare provid
 
 ## CI/CD
 
-CI/CD is documented separately in `CICD.md`.
+CI/CD is documented separately in `ci-cd.md`.
 
 The repository contains two workflows:
 
@@ -104,7 +104,7 @@ The Terraform workflow includes formatting, validation, TFLint, and Checkov scan
 
 Pull requests also run `terraform plan` with AWS OIDC credentials so infrastructure changes can be reviewed before merge.
 
-The frontend build emits deployable files in `protfolio-site/dist` and uses a content-hashed CSS filename so CloudFront/S3 can cache CSS aggressively while HTML remains easy to refresh.
+The frontend build emits deployable files in `portfolio-site/dist` and uses a content-hashed CSS filename so CloudFront/S3 can cache CSS aggressively while HTML remains easy to refresh.
 
 The `apply` and frontend `deploy` jobs target the GitHub Environment named `dev`, so required reviewers can be configured from the repository settings. The first Terraform apply must be run with bootstrap credentials that can create IAM and OIDC resources. After that, GitHub Actions can assume the IAM roles created by Terraform.
 
