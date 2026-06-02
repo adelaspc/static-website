@@ -25,7 +25,7 @@ Main components:
 - `modules/cloudfront`: CloudFront distribution, OAC, managed cache policy, TLS configuration, logging, and security response headers.
 - `modules/cloudflare-dns`: DNS-only Cloudflare CNAME records pointing to CloudFront.
 - `modules/github-actions-iam`: GitHub Actions OIDC provider and IAM roles for Terraform and frontend deployment workflows.
-- `protfolio-site`: static website source files built by GitHub Actions and deployed to S3.
+- `portfolio-site`: static website source files built by GitHub Actions and deployed to S3.
 
 # Architecture Diagram
 
@@ -48,7 +48,7 @@ The website bucket:
 
 The S3 module does not upload website files. Terraform owns the bucket and access controls only; the frontend deployment workflow builds the site, creates a CI artifact, syncs the deployable files to S3, and invalidates CloudFront.
 
-The frontend build writes deployable files to `protfolio-site/dist`. The generated CSS filename includes a content hash, and the generated HTML files reference that hashed CSS asset.
+The frontend build writes deployable files to `portfolio-site/dist`. The generated CSS filename includes a content hash, and the generated HTML files reference that hashed CSS asset.
 
 HTML files deployed by GitHub Actions use:
 
@@ -249,9 +249,9 @@ terraform plan
 terraform apply
 ```
 
-After Terraform has created the bucket, CloudFront distribution, and GitHub Actions IAM roles, the frontend workflow deploys the application from `protfolio-site` to S3.
+After Terraform has created the bucket, CloudFront distribution, and GitHub Actions IAM roles, the frontend workflow deploys the application from `portfolio-site` to S3.
 
-CI/CD configuration, required GitHub variables, secrets, and the AWS OIDC flow are documented in `CICD.md`.
+CI/CD configuration, required GitHub variables, secrets, and the AWS OIDC flow are documented in `ci-cd.md`.
 
 ## Validation
 

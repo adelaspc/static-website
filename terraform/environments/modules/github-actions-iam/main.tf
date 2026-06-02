@@ -346,6 +346,18 @@ data "aws_iam_policy_document" "terraform_plan" {
   }
 
   statement {
+    sid    = "AccessTerraformStateLockfile"
+    effect = "Allow"
+    actions = [
+      "s3:DeleteObject",
+      "s3:GetObject",
+      "s3:PutObject",
+    ]
+
+    resources = ["arn:aws:s3:::${var.terraform_state_bucket_name}/*.tflock"]
+  }
+
+  statement {
     sid    = "AccessTerraformLockTable"
     effect = "Allow"
     actions = [
@@ -370,8 +382,10 @@ data "aws_iam_policy_document" "terraform_plan" {
       "cloudfront:GetDistributionConfig",
       "cloudfront:GetOriginAccessControl",
       "cloudfront:GetResponseHeadersPolicy",
+      "cloudfront:ListCachePolicies",
       "cloudfront:ListTagsForResource",
       "cloudwatch:DescribeAlarms",
+      "cloudwatch:ListTagsForResource",
       "iam:GetOpenIDConnectProvider",
       "iam:GetPolicy",
       "iam:GetPolicyVersion",
@@ -379,6 +393,7 @@ data "aws_iam_policy_document" "terraform_plan" {
       "iam:ListAttachedRolePolicies",
       "iam:ListInstanceProfilesForRole",
       "iam:ListPolicyVersions",
+      "iam:ListRolePolicies",
       "sts:GetCallerIdentity",
     ]
 
