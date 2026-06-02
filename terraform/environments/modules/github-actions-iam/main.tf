@@ -39,7 +39,7 @@ data "aws_iam_policy_document" "frontend_deploy_assume_role" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_repository}:ref:refs/heads/${var.github_deploy_branch}"]
+      values   = ["repo:${var.github_repository}:environment:${var.environment}"]
     }
   }
 }
@@ -63,7 +63,7 @@ data "aws_iam_policy_document" "terraform_assume_role" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_repository}:ref:refs/heads/${var.github_deploy_branch}"]
+      values   = ["repo:${var.github_repository}:environment:${var.environment}"]
     }
   }
 }
