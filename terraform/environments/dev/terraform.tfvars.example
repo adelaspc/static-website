@@ -1,0 +1,25 @@
+region = "eu-central-1"
+
+project = "static-website-hosting"
+
+environment = "dev"
+
+bucket_name = "example-static-site-dev"
+
+cloudflare_zone_name = "example.com"
+
+domain_aliases = [
+  "www.example.com",
+]
+
+github_repository = "your-github-user/static-website"
+
+github_deploy_branch = "main"
+
+terraform_state_bucket_name = "example-static-website-terraform-state-dev"
+
+terraform_lock_table_name = "example-static-website-terraform-locks-dev"
+
+cloudwatch_alarm_actions = []
+
+cloudwatch_ok_actions = []

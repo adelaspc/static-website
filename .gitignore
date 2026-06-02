@@ -1,0 +1,17 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+frontend-dist/
+*:Zone.Identifier

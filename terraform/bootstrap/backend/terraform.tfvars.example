@@ -1,0 +1,9 @@
+region = "eu-central-1"
+
+project = "static-website-hosting"
+
+environment = "dev"
+
+state_bucket_name = "example-static-website-terraform-state-dev"
+
+lock_table_name = "example-static-website-terraform-locks-dev"
