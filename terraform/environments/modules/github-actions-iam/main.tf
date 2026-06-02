@@ -143,14 +143,22 @@ resource "aws_iam_role_policy_attachment" "frontend_deploy" {
 }
 
 resource "aws_iam_role" "terraform" {
-  name               = "${local.name_prefix}-github-terraform"
-  assume_role_policy = data.aws_iam_policy_document.terraform_assume_role.json
-  description        = "GitHub Actions role for managing this Terraform stack."
+  name                 = "${local.name_prefix}-github-terraform"
+  assume_role_policy   = data.aws_iam_policy_document.terraform_assume_role.json
+  description          = "GitHub Actions role for managing this Terraform stack."
+  max_session_duration = 14400
 
   tags = local.common_tags
 }
 
 data "aws_iam_policy_document" "terraform" {
+  statement {
+    sid       = "CreateProjectS3Buckets"
+    effect    = "Allow"
+    actions   = ["s3:CreateBucket"]
+    resources = ["arn:aws:s3:::${var.project}-*"]
+  }
+
   statement {
     sid    = "ManageProjectS3"
     effect = "Allow"

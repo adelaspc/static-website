@@ -196,6 +196,7 @@ jobs:
         with:
           role-to-assume: ${{ env.AWS_TERRAFORM_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 14400
 
       - name: Terraform init
         working-directory: ${{ env.TF_WORKING_DIR }}
