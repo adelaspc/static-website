@@ -385,6 +385,7 @@ data "aws_iam_policy_document" "terraform_plan" {
       "cloudfront:ListCachePolicies",
       "cloudfront:ListTagsForResource",
       "cloudwatch:DescribeAlarms",
+      "cloudwatch:ListTagsForResource",
       "iam:GetOpenIDConnectProvider",
       "iam:GetPolicy",
       "iam:GetPolicyVersion",
