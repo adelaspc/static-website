@@ -1,8 +1,8 @@
 region = "eu-central-1"
 
-project = "static-website-hosting"
+project = "project-name"
 
-environment = "dev"
+environment = "dev-staging-production"
 
 state_bucket_name = "example-static-website-terraform-state-dev"
 
