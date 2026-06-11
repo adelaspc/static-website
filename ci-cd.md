@@ -141,7 +141,7 @@ permissions:
 and configure AWS credentials with:
 
 ```yaml
-- uses: aws-actions/configure-aws-credentials@v4
+- uses: aws-actions/configure-aws-credentials@v6
   with:
     role-to-assume: ${{ vars.AWS_FRONTEND_DEPLOY_ROLE_ARN }}
     aws-region: ${{ env.AWS_REGION }}
@@ -203,7 +203,6 @@ This creates:
 - S3 bucket versioning for state recovery.
 - Public access blocking.
 - Bucket-owner-enforced object ownership.
-- A DynamoDB table for Terraform state locking.
 
 The bootstrap stack keeps local Terraform state by default after the first apply. This is intentional because the remote backend bucket does not exist before the bootstrap run.
 
@@ -217,7 +216,7 @@ terraform init \
   -backend-config="bucket=<state-bucket-name>" \
   -backend-config="key=static-website/dev/terraform.tfstate" \
   -backend-config="region=eu-central-1" \
-  -backend-config="dynamodb_table=<lock-table-name>" \
+  -backend-config="use_lockfile=true" \
   -backend-config="encrypt=true"
 terraform plan
 terraform apply
@@ -263,7 +262,6 @@ Repository or environment variables used by the workflows:
 | `AWS_FRONTEND_DEPLOY_ROLE_ARN` | Frontend | IAM role ARN assumed by the frontend deploy workflow. |
 | `TF_STATE_BUCKET` | Terraform | S3 bucket used by the Terraform backend. |
 | `TF_STATE_KEY` | Terraform | State object key, for example `static-website/dev/terraform.tfstate`. |
-| `TF_LOCK_TABLE` | Terraform | DynamoDB table used for Terraform state locking. |
 | `TF_PROJECT` | Terraform | Terraform `project` variable. |
 | `TF_BUCKET_NAME` | Terraform | Terraform `bucket_name` variable. |
 | `CLOUDFLARE_ZONE_NAME` | Terraform | Cloudflare zone name. |
@@ -315,7 +313,6 @@ Recommended environment-scoped values for `dev`:
 - `AWS_FRONTEND_DEPLOY_ROLE_ARN`
 - `TF_STATE_BUCKET`
 - `TF_STATE_KEY`
-- `TF_LOCK_TABLE`
 - `S3_BUCKET_NAME`
 - `CLOUDFRONT_DISTRIBUTION_ID`
 - `WEBSITE_URL`
@@ -354,11 +351,11 @@ terraform init \
   -backend-config="bucket=${TF_STATE_BUCKET}" \
   -backend-config="key=${TF_STATE_KEY}" \
   -backend-config="region=${AWS_REGION}" \
-  -backend-config="dynamodb_table=${TF_LOCK_TABLE}" \
+  -backend-config="use_lockfile=true" \
   -backend-config="encrypt=true"
 ```
 
-The Terraform IAM role also receives S3 and DynamoDB permissions for this backend, based on the `TF_STATE_BUCKET` and `TF_LOCK_TABLE` values passed into the stack as Terraform variables.
+The Terraform IAM roles receive S3 permissions for the state object and its `.tflock` lockfile, based on the `TF_STATE_BUCKET` value passed into the stack as a Terraform variable.
 
 ## DNS, TLS, and CloudFront Notes
 

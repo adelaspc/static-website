@@ -19,7 +19,7 @@ Terraform configuration for a private S3 static website served through CloudFron
 - Terraform module design for a realistic static website platform.
 - Secure private-origin hosting with S3, CloudFront, and Origin Access Control.
 - DNS and certificate automation across AWS ACM and Cloudflare.
-- Remote Terraform state with S3 and DynamoDB locking.
+- Remote Terraform state with native S3 lockfiles.
 - CI/CD separation between infrastructure provisioning and frontend deployment.
 - GitHub Actions OIDC authentication without long-lived AWS access keys.
 - Pull request validation with Terraform plan, TFLint, and Checkov.
@@ -59,7 +59,7 @@ terraform init \
   -backend-config="bucket=<state-bucket-name>" \
   -backend-config="key=static-website/dev/terraform.tfstate" \
   -backend-config="region=eu-central-1" \
-  -backend-config="dynamodb_table=<lock-table-name>" \
+  -backend-config="use_lockfile=true" \
   -backend-config="encrypt=true"
 terraform fmt -recursive
 terraform validate
@@ -123,7 +123,6 @@ This project is designed for low portfolio/demo traffic. Expected cost drivers:
 
 - **S3 website bucket:** usually cents per month for small static assets.
 - **S3 Terraform state bucket:** negligible storage cost, versioning can grow slowly over time.
-- **DynamoDB lock table:** `PAY_PER_REQUEST`, normally near-zero for occasional Terraform runs.
 - **CloudFront:** request and data transfer charges; usually low for portfolio traffic.
 - **CloudFront logs bucket:** storage grows with traffic and log retention.
 - **CloudWatch alarms:** billed per alarm; this project creates two CloudFront alarms.
@@ -134,7 +133,7 @@ Review current AWS and Cloudflare pricing before running long-lived deployments.
 
 ## Known Limitations And Trade-Offs
 
-- The backend bootstrap stack keeps local state by default after creating the state bucket and lock table.
+- The backend bootstrap stack keeps local state by default after creating the state bucket.
 - Checkov runs with `soft_fail: true` until findings are reviewed and either fixed or explicitly accepted.
 - CloudWatch alarms are created with optional notification actions; no SNS topic is provisioned by default.
 - The S3 bucket policy allows CloudFront distributions from the same AWS account instead of one exact distribution ARN to avoid a Terraform dependency cycle.

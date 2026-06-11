@@ -12,11 +12,9 @@ domain_aliases = [
   "www.example.com",
 ]
 
-github_repository = "your-github-user/static-website"
+github_repository = "github-user/static-website"
 
 terraform_state_bucket_name = "example-static-website-terraform-state-dev"
-
-terraform_lock_table_name = "example-static-website-terraform-locks-dev"
 
 cloudwatch_alarm_actions = []
 

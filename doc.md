@@ -214,7 +214,6 @@ terraform/bootstrap/backend
 The bootstrap stack creates:
 
 - S3 bucket for Terraform state.
-- DynamoDB table for locking.
 - Encryption enabled.
 - S3 bucket versioning.
 - Public access blocking.
@@ -241,7 +240,7 @@ terraform init \
   -backend-config="bucket=<state-bucket-name>" \
   -backend-config="key=static-website/dev/terraform.tfstate" \
   -backend-config="region=eu-central-1" \
-  -backend-config="dynamodb_table=<lock-table-name>" \
+  -backend-config="use_lockfile=true" \
   -backend-config="encrypt=true"
 terraform fmt -recursive
 terraform validate
@@ -336,7 +335,6 @@ Expected cost drivers:
 - CloudFront data transfer and request volume.
 - S3 storage for website files.
 - S3 storage for Terraform state versions.
-- DynamoDB on-demand requests for Terraform state locking.
 - CloudWatch alarm monthly charges.
 - S3 storage for CloudFront logs.
 - Cloudflare plan or DNS features, depending on account settings.

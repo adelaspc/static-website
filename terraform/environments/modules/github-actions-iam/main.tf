@@ -202,20 +202,6 @@ data "aws_iam_policy_document" "terraform" {
   }
 
   statement {
-    sid    = "AccessTerraformLockTable"
-    effect = "Allow"
-    actions = [
-      "dynamodb:DeleteItem",
-      "dynamodb:DescribeTable",
-      "dynamodb:GetItem",
-      "dynamodb:PutItem",
-      "dynamodb:UpdateItem",
-    ]
-
-    resources = ["arn:aws:dynamodb:*:*:table/${var.terraform_lock_table_name}"]
-  }
-
-  statement {
     sid    = "ManageStaticWebsiteEdge"
     effect = "Allow"
     actions = [
@@ -363,19 +349,6 @@ data "aws_iam_policy_document" "terraform_plan" {
     ]
 
     resources = ["arn:aws:s3:::${var.terraform_state_bucket_name}/*.tflock"]
-  }
-
-  statement {
-    sid    = "AccessTerraformLockTable"
-    effect = "Allow"
-    actions = [
-      "dynamodb:DeleteItem",
-      "dynamodb:DescribeTable",
-      "dynamodb:GetItem",
-      "dynamodb:PutItem",
-    ]
-
-    resources = ["arn:aws:dynamodb:*:*:table/${var.terraform_lock_table_name}"]
   }
 
   statement {

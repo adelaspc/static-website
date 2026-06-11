@@ -80,16 +80,6 @@ variable "terraform_state_bucket_name" {
   }
 }
 
-variable "terraform_lock_table_name" {
-  type        = string
-  description = "DynamoDB table name used by the Terraform remote backend for state locking."
-
-  validation {
-    condition     = can(regex("^[A-Za-z0-9_.-]{3,255}$", var.terraform_lock_table_name))
-    error_message = "terraform_lock_table_name must be a valid DynamoDB table name."
-  }
-}
-
 variable "cloudfront_4xx_error_rate_threshold" {
   type        = number
   description = "CloudFront 4xx error rate percentage threshold for the monitoring alarm."

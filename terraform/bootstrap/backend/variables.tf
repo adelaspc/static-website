@@ -37,13 +37,3 @@ variable "state_bucket_name" {
     error_message = "state_bucket_name must be compatible with S3 bucket naming rules."
   }
 }
-
-variable "lock_table_name" {
-  type        = string
-  description = "DynamoDB table name used for Terraform state locking."
-
-  validation {
-    condition     = can(regex("^[A-Za-z0-9_.-]{3,255}$", var.lock_table_name))
-    error_message = "lock_table_name must be a valid DynamoDB table name."
-  }
-}

@@ -32,8 +32,3 @@ variable "terraform_state_bucket_name" {
   type        = string
   description = "S3 bucket name used by the Terraform remote backend."
 }
-
-variable "terraform_lock_table_name" {
-  type        = string
-  description = "DynamoDB table name used by the Terraform remote backend for state locking."
-}
