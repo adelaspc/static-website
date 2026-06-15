@@ -1,39 +1,28 @@
 # Static Website Hosting
 
-Terraform configuration for a private S3 static website served through CloudFront with Origin Access Control and Cloudflare DNS records.
+Terraform-managed static website hosting with a private Amazon S3 origin, Amazon CloudFront, AWS Certificate Manager, Cloudflare DNS, and GitHub Actions OIDC deployments.
 
-## Architecture
+## Project Scope
 
-- S3 stores the static website files and blocks public access.
-- ACM creates a public certificate in `us-east-1` and validates it through Cloudflare DNS.
-- CloudFront serves the website over HTTPS and signs origin requests with OAC.
-- Cloudflare DNS creates DNS-only CNAME records for the configured domain names.
-- GitHub Actions deploys the built frontend artifact to S3 and invalidates CloudFront.
-- AWS access from GitHub Actions uses OIDC and IAM roles managed by Terraform.
-- A dedicated S3 bucket stores CloudFront standard access logs.
-- CloudWatch alarms monitor CloudFront 4xx and 5xx error rates.
-- CloudFront maps 403 and 404 responses to `/index.html` for static frontend routing.
+This project is production-inspired, but it is not presented as a production-ready platform. It demonstrates realistic infrastructure patterns while intentionally keeping cost and operational complexity appropriate for a portfolio environment.
 
-## What This Demonstrates
+The repository intentionally deploys one `dev` environment. It does not claim staging or production support; a genuine multi-environment design would require separate Terraform root modules, state keys, GitHub Environments, deployment controls, and preferably AWS account isolation.
 
-- Terraform module design for a realistic static website platform.
-- Secure private-origin hosting with S3, CloudFront, and Origin Access Control.
-- DNS and certificate automation across AWS ACM and Cloudflare.
-- Remote Terraform state with native S3 lockfiles.
-- CI/CD separation between infrastructure provisioning and frontend deployment.
-- GitHub Actions OIDC authentication without long-lived AWS access keys.
-- Pull request validation with Terraform plan, TFLint, and Checkov.
-- Deployment controls with GitHub Environment approvals.
-- Practical caching with content-hashed frontend assets.
-- Basic operational visibility through CloudWatch alarms and CloudFront logs.
+Implemented patterns include:
 
-## Terraform Provisioning Workflow
+- private S3 origin access through CloudFront Origin Access Control (OAC);
+- ACM certificate issuance in `us-east-1` with Cloudflare DNS validation;
+- native S3 Terraform state locking;
+- separate Terraform and frontend delivery workflows;
+- GitHub Actions OIDC authentication without long-lived AWS credentials;
+- CloudFront Standard Logging v2 to an ACL-disabled S3 bucket and CloudWatch error-rate alarms;
+- explicit frontend caching and a branded HTTP 404 page.
 
-![alt text](provisioning-workflow.png)
+The detailed design and accepted limitations are documented in [Architecture](docs/architecture.md) and [Checkov Trade-offs](docs/checkov-tradeoffs.md).
 
-## Usage
+## Quick Start
 
-First bootstrap the Terraform remote backend:
+### 1. Bootstrap the Remote Backend
 
 ```bash
 cd terraform/bootstrap/backend
@@ -43,15 +32,18 @@ terraform plan
 terraform apply
 ```
 
-Then copy `terraform/environments/dev/terraform.tfvars.example` to `terraform/environments/dev/terraform.tfvars` and replace the example values.
+This creates the encrypted, versioned S3 state bucket. Terraform locking uses an S3 `.tflock` object; no DynamoDB table is required.
 
-## ACM Certificate Validation Flow
+### 2. Configure the Dev Environment
 
-![alt text](validation-flow.png)
+```bash
+cp terraform/environments/dev/terraform.tfvars.example terraform/environments/dev/terraform.tfvars
+export CLOUDFLARE_API_TOKEN="..."
+```
 
-The ACM certificate used by CloudFront must be issued in `us-east-1`, even if the rest of the resources are deployed in another region.
+Populate the local `terraform.tfvars` with the real project, domain, bucket, repository, and optional alarm values.
 
-Terraform uses an aliased AWS provider for `us-east-1` to create and validate the CloudFront certificate. The certificate is a standard non-exportable ACM public certificate, so there is no ACM certificate charge for this CloudFront use case.
+### 3. Initialize and Apply
 
 ```bash
 cd terraform/environments/dev
@@ -61,93 +53,105 @@ terraform init \
   -backend-config="region=eu-central-1" \
   -backend-config="use_lockfile=true" \
   -backend-config="encrypt=true"
+
 terraform fmt -recursive
 terraform validate
 terraform plan
 terraform apply
 ```
 
-## Remote State
+The first apply must use an existing AWS identity that can create IAM roles and the GitHub OIDC provider. The workflow roles cannot be used until this apply creates them. The Terraform workflow role intentionally has read-only IAM access, so later changes to the GitHub Actions roles, policies, or OIDC provider must also be applied with that privileged bootstrap identity.
 
-The `dev` environment uses an S3 backend declared in `terraform/environments/dev/backend.tf`. Backend values are passed during `terraform init` so environment-specific bucket names are not hardcoded.
+### 4. Configure GitHub and Deploy
 
-The backend resources are managed by the separate bootstrap stack in `terraform/bootstrap/backend`. The bootstrap stack itself uses local Terraform state after the first apply, because the remote backend cannot safely depend on the same bucket it creates. Keep that local bootstrap state private, or migrate/import the backend stack into a separately managed state location if you want fully remote management.
+Map the Terraform outputs to the GitHub variables listed below, create the `dev` GitHub Environment, and add `CLOUDFLARE_API_TOKEN` as a repository Actions secret. The frontend can be deployed after the website bucket, CloudFront distribution, and frontend IAM role exist.
 
-## DNS
+See [Bootstrap Lifecycle](docs/bootstrap.md) for the full first-run procedure and [CI/CD](docs/ci-cd.md) for workflow behavior.
 
-DNS is managed in Cloudflare because the domain uses Cloudflare authoritative nameservers.
+## Deployment Ordering
 
-The Cloudflare module looks up the existing Cloudflare zone and creates DNS-only CNAME records pointing to the CloudFront distribution. Records are intentionally not proxied through Cloudflare, so CloudFront remains the CDN and TLS termination point for the website.
-
-Cloudflare DNS is also used for ACM certificate validation records. Terraform creates the validation CNAME records automatically before attaching the validated certificate to CloudFront.
-
-Authenticate the Cloudflare provider with an API token:
-
-```bash
-export CLOUDFLARE_API_TOKEN="..."
+```text
+Bootstrap backend
+-> First Terraform apply with an existing AWS identity
+-> Configure GitHub variables, secret, and dev Environment
+-> Validate Terraform configuration through GitHub Actions
+-> Deploy the frontend
+-> Verify DNS, HTTPS, logs, alarms, and error handling
 ```
 
-The token needs at least `Zone Read`, `DNS Read`, and `DNS Write` for the target zone.
+The Terraform and frontend workflows are independent and use different path filters. Infrastructure changes do not automatically deploy the frontend, and frontend changes do not automatically apply Terraform.
 
-In GitHub Actions, store this value as `CLOUDFLARE_API_TOKEN`. Cloudflare provider authentication still uses an API token; AWS OIDC does not authenticate to Cloudflare.
+## Required GitHub Configuration
 
-## CI/CD
+| Name | Type | Required | Source / Example |
+| --- | --- | --- | --- |
+| `CLOUDFLARE_API_TOKEN` | Secret | Yes | Zone-scoped Cloudflare API token |
+| `AWS_REGION` | Variable | No | Defaults to `eu-central-1` |
+| `AWS_TERRAFORM_ROLE_ARN` | Variable | Yes | `github_actions_terraform_role_arn` output |
+| `AWS_FRONTEND_DEPLOY_ROLE_ARN` | Variable | Yes | `github_actions_frontend_role_arn` output |
+| `TF_STATE_BUCKET` | Variable | Yes | Backend bootstrap bucket name |
+| `TF_STATE_KEY` | Variable | No | Defaults to `static-website/dev/terraform.tfstate` |
+| `TF_PROJECT` | Variable | Yes | Terraform `project` value |
+| `TF_BUCKET_NAME` | Variable | Yes | Terraform `bucket_name` value |
+| `CLOUDFLARE_ZONE_NAME` | Variable | Yes | Existing Cloudflare zone name |
+| `DOMAIN_ALIASES_JSON` | Variable | Yes | JSON list such as `["example.com", "www.example.com"]` |
+| `S3_BUCKET_NAME` | Variable | Yes | `bucket_name` output |
+| `CLOUDFRONT_DISTRIBUTION_ID` | Variable | Yes | `cloudfront_distribution_id` output |
+| `WEBSITE_URL` | Variable | No | URL displayed by the frontend deployment environment |
 
-CI/CD is documented separately in `ci-cd.md`.
+Required reviewers are optional. Deployments pause for approval only when the `dev` GitHub Environment has that protection rule enabled.
 
-The repository contains two workflows:
+Pull requests run static Terraform validation and frontend builds without cloud credentials, remote state, deployment variables, or the Cloudflare API token. Credentialed Terraform apply and frontend deploy jobs run only for `main` pushes or manual dispatches and target the `dev` GitHub Environment, so their secrets and variables can be environment-scoped.
 
-- `.github/workflows/terraform.yaml`
-- `.github/workflows/deploy-frontend.yaml`
+## Repository Hygiene
 
-The Terraform workflow includes formatting, validation, TFLint, and Checkov scanning.
+Never commit credentials, local state, local variable files, or generated dependency/build directories.
 
-Pull requests also run `terraform plan` with AWS OIDC credentials so infrastructure changes can be reviewed before merge.
+The repository `.gitignore` excludes:
 
-The frontend build emits deployable files in `portfolio-site/dist` and uses a content-hashed CSS filename so CloudFront/S3 can cache CSS aggressively while HTML remains easy to refresh.
+```text
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+node_modules/
+dist/
+```
 
-The `apply` and frontend `deploy` jobs target the GitHub Environment named `dev`, so required reviewers can be configured from the repository settings. The first Terraform apply must be run with bootstrap credentials that can create IAM and OIDC resources. After that, GitHub Actions can assume the IAM roles created by Terraform.
+Commit `.terraform.lock.hcl` files. They pin provider selections and improve consistency between local runs and CI.
 
-Current CI/CD hardening:
+Keep the following private:
 
-- TFLint runs as a blocking Terraform lint check.
-- Checkov runs as a Terraform security scan with `soft_fail: true` while findings are reviewed.
-- GitHub Environment `dev` can enforce manual approval before Terraform apply or frontend deploy.
-- Frontend CSS is content-hashed and deployed with long-lived immutable cache headers.
-- HTML remains `no-cache` so releases can be picked up quickly.
-- CloudWatch alarm notification actions are configurable, but default to disabled for the demo environment.
+- Cloudflare API tokens and AWS credentials;
+- all real `terraform.tfvars` files;
+- the bootstrap stack's local state and backups;
+- downloaded state recovery files;
+- generated frontend artifacts unless intentionally published.
 
-## Cost Estimate
+## Destroy Behavior
 
-This project is designed for low portfolio/demo traffic. Expected cost drivers:
+Destroying the environment requires care:
 
-- **S3 website bucket:** usually cents per month for small static assets.
-- **S3 Terraform state bucket:** negligible storage cost, versioning can grow slowly over time.
-- **CloudFront:** request and data transfer charges; usually low for portfolio traffic.
-- **CloudFront logs bucket:** storage grows with traffic and log retention.
-- **CloudWatch alarms:** billed per alarm; this project creates two CloudFront alarms.
-- **ACM public certificate:** no additional charge when used with CloudFront.
-- **Cloudflare DNS:** depends on the Cloudflare plan; DNS-only records can fit the free tier.
+- S3 buckets must be empty before Terraform can delete them.
+- The backend state bucket has `prevent_destroy = true`.
+- The backend must remain available while any environment still uses it.
+- This stack owns the account-level GitHub Actions OIDC provider used by other projects; migrate or remove all dependent IAM roles before destroying it.
+- CloudFront deletion can take several minutes.
+- Deleting the website bucket also removes the object versions used for frontend rollback.
 
-Review current AWS and Cloudflare pricing before running long-lived deployments.
+Destroy the main environment before considering backend removal. Detailed teardown and backend migration procedures are in [Bootstrap Lifecycle](docs/bootstrap.md); restoration procedures are in [Recovery](docs/recovery.md).
 
-## Known Limitations And Trade-Offs
+## Documentation
 
-- The backend bootstrap stack keeps local state by default after creating the state bucket.
-- Checkov runs with `soft_fail: true` until findings are reviewed and either fixed or explicitly accepted.
-- CloudWatch alarms are created with optional notification actions; no SNS topic is provisioned by default.
-- The S3 bucket policy allows CloudFront distributions from the same AWS account instead of one exact distribution ARN to avoid a Terraform dependency cycle.
-- CloudFront maps 403 and 404 responses to `/index.html`, which supports frontend routing but can mask real missing-page responses.
-- This is a single-environment `dev` setup, not a multi-account production deployment.
-- Cloudflare is used as DNS only; proxying is disabled so CloudFront remains the CDN and TLS endpoint.
-- The Terraform apply role is intentionally broader than ideal production least privilege to keep the portfolio stack maintainable.
+- [Architecture](docs/architecture.md): infrastructure design, security, caching, logging, monitoring, and limitations.
+- [Bootstrap Lifecycle](docs/bootstrap.md): backend creation, first apply, state migration, and teardown.
+- [CI/CD](docs/ci-cd.md): workflow triggers, jobs, artifacts, OIDC, and GitHub Environment behavior.
+- [Operations](docs/operations.md): deployment verification, routine checks, and version policy.
+- [Troubleshooting](docs/troubleshooting.md): common failures, diagnostics, and remediation.
+- [Recovery](docs/recovery.md): Terraform state recovery, lock handling, and frontend rollback.
+- [Checkov Trade-offs](docs/checkov-tradeoffs.md): security scan policy and accepted demo limitations.
 
-## Security Notes
+## License
 
-The S3 website bucket is private and only grants read access to CloudFront service principals from the current AWS account. An exact distribution ARN condition would create a Terraform dependency cycle when the policy is owned by the S3 module, so the module uses an account-scoped CloudFront distribution ARN pattern.
-
-Terraform does not manage website objects. Application deployment is intentionally handled by the frontend workflow so infrastructure state does not churn on every frontend change.
-
-CloudFront security response headers are enabled, including HSTS, frame protection, content type sniffing protection, and a restrictive referrer policy.
-
-`X-XSS-Protection` is intentionally not configured because modern browsers have deprecated or removed legacy XSS auditor behavior.
+This project is available under the [MIT License](LICENSE).

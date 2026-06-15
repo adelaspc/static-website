@@ -1,11 +1,14 @@
 output "zone_id" {
-  value = data.cloudflare_zone.this.id
+  description = "Cloudflare zone ID containing the website DNS records."
+  value       = data.cloudflare_zone.this.id
 }
 
 output "record_names" {
-  value = [for record in cloudflare_dns_record.cloudfront : record.name]
+  description = "DNS record names that point to the CloudFront distribution."
+  value       = [for record in cloudflare_dns_record.cloudfront : record.name]
 }
 
 output "record_ids" {
-  value = [for record in cloudflare_dns_record.cloudfront : record.id]
+  description = "Cloudflare IDs of the DNS records that point to CloudFront."
+  value       = [for record in cloudflare_dns_record.cloudfront : record.id]
 }

@@ -20,21 +20,22 @@ variable "project" {
 
 variable "environment" {
   type        = string
-  description = "Deployment environment name."
+  description = "Deployment environment name. This root module supports only dev."
+  default     = "dev"
 
   validation {
-    condition     = contains(["dev", "staging", "prod"], var.environment)
-    error_message = "The environment must be one of: dev, staging, prod."
+    condition     = var.environment == "dev"
+    error_message = "This root module supports only the dev environment."
   }
 }
 
 variable "bucket_name" {
   type        = string
-  description = "Environment-specific suffix used in the S3 bucket name."
+  description = "Environment-specific component used with project to build the final S3 bucket names."
 
   validation {
     condition     = can(regex("^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$", var.bucket_name))
-    error_message = "The bucket_name value must be compatible with S3 bucket naming rules."
+    error_message = "bucket_name must use lowercase letters, numbers, periods, or hyphens and must start and end with a letter or number. Final composed names are validated by the S3 module."
   }
 }
 

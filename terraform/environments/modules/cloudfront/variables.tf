@@ -46,21 +46,20 @@ variable "minimum_protocol_version" {
   default     = "TLSv1.2_2021"
 }
 
-variable "logging_bucket_domain_name" {
+variable "logging_bucket_arn" {
   type        = string
-  description = "S3 bucket domain name where CloudFront standard logs are delivered."
-}
+  description = "ARN of the S3 bucket where CloudFront Standard Logging v2 delivers access logs."
 
-variable "logging_prefix" {
-  type        = string
-  description = "Prefix for CloudFront standard logs."
-  default     = "cloudfront/"
+  validation {
+    condition     = can(regex("^arn:[^:]+:s3:::[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$", var.logging_bucket_arn))
+    error_message = "logging_bucket_arn must be a valid S3 bucket ARN."
+  }
 }
 
 variable "custom_error_response_page_path" {
   type        = string
   description = "Page returned by CloudFront for custom 403 and 404 responses."
-  default     = "/index.html"
+  default     = "/error.html"
 }
 
 variable "custom_error_response_ttl" {

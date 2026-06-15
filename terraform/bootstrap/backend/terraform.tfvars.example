@@ -2,6 +2,6 @@ region = "eu-central-1"
 
 project = "project-name"
 
-environment = "dev-staging-production"
-
 state_bucket_name = "example-static-website-terraform-state-dev"
+
+noncurrent_state_version_retention_days = 90

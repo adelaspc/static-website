@@ -2,8 +2,6 @@ region = "eu-central-1"
 
 project = "static-website-hosting"
 
-environment = "dev"
-
 bucket_name = "example-static-site-dev"
 
 cloudflare_zone_name = "example.com"

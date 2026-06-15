@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Page Not Found | Portfolio</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="min-h-screen text-slate-100 antialiased">
+    <main class="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col px-5 py-8 sm:px-8 lg:px-10">
+      <header class="flex flex-wrap items-center justify-between gap-5">
+        <a href="/" class="flex items-center gap-5" aria-label="Back to homepage">
+          <span class="grid h-12 w-12 place-items-center rounded border border-violet bg-violet/10 text-violet shadow-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" /></svg>
+          </span>
+          <span class="text-base font-extrabold text-white">NAME</span>
+        </a>
+        <a class="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-500/50 px-5 text-sm font-semibold text-slate-200 hover:border-violet/70 hover:text-white" href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
+          Home
+        </a>
+      </header>
+
+      <section class="flex flex-1 items-center py-10 sm:py-16">
+        <div class="shell relative w-full overflow-hidden rounded-2xl border border-line p-7 shadow-glow sm:p-12 lg:p-16">
+          <div class="error-grid absolute inset-0 opacity-50" aria-hidden="true"></div>
+          <div class="relative grid items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
+            <div>
+              <span class="inline-flex items-center gap-2 rounded-full border border-violet/50 bg-violet/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-violet">
+                <span class="h-2 w-2 rounded-full bg-violet shadow-glow"></span>
+                Error 404
+              </span>
+              <p class="mt-8 font-mono text-sm font-semibold text-slate-500">GET /requested-resource</p>
+              <h1 class="mt-4 max-w-2xl text-5xl font-extrabold leading-tight text-white sm:text-6xl lg:text-7xl">This route did not deploy.</h1>
+              <p class="mt-7 max-w-xl text-lg leading-8 text-slate-300">The page may have moved, the URL may be incorrect, or access to this resource is unavailable.</p>
+
+              <div class="mt-10 flex flex-wrap gap-4">
+                <a href="/" class="inline-flex min-h-14 items-center gap-3 rounded-lg bg-violet px-8 font-bold text-white shadow-glow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
+                  Return home
+                </a>
+                <button type="button" onclick="history.back()" class="inline-flex min-h-14 cursor-pointer items-center gap-3 rounded-lg border border-slate-500/60 px-8 font-semibold text-slate-200 hover:border-violet/70 hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg>
+                  Go back
+                </button>
+              </div>
+            </div>
+
+            <div class="frosted rounded-2xl border border-line p-6 sm:p-8">
+              <div class="flex items-center gap-3 border-b border-line pb-5">
+                <span class="h-3 w-3 rounded-full bg-violet/80"></span>
+                <span class="h-3 w-3 rounded-full bg-slate-600"></span>
+                <span class="h-3 w-3 rounded-full bg-slate-600"></span>
+                <span class="ml-auto font-mono text-xs text-slate-500">edge-response.log</span>
+              </div>
+              <div class="mt-7 space-y-4 font-mono text-sm leading-7">
+                <p><span class="text-violet">status</span><span class="text-slate-500">:</span> <span class="text-slate-200">404</span></p>
+                <p><span class="text-violet">source</span><span class="text-slate-500">:</span> <span class="text-slate-200">cloudfront</span></p>
+                <p><span class="text-violet">origin</span><span class="text-slate-500">:</span> <span class="text-slate-200">private-s3-bucket</span></p>
+                <p><span class="text-violet">result</span><span class="text-slate-500">:</span> <span class="text-slate-200">resource_not_found</span></p>
+              </div>
+              <div class="mt-8 rounded-xl border border-violet/25 bg-violet/5 p-5">
+                <div class="flex gap-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-5 w-5 shrink-0 text-violet" aria-hidden="true" focusable="false"><path d="M12 19h8" /><path d="m4 17 6-6-6-6" /></svg>
+                  <p class="text-sm leading-6 text-slate-400">The infrastructure is healthy. Only this path could not be resolved.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="flex flex-wrap items-center justify-between gap-3 border-t border-line/70 py-6 text-sm text-slate-500">
+        <p>Portfolio error boundary</p>
+        <p>CloudFront + private S3</p>
+      </footer>
+    </main>
+  </body>
+</html>

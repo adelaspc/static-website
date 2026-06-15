@@ -10,7 +10,7 @@ variable "environment" {
 
 variable "bucket_name" {
   type        = string
-  description = "Environment-specific suffix used in the S3 bucket name."
+  description = "Environment-specific component used with project to build the final S3 bucket names."
 }
 
 variable "noncurrent_version_expiration_days" {

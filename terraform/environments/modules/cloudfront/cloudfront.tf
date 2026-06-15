@@ -1,13 +1,10 @@
-locals {
-  common_tags = {
-    Project     = var.project
-    Environment = var.environment
-    ManagedBy   = "terraform"
-  }
-}
-
 data "aws_cloudfront_cache_policy" "caching_optimized" {
   name = "Managed-CachingOptimized"
+}
+
+locals {
+  log_delivery_source_name      = substr("${var.project}-${var.environment}-cloudfront-access-logs", 0, 60)
+  log_delivery_destination_name = substr("${var.project}-${var.environment}-cloudfront-s3", 0, 60)
 }
 
 resource "aws_cloudfront_origin_access_control" "static_website" {
@@ -47,6 +44,11 @@ resource "aws_cloudfront_response_headers_policy" "security_headers" {
 }
 
 resource "aws_cloudfront_distribution" "static_website" {
+  #checkov:skip=CKV_AWS_86:Access logging is enabled through CloudFront Standard Logging v2 delivery resources; this check recognizes only the legacy logging_config block.
+  #checkov:skip=CKV_AWS_68:AWS WAF is intentionally omitted for this low-traffic portfolio environment to avoid fixed and request-based cost.
+  #checkov:skip=CKV2_AWS_47:This exception follows the documented decision not to provision a WAF web ACL for the portfolio environment.
+  #checkov:skip=CKV_AWS_310:A single private S3 origin is sufficient for the documented portfolio availability target; origin failover is not claimed.
+  #checkov:skip=CKV_AWS_374:The public portfolio site is intentionally available globally, so no geographic allowlist or denylist is configured.
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
@@ -70,22 +72,16 @@ resource "aws_cloudfront_distribution" "static_website" {
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers.id
   }
 
-  logging_config {
-    bucket          = var.logging_bucket_domain_name
-    include_cookies = false
-    prefix          = var.logging_prefix
-  }
-
   custom_error_response {
     error_code            = 403
-    response_code         = 200
+    response_code         = 404
     response_page_path    = var.custom_error_response_page_path
     error_caching_min_ttl = var.custom_error_response_ttl
   }
 
   custom_error_response {
     error_code            = 404
-    response_code         = 200
+    response_code         = 404
     response_page_path    = var.custom_error_response_page_path
     error_caching_min_ttl = var.custom_error_response_ttl
   }
@@ -101,6 +97,30 @@ resource "aws_cloudfront_distribution" "static_website" {
     minimum_protocol_version = var.minimum_protocol_version
     ssl_support_method       = "sni-only"
   }
+}
 
-  tags = local.common_tags
+resource "aws_cloudwatch_log_delivery_source" "cloudfront" {
+  provider = aws.us_east_1
+
+  name         = local.log_delivery_source_name
+  log_type     = "ACCESS_LOGS"
+  resource_arn = aws_cloudfront_distribution.static_website.arn
+}
+
+resource "aws_cloudwatch_log_delivery_destination" "cloudfront_s3" {
+  provider = aws.us_east_1
+
+  name          = local.log_delivery_destination_name
+  output_format = "w3c"
+
+  delivery_destination_configuration {
+    destination_resource_arn = var.logging_bucket_arn
+  }
+}
+
+resource "aws_cloudwatch_log_delivery" "cloudfront_s3" {
+  provider = aws.us_east_1
+
+  delivery_source_name     = aws_cloudwatch_log_delivery_source.cloudfront.name
+  delivery_destination_arn = aws_cloudwatch_log_delivery_destination.cloudfront_s3.arn
 }

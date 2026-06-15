@@ -14,7 +14,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 concurrency:
   group: terraform-dev
@@ -24,6 +23,8 @@ env:
   TF_IN_AUTOMATION: true
   TF_INPUT: false
   TF_WORKING_DIR: terraform/environments/dev
+  TF_BOOTSTRAP_DIR: terraform/bootstrap/backend
+  TERRAFORM_VERSION: 1.15.5
   AWS_REGION: ${{ vars.AWS_REGION || 'eu-central-1' }}
 
 jobs:
@@ -37,20 +38,29 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
 
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v6
 
       - name: Terraform fmt
-        working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform fmt -check -recursive
 
-      - name: Terraform init without backend
+      - name: Initialize main stack without backend
         working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform init -backend=false
 
-      - name: Terraform validate
+      - name: Validate main stack
         working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform validate
+
+      - name: Initialize bootstrap stack without backend
+        working-directory: ${{ env.TF_BOOTSTRAP_DIR }}
+        run: terraform init -backend=false
+
+      - name: Validate bootstrap stack
+        working-directory: ${{ env.TF_BOOTSTRAP_DIR }}
         run: terraform validate
 
       - name: TFLint init
@@ -64,77 +74,7 @@ jobs:
         with:
           directory: terraform
           framework: terraform
-          soft_fail: true
           output_format: cli
-
-  plan:
-    name: Plan
-    runs-on: ubuntu-latest
-    needs: validate
-    if: github.event_name == 'pull_request'
-    env:
-      AWS_TERRAFORM_PLAN_ROLE_ARN: ${{ vars.AWS_TERRAFORM_PLAN_ROLE_ARN }}
-      TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
-      TF_STATE_KEY: ${{ vars.TF_STATE_KEY || 'static-website/dev/terraform.tfstate' }}
-      TF_VAR_region: ${{ vars.AWS_REGION || 'eu-central-1' }}
-      TF_VAR_project: ${{ vars.TF_PROJECT }}
-      TF_VAR_environment: dev
-      TF_VAR_bucket_name: ${{ vars.TF_BUCKET_NAME }}
-      TF_VAR_cloudflare_zone_name: ${{ vars.CLOUDFLARE_ZONE_NAME }}
-      TF_VAR_domain_aliases: ${{ vars.DOMAIN_ALIASES_JSON }}
-      TF_VAR_github_repository: ${{ github.repository }}
-      TF_VAR_terraform_state_bucket_name: ${{ vars.TF_STATE_BUCKET }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v4
-
-      - name: Check required GitHub variables
-        run: |
-          missing=()
-          check_required() {
-            if [ -z "$2" ]; then
-              missing+=("$1")
-            fi
-          }
-
-          check_required AWS_TERRAFORM_PLAN_ROLE_ARN "$AWS_TERRAFORM_PLAN_ROLE_ARN"
-          check_required TF_STATE_BUCKET "$TF_STATE_BUCKET"
-          check_required TF_PROJECT "$TF_VAR_project"
-          check_required TF_BUCKET_NAME "$TF_VAR_bucket_name"
-          check_required CLOUDFLARE_ZONE_NAME "$TF_VAR_cloudflare_zone_name"
-          check_required DOMAIN_ALIASES_JSON "$TF_VAR_domain_aliases"
-
-          if [ "${#missing[@]}" -gt 0 ]; then
-            printf 'Missing required GitHub Actions variables for Terraform plan:\n'
-            printf '  - %s\n' "${missing[@]}"
-            exit 1
-          fi
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v6
-        with:
-          role-to-assume: ${{ env.AWS_TERRAFORM_PLAN_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-
-      - name: Terraform init
-        working-directory: ${{ env.TF_WORKING_DIR }}
-        run: |
-          terraform init \
-            -backend-config="bucket=${TF_STATE_BUCKET}" \
-            -backend-config="key=${TF_STATE_KEY}" \
-            -backend-config="region=${AWS_REGION}" \
-            -backend-config="use_lockfile=true" \
-            -backend-config="encrypt=true"
-
-      - name: Terraform plan
-        working-directory: ${{ env.TF_WORKING_DIR }}
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: terraform plan -no-color
 
   apply:
     name: Plan and Apply
@@ -147,7 +87,6 @@ jobs:
       TF_STATE_KEY: ${{ vars.TF_STATE_KEY || 'static-website/dev/terraform.tfstate' }}
       TF_VAR_region: ${{ vars.AWS_REGION || 'eu-central-1' }}
       TF_VAR_project: ${{ vars.TF_PROJECT }}
-      TF_VAR_environment: dev
       TF_VAR_bucket_name: ${{ vars.TF_BUCKET_NAME }}
       TF_VAR_cloudflare_zone_name: ${{ vars.CLOUDFLARE_ZONE_NAME }}
       TF_VAR_domain_aliases: ${{ vars.DOMAIN_ALIASES_JSON }}
@@ -155,6 +94,9 @@ jobs:
       TF_VAR_terraform_state_bucket_name: ${{ vars.TF_STATE_BUCKET }}
     environment:
       name: dev
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout
@@ -162,6 +104,8 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
 
       - name: Check required GitHub variables
         run: |

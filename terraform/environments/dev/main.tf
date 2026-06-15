@@ -20,13 +20,17 @@ module "acm_certificate" {
 module "cloudfront" {
   source = "../modules/cloudfront"
 
+  providers = {
+    aws           = aws
+    aws.us_east_1 = aws.us_east_1
+  }
+
   project                     = var.project
   environment                 = var.environment
   bucket_regional_domain_name = module.s3.bucket_regional_domain_name
   aliases                     = var.domain_aliases
   acm_certificate_arn         = module.acm_certificate.certificate_arn
-  logging_bucket_domain_name  = module.s3.cloudfront_logs_bucket_domain_name
-  logging_prefix              = "cloudfront/"
+  logging_bucket_arn          = module.s3.cloudfront_logs_bucket_arn
 }
 
 module "cloudflare_dns" {

@@ -1,11 +1,3 @@
-locals {
-  common_tags = {
-    Project     = var.project
-    Environment = var.environment
-    ManagedBy   = "terraform"
-  }
-}
-
 resource "aws_cloudwatch_metric_alarm" "cloudfront_4xx_error_rate" {
   alarm_name          = "${var.project}-${var.environment}-cloudfront-4xx-error-rate"
   alarm_description   = "CloudFront 4xx error rate is above ${var.cloudfront_4xx_error_rate_threshold}%."
@@ -25,8 +17,6 @@ resource "aws_cloudwatch_metric_alarm" "cloudfront_4xx_error_rate" {
     DistributionId = var.cloudfront_distribution_id
     Region         = "Global"
   }
-
-  tags = local.common_tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloudfront_5xx_error_rate" {
@@ -48,6 +38,4 @@ resource "aws_cloudwatch_metric_alarm" "cloudfront_5xx_error_rate" {
     DistributionId = var.cloudfront_distribution_id
     Region         = "Global"
   }
-
-  tags = local.common_tags
 }
