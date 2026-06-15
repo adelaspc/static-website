@@ -3,11 +3,6 @@ variable "project" {
   description = "Project name used for naming and tagging resources."
 }
 
-variable "environment" {
-  type        = string
-  description = "Deployment environment name."
-}
-
 variable "bucket_name" {
   type        = string
   description = "Environment-specific component used with project to build the final S3 bucket names."
