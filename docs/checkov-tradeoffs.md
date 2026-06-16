@@ -24,6 +24,7 @@ Do not maintain this document as a permanent copy of one historical scan. Check 
 | Checkov enforcement | Blocking | New unsuppressed findings fail CI and pre-commit validation. |
 | CloudFront geo restriction | Not configured | The public portfolio is intentionally available globally. |
 | CloudFront origin failover | Not configured | The project claims no multi-origin availability objective. |
+| Content Security Policy | Deferred | The current site is a static portfolio with no authentication, no user-generated content, and no backend application runtime, so CSP is documented as a production-hardening item rather than enabled immediately. Add CSP before introducing analytics, third-party scripts, external fonts, forms, embeds, or client-side API calls. Roll it out through a CloudFront Response Headers Policy and test first with `Content-Security-Policy-Report-Only`. |
 
 Each accepted exception is suppressed beside the relevant Terraform resource with its exact Checkov ID and a concise reason. The current accepted check IDs are:
 

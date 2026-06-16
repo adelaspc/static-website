@@ -9,6 +9,8 @@ Infrastructure and frontend delivery are intentionally independent:
 
 Terraform does not manage website objects, and the frontend workflow does not modify infrastructure configuration.
 
+![Main deploy flow](/docs/diagrams/maindeployflow.png)
+
 ## Terraform Workflow
 
 Triggers:
@@ -141,7 +143,7 @@ The frontend role can:
 
 The apply role can manage the website infrastructure, but it has read-only IAM access. It cannot create, update, attach, or delete IAM roles, policies, or the GitHub OIDC provider, so it cannot modify its own permissions or trust policy.
 
-For the Terraform backend, the apply role can list the state bucket and read or update state objects. `s3:DeleteObject` is restricted to `*.tflock`, so the workflow can release native S3 locks but cannot delete the Terraform state object.
+For the Terraform backend, the apply role can list only the configured state key and lockfile prefixes, and it can read or update only the configured state object. `s3:DeleteObject` is restricted to that exact `.tflock` object, so the workflow can release native S3 locks but cannot delete the Terraform state object or access unrelated backend objects.
 
 The role's AWS service permissions enumerate the S3, ACM, CloudFront, CloudWatch, and CloudWatch Logs delivery operations required by the managed resources rather than using service-wide wildcards. An IAM permissions boundary repeats the maximum allowed service and resource scope and contains no IAM write actions. Consequently, attaching a broader identity policy does not grant permissions outside the boundary.
 

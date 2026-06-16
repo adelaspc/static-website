@@ -1,0 +1,29 @@
+formatter: markdown table
+
+recursive:
+  enabled: false
+
+sections:
+  show:
+    - requirements
+    - providers
+    - modules
+    - inputs
+    - outputs
+
+sort:
+  enabled: true
+  by: name
+
+settings:
+  anchor: false
+  color: false
+  default: true
+  description: true
+  escape: true
+  hide-empty: true
+  html: true
+  indent: 2
+  required: true
+  sensitive: true
+  type: true

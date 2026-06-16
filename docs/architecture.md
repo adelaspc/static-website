@@ -10,6 +10,9 @@ Cloudflare is authoritative DNS only. Its records are not proxied, so CloudFront
 
 The S3 origin is a regular private bucket origin rather than an S3 website endpoint. CloudFront signs origin requests with SigV4 through Origin Access Control (OAC).
 
+
+![Architecture diagram](/docs/diagrams/architecture-diagram-portfolio-site.png)
+
 ## Terraform Structure
 
 The repository is explicitly dev-only. The environment and bootstrap root modules default to `dev` and reject other values. Shared child modules still accept an environment input for naming and tagging, but that does not imply that staging or production roots currently exist.
@@ -28,6 +31,8 @@ Both AWS provider configurations use `default_tags` so supported resources consi
 The backend is managed separately under `terraform/bootstrap/backend`; see [Bootstrap Lifecycle](bootstrap.md).
 
 The backend bucket retains noncurrent Terraform state versions for 90 days by default and aborts incomplete multipart uploads after seven days. This bounds historical state storage while preserving a practical recovery window.
+
+![Terraform](/docs/diagrams/dependency-graph.png)
 
 ## Multi-Environment Extension
 
@@ -81,6 +86,8 @@ Every entry in `domain_aliases` is:
 
 The Cloudflare zone must already exist. Terraform does not create or delegate the zone itself.
 
+![ACM Validation Flow](/docs/diagrams/acm-validation-flow.png)
+
 ## Error Handling
 
 Private S3 origins can return HTTP 403 when an object is missing because viewers cannot list the bucket. CloudFront therefore handles both origin 403 and 404 responses consistently.
@@ -103,7 +110,7 @@ The workflow invalidates `/*` after deployment. This is simple and reliable for 
 
 CloudFront Standard Logging v2 delivers W3C access logs to the dedicated logging bucket through the CloudWatch Logs delivery API. The delivery source, destination, and connection are managed in `us-east-1`, as required by the CloudFront logging API, while the destination remains the regional S3 bucket.
 
-The log bucket policy authorizes `delivery.logs.amazonaws.com` only for this AWS account and `us-east-1` CloudWatch Logs delivery resources. Delivered objects use the AWS-managed `AWSLogs/<account-id>/CloudFront/` prefix. This model keeps S3 ACLs disabled and replaces the legacy CloudFront canonical-user ACL delivery mechanism.
+The log bucket policy authorizes `delivery.logs.amazonaws.com` only for this AWS account and `us-east-1` CloudWatch Logs delivery resources. Delivered objects use the AWS-managed `AWSLogs/<account-id>/CloudFront/` prefix, and S3 ACLs remain disabled through bucket-owner-enforced object ownership.
 
 Two alarms are created in `us-east-1`, where CloudFront metrics are exposed:
 
@@ -134,7 +141,7 @@ CloudFront adds:
 - `X-Content-Type-Options: nosniff`;
 - `Referrer-Policy: strict-origin-when-cross-origin`.
 
-Content Security Policy is not currently configured. It should be added only after the required script, style, image, and connection sources are known.
+Content Security Policy is intentionally deferred for this portfolio deployment. Before production use or before adding third-party frontend integrations, add CSP through a CloudFront Response Headers Policy and test it first in report-only mode.
 
 ## Shared GitHub OIDC Provider
 

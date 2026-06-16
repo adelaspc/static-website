@@ -49,6 +49,11 @@ variable "domain_aliases" {
     ])
     error_message = "domain_aliases must contain at least one valid lowercase DNS name."
   }
+
+  validation {
+    condition     = length(var.domain_aliases) == length(distinct(var.domain_aliases))
+    error_message = "domain_aliases must not contain duplicate names."
+  }
 }
 
 variable "cloudflare_zone_name" {
@@ -78,6 +83,22 @@ variable "terraform_state_bucket_name" {
   validation {
     condition     = can(regex("^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$", var.terraform_state_bucket_name))
     error_message = "terraform_state_bucket_name must be compatible with S3 bucket naming rules."
+  }
+}
+
+variable "terraform_state_key" {
+  type        = string
+  description = "S3 object key used by the Terraform remote backend for this environment."
+  default     = "static-website/dev/terraform.tfstate"
+
+  validation {
+    condition = (
+      length(var.terraform_state_key) > 0 &&
+      !startswith(var.terraform_state_key, "/") &&
+      !endswith(var.terraform_state_key, "/") &&
+      !strcontains(var.terraform_state_key, "//")
+    )
+    error_message = "terraform_state_key must be a non-empty S3 object key, not a bucket-style path."
   }
 }
 

@@ -50,6 +50,7 @@ module "github_actions_iam" {
   cloudfront_logs_bucket_arn  = module.s3.cloudfront_logs_bucket_arn
   cloudfront_distribution_arn = module.cloudfront.distribution_arn
   terraform_state_bucket_name = var.terraform_state_bucket_name
+  terraform_state_key         = var.terraform_state_key
 }
 
 module "monitoring" {

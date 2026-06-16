@@ -8,6 +8,8 @@ Both root modules are intentionally dev-only and default `environment` to `dev`.
 
 The bootstrap stack itself keeps local state by default. Keep that state and its backups private.
 
+![Bootstrap diagram](/docs/diagrams/bootstrap.png)
+
 ## Create the Backend
 
 The bootstrap stack currently requires Terraform `>= 1.15.5, < 1.16.0`.
@@ -74,23 +76,6 @@ The remaining required GitHub values are listed in the root [README](../README.m
 The Terraform apply role intentionally has no IAM write permissions. It can read the managed roles, policies, and OIDC provider during refresh and planning, but it cannot modify its own policy or trust relationship.
 
 Whenever `terraform/environments/modules/github-actions-iam` changes, run the main-stack plan and apply with the same privileged bootstrap identity used for the first deployment. Review the plan carefully and do not grant the workflow role IAM administration as a shortcut. Normal website infrastructure changes can continue through GitHub Actions.
-
-The Standard Logging v2 migration adds explicit CloudWatch Logs delivery permissions to the Terraform role and its permissions boundary. Perform this rollout with the privileged bootstrap identity before relying on the GitHub workflow to create or update the logging delivery resources.
-
-An existing deployment requires one explicit ACL cleanup before the migration apply. Removing an `aws_s3_bucket_acl` resource from Terraform state does not change the remote ACL, and S3 rejects `BucketOwnerEnforced` while the legacy CloudFront canonical-user grant remains. Reset the log bucket to its owner-only private ACL, then apply the final configuration:
-
-```bash
-aws s3api put-bucket-acl \
-  --bucket "<existing-cloudfront-log-bucket-name>" \
-  --acl private
-
-terraform plan
-terraform apply
-```
-
-The bucket name follows `${project}-${bucket_name}-cf-logs`; confirm the existing resource in S3 before running the command. After the migration apply, `terraform output -raw cloudfront_logs_bucket_name` returns it directly.
-
-The apply removes the legacy distribution logging block, enables bucket-owner-enforced ownership, installs the v2 delivery bucket policy, creates the CloudWatch Logs delivery resources in `us-east-1`, and updates the Terraform role and boundary. A short access-log delivery interruption during this one-time migration is acceptable for the dev-only environment.
 
 The first rollout of the Terraform role permissions boundary must also use the privileged bootstrap identity. The existing workflow role cannot create the boundary policy or attach it to itself, by design. After rollout, verify the `github_actions_terraform_permissions_boundary_arn` output and confirm the role shows that boundary in IAM.
 

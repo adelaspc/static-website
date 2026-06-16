@@ -1,5 +1,9 @@
 # Static Website Hosting
 
+[![Terraform](https://github.com/adelaspc/static-website/actions/workflows/terraform.yaml/badge.svg)](https://github.com/adelaspc/static-website/actions/workflows/terraform.yaml)
+[![Deploy Frontend](https://github.com/adelaspc/static-website/actions/workflows/deploy-frontend.yaml/badge.svg)](https://github.com/adelaspc/static-website/actions/workflows/deploy-frontend.yaml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Terraform-managed static website hosting with a private Amazon S3 origin, Amazon CloudFront, AWS Certificate Manager, Cloudflare DNS, and GitHub Actions OIDC deployments.
 
 ## Project Scope
@@ -19,6 +23,23 @@ Implemented patterns include:
 - explicit frontend caching and a branded HTTP 404 page.
 
 The detailed design and accepted limitations are documented in [Architecture](docs/architecture.md) and [Checkov Trade-offs](docs/checkov-tradeoffs.md).
+
+## Estimated Cost
+
+This stack is intended to stay inexpensive for a low-traffic portfolio site. Exact charges depend on region, traffic, request volume, retained logs, free-tier eligibility, and any Cloudflare or domain-registration costs outside AWS. Use the [AWS Pricing Calculator](https://calculator.aws/) for a real estimate before leaving the stack running long term.
+
+Assuming one `dev` environment, a small static site, low request volume, and less than 1 GB of website, log, and state data, the expected AWS cost is usually under a few dollars per month and can be close to zero when covered by free-tier or CloudFront free-plan allowances.
+
+| Component | Cost behavior |
+| --- | --- |
+| S3 website, log, and state buckets | Usage-based storage and request charges. Versioning and CloudFront logs increase stored data until lifecycle rules expire old objects. |
+| CloudFront | Usage-based or plan-based CDN pricing, depending on the active CloudFront pricing model and allowances. This project uses `PriceClass_100` to limit edge cost. |
+| ACM public certificate | Non-exportable public certificates used with integrated AWS services have no additional ACM charge. |
+| CloudWatch alarms | Two standard CloudFront metric alarms are configured. Standard alarm metrics are low fixed monthly charges outside applicable free-tier allowances. |
+| CloudWatch Logs delivery | CloudFront Standard Logging v2 delivers logs to S3; the durable storage cost is primarily S3 log storage and requests. |
+| Not provisioned by default | AWS WAF, customer-managed KMS keys, SNS notifications, cross-region replication, and multi-environment infrastructure are intentionally omitted to avoid fixed demo costs. |
+
+Pricing references: [S3](https://aws.amazon.com/s3/pricing/), [CloudFront](https://aws.amazon.com/cloudfront/pricing/), [CloudWatch](https://aws.amazon.com/cloudwatch/pricing/), and [ACM](https://aws.amazon.com/certificate-manager/pricing/). Reviewed on 2026-06-16.
 
 ## Quick Start
 

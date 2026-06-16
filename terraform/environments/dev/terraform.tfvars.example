@@ -14,6 +14,8 @@ github_repository = "github-user/static-website"
 
 terraform_state_bucket_name = "example-static-website-terraform-state-dev"
 
+terraform_state_key = "static-website/dev/terraform.tfstate"
+
 cloudwatch_alarm_actions = []
 
 cloudwatch_ok_actions = []

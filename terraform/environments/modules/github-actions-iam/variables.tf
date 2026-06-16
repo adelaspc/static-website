@@ -32,3 +32,8 @@ variable "terraform_state_bucket_name" {
   type        = string
   description = "S3 bucket name used by the Terraform remote backend."
 }
+
+variable "terraform_state_key" {
+  type        = string
+  description = "S3 object key used by the Terraform remote backend for this environment."
+}

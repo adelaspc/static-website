@@ -1,6 +1,11 @@
 locals {
   name_prefix = "${var.project}-${var.environment}"
 
+  terraform_state_bucket_arn    = "arn:aws:s3:::${var.terraform_state_bucket_name}"
+  terraform_state_object_arn    = "${local.terraform_state_bucket_arn}/${var.terraform_state_key}"
+  terraform_state_lockfile_arn  = "${local.terraform_state_object_arn}.tflock"
+  terraform_state_list_prefixes = [var.terraform_state_key, "${var.terraform_state_key}.tflock"]
+
   terraform_s3_actions = [
     "s3:DeleteBucket",
     "s3:DeleteBucketPolicy",
@@ -237,7 +242,13 @@ data "aws_iam_policy_document" "terraform" {
     sid       = "ListTerraformStateBucket"
     effect    = "Allow"
     actions   = ["s3:ListBucket"]
-    resources = ["arn:aws:s3:::${var.terraform_state_bucket_name}"]
+    resources = [local.terraform_state_bucket_arn]
+
+    condition {
+      test     = "StringLike"
+      variable = "s3:prefix"
+      values   = local.terraform_state_list_prefixes
+    }
   }
 
   statement {
@@ -247,7 +258,7 @@ data "aws_iam_policy_document" "terraform" {
       "s3:GetObject",
       "s3:PutObject",
     ]
-    resources = ["arn:aws:s3:::${var.terraform_state_bucket_name}/*"]
+    resources = [local.terraform_state_object_arn]
   }
 
   statement {
@@ -258,7 +269,7 @@ data "aws_iam_policy_document" "terraform" {
       "s3:GetObject",
       "s3:PutObject",
     ]
-    resources = ["arn:aws:s3:::${var.terraform_state_bucket_name}/*.tflock"]
+    resources = [local.terraform_state_lockfile_arn]
   }
 
   statement {
@@ -357,7 +368,13 @@ data "aws_iam_policy_document" "terraform_boundary" {
     sid       = "ListTerraformStateBucket"
     effect    = "Allow"
     actions   = ["s3:ListBucket"]
-    resources = ["arn:aws:s3:::${var.terraform_state_bucket_name}"]
+    resources = [local.terraform_state_bucket_arn]
+
+    condition {
+      test     = "StringLike"
+      variable = "s3:prefix"
+      values   = local.terraform_state_list_prefixes
+    }
   }
 
   statement {
@@ -367,7 +384,7 @@ data "aws_iam_policy_document" "terraform_boundary" {
       "s3:GetObject",
       "s3:PutObject",
     ]
-    resources = ["arn:aws:s3:::${var.terraform_state_bucket_name}/*"]
+    resources = [local.terraform_state_object_arn]
   }
 
   statement {
@@ -378,7 +395,7 @@ data "aws_iam_policy_document" "terraform_boundary" {
       "s3:GetObject",
       "s3:PutObject",
     ]
-    resources = ["arn:aws:s3:::${var.terraform_state_bucket_name}/*.tflock"]
+    resources = [local.terraform_state_lockfile_arn]
   }
 
   statement {

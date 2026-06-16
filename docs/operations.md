@@ -130,6 +130,17 @@ Version constraints are owned by the repository configuration:
 
 Treat major version changes as planned maintenance. Minor and patch updates still require validation because provider behavior and Checkov results can change.
 
+## Terraform Docs
+
+Root-stack input and output tables are generated with `terraform-docs`. Regenerate them after changing variables, outputs, required providers, or root module composition:
+
+```bash
+terraform-docs --config .terraform-docs.yml --output-file README.md --output-mode inject terraform/environments/dev
+terraform-docs --config .terraform-docs.yml --output-file README.md --output-mode inject terraform/bootstrap/backend
+```
+
+The generated sections are intentionally limited to the two root stacks. Child module READMEs and CI/pre-commit enforcement can be added later if the project needs stricter generated-documentation coverage.
+
 ## Upgrade Procedure
 
 1. Create a dedicated maintenance branch.
