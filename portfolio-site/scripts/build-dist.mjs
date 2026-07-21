@@ -1,10 +1,11 @@
 import { createHash } from "node:crypto";
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const distDir = "dist";
-const htmlFiles = ["index.html", "project-1.html", "project-2.html", "error.html"];
+const htmlFiles = ["index.html", "project-1.html", "project-2.html", "project-3.html", "error.html"];
 const cssSource = "assets/styles.css";
+const jsSource = "assets/site.js";
 
 const hashFile = async (file) => {
   const contents = await readFile(file);
@@ -17,12 +18,32 @@ await mkdir(path.join(distDir, "assets"), { recursive: true });
 const cssHash = await hashFile(cssSource);
 const hashedCssFile = `styles.${cssHash}.css`;
 const hashedCssPath = path.join("assets", hashedCssFile);
+const jsHash = await hashFile(jsSource);
+const hashedJsFile = `site.${jsHash}.js`;
+const hashedJsPath = path.join("assets", hashedJsFile);
 
 await cp(cssSource, path.join(distDir, hashedCssPath));
-await cp("images", path.join(distDir, "images"), { recursive: true });
+await cp(jsSource, path.join(distDir, hashedJsPath));
+await mkdir(path.join(distDir, "images"), { recursive: true });
+for (const entry of await readdir("images", { withFileTypes: true })) {
+  if (entry.isFile() && /\.(?:avif|jpe?g|png|svg|webp)$/i.test(entry.name)) {
+    await cp(path.join("images", entry.name), path.join(distDir, "images", entry.name));
+  }
+}
+const projectDiagrams = {
+  "../docs/diagrams/acm-validation-flow.png": "acm-validation-flow.png",
+  "../docs/diagrams/bootstrap.png": "bootstrap.png",
+  "../docs/diagrams/dependency-graph.png": "dependency-graph.png",
+  "../docs/diagrams/maindeployflow.png": "main-deploy-flow.png",
+};
+for (const [source, filename] of Object.entries(projectDiagrams)) {
+  await cp(source, path.join(distDir, "images", filename));
+}
 
 for (const file of htmlFiles) {
   const html = await readFile(file, "utf8");
-  const rewrittenHtml = html.replaceAll("assets/styles.css", hashedCssPath.replaceAll(path.sep, "/"));
+  const rewrittenHtml = html
+    .replaceAll("assets/styles.css", hashedCssPath.replaceAll(path.sep, "/"))
+    .replaceAll("assets/site.js", hashedJsPath.replaceAll(path.sep, "/"));
   await writeFile(path.join(distDir, file), rewrittenHtml);
 }

@@ -95,6 +95,15 @@ jobs:
             --cache-control "public, max-age=31536000, immutable" \
             --content-type "text/css"
 
+      - name: Set immutable cache policy for JavaScript
+        run: |
+          aws s3 cp "${DIST_DIR}" "s3://${{ vars.S3_BUCKET_NAME }}" \
+            --recursive \
+            --exclude "*" \
+            --include "assets/site.*.js" \
+            --cache-control "public, max-age=31536000, immutable" \
+            --content-type "application/javascript"
+
       - name: Set HTML cache policy
         run: |
           aws s3 cp "${DIST_DIR}" "s3://${{ vars.S3_BUCKET_NAME }}" \
