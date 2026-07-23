@@ -6,10 +6,13 @@
   <meta name="description" content="AWS Cloud Infrastructure project case study." />
   <title>AWS Cloud Infrastructure | Portfolio</title>
   <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .tech-flask .tech-logo { filter: invert(1); }
+  </style>
 </head>
 <body class="min-h-screen text-slate-300 antialiased">
   <div class="mx-auto max-w-[1440px] p-3 sm:p-5">
-    <main class="site-frame overflow-hidden rounded-lg border border-line">
+    <main class="site-frame overflow-clip rounded-lg border border-line">
       <header class="flex items-center justify-between gap-5 border-b border-line px-5 py-5 sm:px-8">
         <a href="index.html" class="flex items-center gap-3 text-sm text-white"><span class="terminal-prompt"></span><span>dev@portfolio:<span class="text-slate-500">~</span></span></a>
         <a href="https://github.com/adelaspc" target="_blank" rel="noopener noreferrer" class="hover:text-accent" aria-label="adelaspc on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg></a>
@@ -17,157 +20,302 @@
 
       <section class="px-6 py-8 sm:px-10 lg:px-14">
         <a href="index.html#projects" class="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg>back to projects</a>
-        <div class="mt-7 grid gap-8 lg:grid-cols-[1fr_260px] lg:items-start">
-          <div class="flex gap-5"><span class="grid h-16 w-16 shrink-0 place-items-center rounded-lg border border-line text-3xl text-accent">&gt;_</span><div><h1 class="text-3xl text-white sm:text-4xl">AWS Cloud Infrastructure</h1><p class="mt-3 max-w-3xl text-sm leading-7 text-slate-400">A three-tier AWS application environment provisioned with Terraform, running private EC2 workloads, backed by managed MySQL, and delivered as Docker images through GitHub Actions.</p><p class="mt-5 text-xs text-slate-500">May 2024 <span class="mx-2">•</span> Personal Project <span class="mx-2">•</span> <a href="https://github.com/adelaspc" target="_blank" rel="noopener noreferrer" class="text-accent">GitHub profile ↗</a></p></div></div>
-          <dl class="panel rounded-lg border border-line p-5 text-xs"><div class="flex justify-between gap-4 border-b border-line pb-4"><dt>Project Status</dt><dd class="text-accent">● In Progress</dd></div><div class="flex justify-between gap-4 border-b border-line py-4"><dt>Type</dt><dd class="text-white">Infrastructure</dd></div><div class="flex justify-between gap-4 pt-4"><dt>Duration</dt><dd class="text-white">3+ months</dd></div></dl>
+        <div class="mt-8 grid gap-9 lg:grid-cols-[1fr_290px] lg:items-center">
+          <div class="flex items-start gap-4 sm:gap-6">
+            <span class="project-hero-mark grid shrink-0 place-items-center rounded-lg border border-line bg-[#0d141b] text-accent shadow-glow">&gt;_</span>
+            <div>
+              <h1 class="text-3xl leading-tight text-white sm:text-4xl xl:text-5xl">AWS Cloud Infrastructure</h1>
+              <p class="mt-4 max-w-4xl text-sm leading-7 text-slate-300 sm:text-base">A production-inspired AWS environment for running a containerized web application securely and consistently.</p>
+              <p class="mt-6 text-xs text-slate-500"><span class="mr-3">•</span> Personal Project <span class="mx-3">•</span> <a href="https://github.com/adelaspc" target="_blank" rel="noopener noreferrer" class="text-accent">GitHub profile ↗</a></p>
+            </div>
+          </div>
+          <dl class="panel rounded-lg border border-line p-5 text-xs sm:p-6"><div class="flex justify-between gap-4 border-b border-line pb-5"><dt>Project Status</dt><dd class="text-accent">● In Progress</dd></div><div class="flex justify-between gap-4 border-b border-line py-5"><dt>Type</dt><dd class="text-white">Infrastructure</dd></div><div class="flex justify-between gap-4 pt-5"><dt>Duration</dt><dd class="text-white">3+ months</dd></div></dl>
         </div>
-      </section>
-
-      <section aria-labelledby="at-a-glance-title" class="border-t border-line px-6 py-6 sm:px-10 lg:px-14">
-        <h2 id="at-a-glance-title" class="section-label text-sm text-accent">project_at_a_glance</h2>
-        <dl class="mt-4 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-          <div class="bg-[#090e13] p-4"><dt class="text-xs text-slate-500">Architecture</dt><dd class="mt-1 text-sm text-white">Three-tier AWS environment</dd></div>
-          <div class="bg-[#090e13] p-4"><dt class="text-xs text-slate-500">Application</dt><dd class="mt-1 text-sm text-white">Vue, Flask and MySQL</dd></div>
-          <div class="bg-[#090e13] p-4"><dt class="text-xs text-slate-500">Infrastructure</dt><dd class="mt-1 text-sm text-white">Terraform</dd></div>
-          <div class="bg-[#090e13] p-4"><dt class="text-xs text-slate-500">Packaging</dt><dd class="mt-1 text-sm text-white">Docker</dd></div>
-          <div class="bg-[#090e13] p-4"><dt class="text-xs text-slate-500">Delivery</dt><dd class="mt-1 text-sm text-white">GitHub Actions</dd></div>
-          <div class="bg-[#090e13] p-4"><dt class="text-xs text-slate-500">Main focus</dt><dd class="mt-1 text-sm text-white">Networking, security and deployment automation</dd></div>
-        </dl>
       </section>
 
       <nav class="project-nav sticky top-0 z-20 flex overflow-x-auto border-y border-line bg-[#090e13]/95 px-4 backdrop-blur sm:px-8" aria-label="Project sections">
         <a data-section-link aria-current="true" href="#overview" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/overview</a><a data-section-link aria-current="false" href="#architecture" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/architecture</a><a data-section-link aria-current="false" href="#decisions" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/decisions</a><a data-section-link aria-current="false" href="#deployment" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/deployment</a><a data-section-link aria-current="false" href="#security" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/security</a><a data-section-link aria-current="false" href="#costs" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/costs</a><a data-section-link aria-current="false" href="#tradeoffs" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/tradeoffs</a><a data-section-link aria-current="false" href="#lessons" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/lessons</a><a data-section-link aria-current="false" href="#improvements" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/improvements</a><a data-section-link aria-current="false" href="#diagrams" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/diagrams</a>
       </nav>
 
-      <div class="grid gap-5 bg-[#05080c] p-3 sm:p-5">
-        <section id="overview" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">overview</h2>
-          <div class="mt-5 max-w-3xl space-y-4 text-sm leading-7 text-slate-400">
-            <p>This project implements a three-tier application environment on AWS, hosting a Vue frontend and a Flask API backed by MySQL.</p>
-            <p>Cloudflare directs public traffic to an internet-facing Application Load Balancer. Nginx and Flask/Gunicorn run on separate private EC2 tiers, with an internal load balancer between them and RDS MySQL in isolated database subnets. Terraform provisions the infrastructure, while Docker and GitHub Actions deliver the application.</p>
-            <p>The environment is intentionally disposable: it can be provisioned for demonstration, validated through a complete request and deployment lifecycle, and destroyed afterward to control portfolio costs.</p>
+      <section id="overview" aria-labelledby="overview-title" class="border-t border-line px-6 py-8 sm:px-10 sm:py-10 lg:px-14">
+        <h2 id="overview-title" class="section-label section-title">project_overview</h2>
+
+        <article class="overview-lead mt-5 flex gap-5 rounded-lg border p-5 sm:items-center sm:p-6">
+          <span class="overview-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>
+          <div>
+            <p class="overview-eyebrow">What I built</p>
+            <p class="mt-3 max-w-5xl text-base leading-8 text-white sm:text-lg">A complete AWS environment designed to host and deploy a web application securely, while keeping its public, application, and data layers separate.</p>
           </div>
+        </article>
+
+        <h2 id="stack-title" class="section-label section-title mt-8">technology_stack</h2>
+        <section class="stack-panel mt-5 rounded-lg border p-5 sm:p-6" aria-labelledby="stack-title">
+          <dl class="stack-grid grid gap-6 lg:gap-0">
+            <div class="stack-group">
+              <dt class="stack-group-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>Core infrastructure</dt>
+              <dd class="mt-4 flex flex-wrap gap-3">
+                <span class="tech-badge tech-aws"><img class="tech-logo" src="images/logos/aws.svg" alt="" aria-hidden="true" />AWS</span>
+                <span class="tech-badge tech-terraform"><img class="tech-logo" src="images/logos/terraform.svg" alt="" aria-hidden="true" />Terraform</span>
+              </dd>
+            </div>
+            <div class="stack-group">
+              <dt class="stack-group-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /><circle cx="12" cy="12" r="3" /></svg>Delivery &amp; automation</dt>
+              <dd class="mt-4 flex flex-wrap gap-3">
+                <span class="tech-badge tech-docker"><img class="tech-logo" src="images/logos/docker.svg" alt="" aria-hidden="true" />Docker</span>
+                <span class="tech-badge tech-actions"><img class="tech-logo" src="images/logos/github-actions.svg" alt="" aria-hidden="true" />GitHub Actions</span>
+              </dd>
+            </div>
+            <div class="stack-group">
+              <dt class="stack-group-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" /></svg>Application</dt>
+              <dd class="mt-4 flex flex-wrap gap-3">
+                <span class="tech-badge tech-vue"><img class="tech-logo" src="images/logos/vue.svg" alt="" aria-hidden="true" />Vue</span>
+                <span class="tech-badge tech-flask"><img class="tech-logo" src="images/logos/flask.svg" alt="" aria-hidden="true" />Flask</span>
+                <span class="tech-badge"><img class="tech-logo" src="images/logos/mysql.svg" alt="" aria-hidden="true" />MySQL</span>
+              </dd>
+            </div>
+          </dl>
+          <p class="stack-note mt-6 flex items-center gap-2 border-t border-line pt-5"><span class="terminal-mini">&gt;_</span><span>This stack automates the journey from source code to a secure, running cloud environment.</span></p>
         </section>
 
-        <section id="architecture" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">architecture</h2>
-          <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-400">A request follows one explicit path through the environment.</p>
-          <p class="mt-5 overflow-x-auto rounded border border-line bg-[#090e13] px-4 py-3 text-xs text-slate-300">Cloudflare <span class="text-accent">→</span> public ALB <span class="text-accent">→</span> Nginx <span class="text-accent">→</span> internal ALB <span class="text-accent">→</span> Flask/Gunicorn <span class="text-accent">→</span> RDS MySQL</p>
-          <ol class="mt-5 grid gap-4 md:grid-cols-2">
-            <li class="rounded border border-line p-5"><p class="text-xs text-accent">01</p><h3 class="mt-2 text-white">Public entry point</h3><p class="mt-2 text-sm leading-7 text-slate-400">Cloudflare resolves the application domain to the public ALB, which redirects HTTP to HTTPS and terminates TLS with ACM.</p></li>
-            <li class="rounded border border-line p-5"><p class="text-xs text-accent">02</p><h3 class="mt-2 text-white">Web tier</h3><p class="mt-2 text-sm leading-7 text-slate-400">The public ALB forwards traffic to Nginx containers in a private EC2 Auto Scaling Group. Nginx serves Vue and proxies API requests.</p></li>
-            <li class="rounded border border-line p-5"><p class="text-xs text-accent">03</p><h3 class="mt-2 text-white">Application tier</h3><p class="mt-2 text-sm leading-7 text-slate-400">The internal ALB routes API traffic to Flask/Gunicorn containers in a separate private EC2 Auto Scaling Group.</p></li>
-            <li class="rounded border border-line p-5"><p class="text-xs text-accent">04</p><h3 class="mt-2 text-white">Data tier</h3><p class="mt-2 text-sm leading-7 text-slate-400">The application connects to encrypted RDS MySQL in isolated database subnets; the database has no public endpoint or internet route.</p></li>
-          </ol>
+        <div class="mt-5 grid gap-4 lg:grid-cols-3">
+          <article class="summary-card surface-elevated rounded-lg border p-5 sm:p-6">
+            <h3 class="summary-card-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>Why I built it</h3>
+            <p class="mt-4 card-details">To understand how a complete cloud environment works, not just how to create individual AWS resources.</p>
+          </article>
+          <article class="summary-card summary-card-result rounded-lg border p-5 sm:p-6">
+            <h3 class="summary-card-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg>Result</h3>
+            <p class="mt-4 card-details">A working web application environment that can be created automatically, tested, and removed when it is no longer needed.</p>
+          </article>
+          <article class="summary-card surface-elevated rounded-lg border p-5 sm:p-6">
+            <h3 class="summary-card-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>My role</h3>
+            <p class="mt-4 card-details">I designed the architecture and implemented the infrastructure, security boundaries, application packaging, and deployment workflows.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="grid gap-5 bg-[#05080c] p-3 sm:p-5">
+        <section id="architecture" class="architecture-section compact-section panel rounded-lg border">
+          <h2 class="section-label section-title">architecture</h2>
+          <p class="section-intro mt-4 max-w-2xl">Users can access the website, but they cannot connect directly to the servers or database behind it. Each request follows a controlled path through the application.</p>
+          <div class="architecture-layout">
+            <div>
+              <aside class="architecture-callout" aria-label="Primary architecture principle">
+                <span class="architecture-callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg></span>
+                <p><strong>Only the entry point is public.</strong> Application servers and data stay private.</p>
+              </aside>
+              <ol class="architecture-flow mt-7">
+                <li class="architecture-step"><span class="architecture-number">01</span><div><h3 class="architecture-stage-title">Public entry point</h3><p class="mt-2 card-details">Users reach the application through a secure public endpoint.</p><p class="architecture-route mt-3">Cloudflare → public ALB</p></div></li>
+                <li class="architecture-step"><span class="architecture-number">02</span><div><h3 class="architecture-stage-title">Web tier</h3><p class="mt-2 card-details">The frontend is served by private application servers that can scale automatically.</p><p class="architecture-route mt-3">Public ALB → Nginx</p></div></li>
+                <li class="architecture-step"><span class="architecture-number">03</span><div><h3 class="architecture-stage-title">Application tier</h3><p class="mt-2 card-details">API requests are handled separately from the frontend for better isolation.</p><p class="architecture-route mt-3">Nginx → internal ALB → Flask/Gunicorn</p></div></li>
+                <li class="architecture-step"><span class="architecture-number">04</span><div><h3 class="architecture-stage-title">Data tier</h3><p class="mt-2 card-details">Application data is stored in an isolated managed database with no public access.</p><p class="architecture-route mt-3">Flask/Gunicorn → RDS MySQL</p></div></li>
+              </ol>
+            </div>
+            <div class="architecture-visuals">
+              <button data-enlarge data-caption="How requests cross the public, web, application, and database tiers" type="button" class="architecture-diagram cursor-zoom-in" aria-label="Open full AWS three-tier architecture diagram">
+                <img src="images/aws-3tier-architecture.png" alt="AWS three-tier architecture showing public, web, application, and database tiers" width="1672" height="941" loading="lazy" />
+                <span class="architecture-diagram-cta">Open full architecture diagram ↗</span>
+              </button>
+              <section class="architecture-outcomes rounded-lg border" aria-labelledby="architecture-outcomes-title">
+                <h3 id="architecture-outcomes-title">Architecture outcomes</h3>
+                <ul class="architecture-outcomes-grid">
+                  <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg><div><strong>Only one public entry point</strong><span>Reduces attack surface and simplifies security.</span></div></li>
+                  <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg><div><strong>App servers remain private</strong><span>No direct internet access to application servers.</span></div></li>
+                  <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg><div><strong>Database has no public access</strong><span>Data stays protected in private subnets.</span></div></li>
+                  <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg><div><strong>Components scale independently</strong><span>Each tier can scale based on demand.</span></div></li>
+                </ul>
+              </section>
+            </div>
+          </div>
         </section>
 
         <section id="decisions" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">key_engineering_decisions</h2>
-          <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-400">The choices that define the implementation and its boundaries.</p>
-          <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <article class="rounded border border-line p-5"><h3 class="text-white">Private compute tiers</h3><p class="mt-2 text-sm leading-6 text-slate-300">Web and application instances have no direct public entry path.</p><p class="mt-3 text-sm leading-6 text-slate-400"><span class="text-accent">Why it matters:</span> Incoming requests must pass through the load-balancing boundaries instead of reaching EC2 directly.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Separate load balancers</h3><p class="mt-2 text-sm leading-6 text-slate-300">A public ALB handles browser traffic while an internal ALB exposes the API only to the web tier.</p><p class="mt-3 text-sm leading-6 text-slate-400"><span class="text-accent">Why it matters:</span> The public/private boundary, routing and health checks remain explicit for each application tier.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Modular Terraform</h3><p class="mt-2 text-sm leading-6 text-slate-300">Networking, security groups, load balancers, compute, RDS, DNS and CI/CD IAM have separate responsibilities.</p><p class="mt-3 text-sm leading-6 text-slate-400"><span class="text-accent">Why it matters:</span> Infrastructure concerns can be reviewed and changed without one tightly coupled configuration.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Keyless CI/CD authentication</h3><p class="mt-2 text-sm leading-6 text-slate-300">GitHub Actions assumes AWS roles through OIDC instead of using stored access keys.</p><p class="mt-3 text-sm leading-6 text-slate-400"><span class="text-accent">Why it matters:</span> Short-lived sessions and operation-specific roles reduce the reach of each workflow.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Runtime configuration</h3><p class="mt-2 text-sm leading-6 text-slate-300">Image versions and non-secret database metadata are stored in SSM Parameter Store; the RDS password remains in its AWS-managed secret.</p><p class="mt-3 text-sm leading-6 text-slate-400"><span class="text-accent">Why it matters:</span> Release state and credentials stay out of application images and Terraform variables.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Image-based replacement</h3><p class="mt-2 text-sm leading-6 text-slate-300">Auto Scaling Instance Refresh replaces instances with containers built from immutable image tags.</p><p class="mt-3 text-sm leading-6 text-slate-400"><span class="text-accent">Why it matters:</span> New instances retrieve the intended release configuration during startup and must pass load-balancer health checks.</p></article>
+          <div class="decisions-header">
+            <div>
+              <h2 class="section-label section-title">key_engineering_decisions</h2>
+              <p class="section-intro mt-4 max-w-2xl">The main design choices that make the environment secure, maintainable and repeatable.</p>
+            </div>
+            <div class="decisions-stats">
+              <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg><div><strong>6</strong><span>Key decisions</span></div></div>
+              <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg><div><strong>3 <small>Goals achieved</small></strong><span>Security <b>•</b> Maintainability <b>•</b> Repeatability</span></div></div>
+            </div>
           </div>
+          <div class="decisions-grid mt-6 grid gap-4 md:grid-cols-2">
+            <article class="decision-card surface-elevated rounded-lg border">
+              <div class="decision-number">01</div>
+              <div class="decision-content"><h3 class="card-title">Private compute tiers</h3><p class="mt-2 card-summary">Web and application instances have no direct public entry path.</p><div class="decision-reason"><strong>Why it matters:</strong><p>Incoming requests must pass through the load-balancing boundaries instead of reaching EC2 directly.</p></div></div>
+            </article>
+            <article class="decision-card surface-elevated rounded-lg border">
+              <div class="decision-number">02</div>
+              <div class="decision-content"><h3 class="card-title">Separate load balancers</h3><p class="mt-2 card-summary">The public and application-facing traffic paths remain distinct.</p><div class="decision-reason"><strong>Why it matters:</strong><p>A public ALB handles browser traffic while an internal ALB exposes the API only to the web tier, keeping routing and health checks explicit.</p></div></div>
+            </article>
+            <article class="decision-card surface-elevated rounded-lg border">
+              <div class="decision-number">03</div>
+              <div class="decision-content"><h3 class="card-title">Modular Terraform</h3><p class="mt-2 card-summary">Infrastructure concerns have separate, reviewable responsibilities.</p><div class="decision-reason"><strong>Why it matters:</strong><p>Networking, security groups, load balancers, compute, RDS, DNS and CI/CD IAM can change without one tightly coupled configuration.</p></div></div>
+            </article>
+            <article class="decision-card surface-elevated rounded-lg border">
+              <div class="decision-number">04</div>
+              <div class="decision-content"><h3 class="card-title">Keyless CI/CD authentication</h3><p class="mt-2 card-summary">GitHub Actions uses short-lived AWS sessions instead of stored keys.</p><div class="decision-reason"><strong>Why it matters:</strong><p>OIDC and operation-specific roles reduce the reach of each workflow and remove long-lived secrets.</p></div></div>
+            </article>
+            <article class="decision-card surface-elevated rounded-lg border">
+              <div class="decision-number">05</div>
+              <div class="decision-content"><h3 class="card-title">Runtime configuration</h3><p class="mt-2 card-summary">Release metadata and database credentials remain outside application images.</p><div class="decision-reason"><strong>Why it matters:</strong><p>Image versions and non-secret database metadata live in SSM Parameter Store; the RDS password stays in its AWS-managed secret.</p></div></div>
+            </article>
+            <article class="decision-card surface-elevated rounded-lg border">
+              <div class="decision-number">06</div>
+              <div class="decision-content"><h3 class="card-title">Image-based replacement</h3><p class="mt-2 card-summary">Instance Refresh rolls the selected container release through each tier.</p><div class="decision-reason"><strong>Why it matters:</strong><p>New instances retrieve the intended image tag during startup and must pass load-balancer health checks.</p></div></div>
+            </article>
+          </div>
+          <aside class="decisions-outcome mt-6 rounded-lg border">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg>
+            <div class="decisions-outcome-copy"><h3>The outcome</h3><p>These decisions work together to create a secure, scalable and easy-to-evolve environment, where changes are isolated, access is minimized and deployments are safe.</p></div>
+            <ul><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><circle cx="12" cy="16" r="1" /><rect x="3" y="10" width="18" height="12" rx="2" /><path d="M7 10V7a5 5 0 0 1 10 0v3" /></svg>Secure by design</li><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></svg>Maintainable</li><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="m2 9 3-3 3 3" /><path d="M13 18H7a2 2 0 0 1-2-2V6" /><path d="m22 15-3 3-3-3" /><path d="M11 6h6a2 2 0 0 1 2 2v10" /></svg>Repeatable</li></ul>
+          </aside>
         </section>
 
-        <section id="deployment" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">deployment_flow</h2>
-          <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-400">Application delivery is separate from Terraform infrastructure changes. GitHub Actions uses OIDC for AWS access; Terraform apply and application deployment have distinct roles and approval gates.</p>
-          <ol class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            <li class="rounded border border-line p-4"><p class="text-xs text-accent">01</p><h3 class="mt-2 text-sm text-white">Validate</h3><p class="mt-2 text-xs leading-6 text-slate-400">Test the Flask backend and build the Vue frontend.</p></li>
-            <li class="rounded border border-line p-4"><p class="text-xs text-accent">02</p><h3 class="mt-2 text-sm text-white">Build</h3><p class="mt-2 text-xs leading-6 text-slate-400">Build immutable backend and frontend Docker images tagged with the Git commit SHA.</p></li>
-            <li class="rounded border border-line p-4"><p class="text-xs text-accent">03</p><h3 class="mt-2 text-sm text-white">Publish</h3><p class="mt-2 text-xs leading-6 text-slate-400">Push both application images to Amazon ECR.</p></li>
-            <li class="rounded border border-line p-4"><p class="text-xs text-accent">04</p><h3 class="mt-2 text-sm text-white">Migrate</h3><p class="mt-2 text-xs leading-6 text-slate-400">Run the database migration before the new image tags become active.</p></li>
-            <li class="rounded border border-line p-4"><p class="text-xs text-accent">05</p><h3 class="mt-2 text-sm text-white">Refresh</h3><p class="mt-2 text-xs leading-6 text-slate-400">Update SSM image parameters, then refresh the application tier before the web tier.</p></li>
+        <section id="deployment" class="deployment-section panel rounded-lg border border-line p-5 sm:p-7">
+          <header class="deployment-header">
+            <h2 class="section-label section-title">deployment_flow</h2>
+            <p class="section-intro mt-4">Infrastructure changes and application releases use separate automated workflows.<br class="hidden sm:block" /> GitHub Actions connects to AWS through OpenID Connect (OIDC), using short-lived<br class="hidden lg:block" /> access and distinct approval gates for each operation.</p>
+          </header>
+          <ol class="deployment-timeline mt-10">
+            <li class="deployment-stage"><p class="text-xs text-accent">01</p><h3 class="mt-1 card-title">Validate</h3><p class="mt-2 card-details">Test the Flask backend and build the Vue frontend.</p></li>
+            <li class="deployment-stage"><p class="text-xs text-accent">02</p><h3 class="mt-1 card-title">Build</h3><p class="mt-2 card-details">Build immutable backend and frontend Docker images tagged with the Git commit SHA.</p></li>
+            <li class="deployment-stage"><p class="text-xs text-accent">03</p><h3 class="mt-1 card-title">Publish</h3><p class="mt-2 card-details">Push both application images to Amazon ECR.</p></li>
+            <li class="deployment-stage"><p class="text-xs text-accent">04</p><h3 class="mt-1 card-title">Migrate</h3><p class="mt-2 card-details">Run the database migration before the new image tags become active.</p></li>
+            <li class="deployment-stage"><p class="text-xs text-accent">05</p><h3 class="mt-1 card-title">Refresh</h3><p class="mt-2 card-details">Update SSM image parameters, then refresh the application tier before the web tier.</p></li>
           </ol>
-          <details class="mt-5 rounded border border-line bg-[#090e13] p-4">
+          <details class="deployment-details mt-8 rounded border border-line" open>
             <summary class="cursor-pointer text-sm text-accent">Technical release details</summary>
-            <ul class="mt-4 space-y-2 text-sm leading-7 text-slate-400">
-              <li>• Replacement instances retrieve their image tags from SSM Parameter Store during startup.</li>
-              <li>• The workflow waits for each Instance Refresh to complete and for replacement capacity to pass target-group health checks.</li>
-              <li>• Infrastructure deployment remains a separate Terraform workflow; apply is manually gated.</li>
-              <li>• The current flow does not claim automatic rollback.</li>
+            <ul class="space-y-2 text-sm leading-7 text-slate-400">
+              <li>Replacement instances retrieve their image tags from SSM Parameter Store during startup.</li>
+              <li>The workflow waits for each Instance Refresh to complete and for replacement capacity to pass target-group health checks.</li>
+              <li>Infrastructure deployment remains a separate Terraform workflow; apply is manually gated.</li>
+              <li>The current flow does not claim automatic rollback.</li>
             </ul>
           </details>
         </section>
 
-        <section id="security" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">security_model</h2>
-          <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-400">Security groups reference other security groups rather than broad network ranges, limiting each hop to its intended source and service.</p>
-          <div class="mt-5 overflow-x-auto rounded border border-line">
-            <table class="w-full min-w-[680px] text-left text-sm">
-              <thead class="bg-[#090e13] text-xs text-slate-500"><tr><th scope="col" class="px-4 py-3">Source</th><th scope="col" class="px-4 py-3">Destination</th><th scope="col" class="px-4 py-3">Allowed access</th></tr></thead>
-              <tbody class="divide-y divide-line text-slate-300">
-                <tr><td class="px-4 py-3">Internet</td><td class="px-4 py-3">Public ALB</td><td class="px-4 py-3">Ports 80 and 443</td></tr>
-                <tr><td class="px-4 py-3">Public ALB</td><td class="px-4 py-3">Web tier</td><td class="px-4 py-3">Web service port</td></tr>
-                <tr><td class="px-4 py-3">Web tier</td><td class="px-4 py-3">Internal ALB</td><td class="px-4 py-3">Port 80</td></tr>
-                <tr><td class="px-4 py-3">Internal ALB</td><td class="px-4 py-3">Application tier</td><td class="px-4 py-3">Backend port</td></tr>
-                <tr><td class="px-4 py-3">Application tier</td><td class="px-4 py-3">RDS MySQL</td><td class="px-4 py-3">MySQL port</td></tr>
-              </tbody>
-            </table>
+        <section id="security" class="security-section panel rounded-lg border p-5 sm:p-7">
+          <h2 class="section-label section-title">security_model</h2>
+          <p class="section-intro security-intro mt-4">Every layer accepts traffic only from the layer immediately before it. AWS security groups enforce this path without exposing the application servers or database directly to the internet.</p>
+          <div class="security-grid mt-7 grid gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
+            <section class="security-panel rounded-lg border" aria-labelledby="access-path-title">
+              <h3 id="access-path-title" class="security-panel-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><rect x="16" y="16" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="9" y="2" width="6" height="6" rx="1" /><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /><path d="M12 12V8" /></svg>Access path</h3>
+              <ol class="access-path mt-4" aria-label="Allowed network access path">
+                <li><div class="access-node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54" /><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17" /><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05" /><circle cx="12" cy="12" r="10" /></svg><div><strong>Internet</strong></div></div><div class="access-edge">80 / 443</div></li>
+                <li><div class="access-node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><rect x="16" y="16" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="9" y="2" width="6" height="6" rx="1" /><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /><path d="M12 12V8" /></svg><div><strong>Public ALB</strong><span>Public entry point</span></div></div><div class="access-edge">web service port</div></li>
+                <li><div class="access-node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><rect width="20" height="8" x="2" y="2" rx="2" ry="2" /><rect width="20" height="8" x="2" y="14" rx="2" ry="2" /><line x1="6" x2="6.01" y1="6" y2="6" /><line x1="6" x2="6.01" y1="18" y2="18" /></svg><div><strong>Web tier</strong><span>Nginx containers</span></div></div><div class="access-edge">internal traffic</div></li>
+                <li><div class="access-node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><rect x="16" y="16" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="9" y="2" width="6" height="6" rx="1" /><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /><path d="M12 12V8" /></svg><div><strong>Internal ALB</strong><span>Private routing</span></div></div><div class="access-edge">backend port</div></li>
+                <li><div class="access-node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg><div><strong>Application tier</strong><span>Flask / Gunicorn API</span></div></div><div class="access-edge">3306</div></li>
+                <li><div class="access-node"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5V19A9 3 0 0 0 21 19V5" /><path d="M3 12A9 3 0 0 0 21 12" /></svg><div><strong>RDS MySQL</strong><span>Private database</span></div></div></li>
+              </ol>
+            </section>
+            <section class="security-panel rounded-lg border" aria-labelledby="security-highlights-title">
+              <h3 id="security-highlights-title" class="security-panel-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg>Security highlights</h3>
+              <div class="security-highlights mt-5 grid gap-4">
+                <article class="security-highlight rounded-lg border"><span class="security-highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><circle cx="12" cy="16" r="1" /><rect x="3" y="10" width="18" height="12" rx="2" /><path d="M7 10V7a5 5 0 0 1 10 0v3" /></svg></span><div><h4 class="card-title">No public SSH</h4><p class="mt-3 card-details">Instances are managed through AWS Systems Manager.</p><p class="mt-2 card-details">There is no public SSH path or inbound SSH rule.</p></div></article>
+                <article class="security-highlight rounded-lg border"><span class="security-highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /><circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg></span><div><h4 class="card-title">Runtime secrets</h4><p class="mt-3 card-details">Database credentials remain in the AWS-managed RDS secret.</p><p class="mt-2 card-details">The backend role retrieves only the required metadata and secret at runtime.</p></div></article>
+                <article class="security-highlight rounded-lg border"><span class="security-highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></svg></span><div><h4 class="card-title">Short-lived CI identity</h4><p class="mt-3 card-details">GitHub Actions authenticates to AWS through OIDC.</p><p class="mt-2 card-details">Planning, infrastructure changes and application deployment use separate IAM roles.</p></div></article>
+              </div>
+            </section>
           </div>
-          <div class="mt-6 grid gap-4 md:grid-cols-2">
-            <article class="rounded border border-line p-5"><h3 class="text-white">Administrative access</h3><p class="mt-2 text-sm leading-7 text-slate-400">Instances are managed through AWS Systems Manager. There is no public SSH path or inbound SSH rule.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Database credentials</h3><p class="mt-2 text-sm leading-7 text-slate-400">The password remains in the AWS-managed RDS master secret; the backend role retrieves only the required metadata and secret at runtime.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">CI/CD identity</h3><p class="mt-2 text-sm leading-7 text-slate-400">GitHub Actions uses short-lived OIDC sessions and separate IAM roles for planning, infrastructure changes and application deployment.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">TLS boundary</h3><p class="mt-2 text-sm leading-7 text-slate-400">TLS terminates at the public ALB. Traffic behind it currently uses HTTP inside private subnets; end-to-end TLS is not claimed.</p></article>
-          </div>
+          <aside class="security-limitation mt-5 rounded-lg border" aria-labelledby="internal-http-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg><div><h3 id="internal-http-title">Documented limitation</h3><p class="mt-3 card-details"><strong>Internal traffic uses HTTP.</strong> TLS terminates at the public ALB. Traffic between private tiers currently uses HTTP, an explicit cost-and-complexity trade-off; end-to-end TLS is not claimed.</p></div></aside>
         </section>
 
-        <section id="costs" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">estimated_costs</h2>
-          <div class="mt-5 grid gap-6 lg:grid-cols-[280px_1fr] lg:items-start">
-            <dl class="rounded border border-accent/30 bg-accent/5 p-5"><div><dt class="text-xs text-slate-500">Estimated monthly total</dt><dd class="mt-2 text-4xl text-white">$192.40</dd></div><div class="mt-5 border-t border-line pt-4 text-xs"><dt class="text-slate-500">Region</dt><dd class="mt-1 text-slate-300">eu-central-1</dd></div><div class="mt-4 text-xs"><dt class="text-slate-500">Model</dt><dd class="mt-1 text-slate-300">Monthly development environment</dd></div><div class="mt-4 text-xs"><dt class="text-slate-500">Method</dt><dd class="mt-1 text-slate-300">Cloudcraft estimate</dd></div></dl>
-            <div class="max-w-3xl space-y-4 text-sm leading-7 text-slate-400"><p>The estimate models the main resources in the architecture, including four burstable EC2 instances, two Application Load Balancers, two NAT gateways, an ECR repository and a Multi-AZ RDS MySQL database.</p><p>Networking is the largest projected cost category, with NAT gateways and load balancers as significant drivers. The environment is therefore intended to be provisioned temporarily rather than left running continuously.</p><p class="text-xs leading-6 text-slate-500">Directional estimate only. Actual cost depends on runtime, traffic, storage, data transfer, logging and current AWS pricing.</p></div>
+        <section id="costs" class="costs-section panel rounded-lg border border-line p-5 sm:p-7">
+          <h2 class="section-label section-title">estimated_costs</h2>
+          <div class="costs-overview mt-5 grid gap-6 lg:grid-cols-[minmax(17rem,0.72fr)_minmax(0,1.28fr)] lg:items-stretch">
+            <dl class="cost-total rounded-lg border"><div><dt>Estimated monthly total</dt><dd>$192.40</dd></div><div class="cost-total-meta"><div><dt>Region</dt><dd>eu-central-1</dd></div><div><dt>Model</dt><dd>Monthly development environment</dd></div><div><dt>Method</dt><dd>Cloudcraft estimate</dd></div></div></dl>
+            <div class="costs-context">
+              <div class="space-y-4 text-sm leading-7 text-slate-300"><p>This estimate models the main resources in the architecture, including four burstable EC2 instances, two Application Load Balancers, two NAT gateways, an ECR repository and a Multi-AZ RDS MySQL database.</p><p>Networking is the largest projected cost category, mainly due to NAT gateways and load balancers. The environment is intended to be provisioned temporarily rather than left running continuously.</p><p class="text-xs leading-6 text-slate-500">Directional estimate only. Actual cost depends on runtime, traffic, storage, data transfer, logging and current AWS pricing.</p></div>
+              <aside class="cost-driver rounded-lg border"><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></svg>Largest cost driver</p><strong>Networking — $128.06 / month</strong><span>2 NAT gateways + 2 load balancers</span></aside>
+            </div>
           </div>
-          <figure class="mx-auto mt-7 max-w-3xl">
-            <button data-enlarge data-caption="Cloudcraft estimated monthly AWS cost for the development environment" type="button" class="block w-full cursor-zoom-in overflow-hidden rounded-lg border border-line bg-white" aria-label="Open Cloudcraft monthly AWS cost estimate"><img src="images/budget.png" alt="Cloudcraft estimate showing a projected monthly AWS development cost of 192 dollars and 40 cents" width="1786" height="1749" loading="lazy" class="h-auto w-full object-contain" /></button>
-            <figcaption class="mt-3 text-center text-xs text-slate-500">Cloudcraft resource model behind the monthly estimate; select to enlarge.</figcaption>
-          </figure>
+          <div class="cost-category-grid mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <article class="cost-category cost-networking"><header><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54" /><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17" /><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05" /><circle cx="12" cy="12" r="10" /></svg><h3>Networking</h3><span>66.6%</span></header><strong>$128.06</strong><p>per month</p><span class="cost-bar" style="--cost-share:66.6%"></span></article>
+            <article class="cost-category cost-compute"><header><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M12 20v2" /><path d="M12 2v2" /><path d="M17 20v2" /><path d="M17 2v2" /><path d="M2 12h2" /><path d="M2 17h2" /><path d="M2 7h2" /><path d="M20 12h2" /><path d="M20 17h2" /><path d="M20 7h2" /><path d="M7 20v2" /><path d="M7 2v2" /><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="8" y="8" width="8" height="8" rx="1" /></svg><h3>Compute</h3><span>18.2%</span></header><strong>$35.04</strong><p>per month</p><span class="cost-bar" style="--cost-share:18.2%"></span></article>
+            <article class="cost-category cost-database"><header><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5V19A9 3 0 0 0 21 19V5" /><path d="M3 12A9 3 0 0 0 21 12" /></svg><h3>Database</h3><span>15.2%</span></header><strong>$29.20</strong><p>per month</p><span class="cost-bar" style="--cost-share:15.2%"></span></article>
+            <article class="cost-category cost-containers"><header><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /><path d="M12 22V12" /><polyline points="3.29 7 12 12 20.71 7" /><path d="m7.5 4.27 9 5.15" /></svg><h3>Containers</h3><span>0.1%</span></header><strong>$0.10</strong><p>per month</p><span class="cost-bar" style="--cost-share:0.1%"></span></article>
+          </div>
+          <p class="cost-principle mt-4"><span></span>Production-inspired architecture — prioritizes availability and isolation over minimum cost.</p>
+
+          <section class="cost-breakdown mt-5 rounded-lg border" aria-labelledby="cost-breakdown-title">
+            <header><h3 id="cost-breakdown-title">Detailed Cloudcraft estimate</h3><p>Resource-level breakdown derived from the original monthly projection.</p></header>
+            <div class="cost-report">
+              <div class="cost-report-summary">
+                <dl><div><dt>Monthly total</dt><dd>$192.40 <small>/ mo</small></dd></div><div><dt>Networking</dt><dd>$128.06 <small>/ mo</small></dd><span>66.6%</span></div><div><dt>Compute</dt><dd>$35.04 <small>/ mo</small></dd><span>18.2%</span></div><div><dt>Database</dt><dd>$29.20 <small>/ mo</small></dd><span>15.2%</span></div><div><dt>Containers</dt><dd>$0.10 <small>/ mo</small></dd><span>0.1%</span></div></dl>
+                <div class="cost-donut" role="img" aria-label="Cost distribution: Networking 66.6%, Compute 18.2%, Database 15.2%, Containers 0.1%"></div>
+              </div>
+              <div class="cost-table-wrap">
+                <table class="cost-table">
+                  <thead><tr><th scope="col">Service</th><th scope="col">Description</th><th scope="col">Monthly cost</th><th scope="col">% of total</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54" /><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17" /><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05" /><circle cx="12" cy="12" r="10" /></svg>Networking</th><td>2 NAT gateways, 2 Application Load Balancers</td><td>$128.06</td><td>66.6%</td></tr>
+                    <tr><th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="M12 20v2" /><path d="M12 2v2" /><path d="M17 20v2" /><path d="M17 2v2" /><path d="M2 12h2" /><path d="M2 17h2" /><path d="M2 7h2" /><path d="M20 12h2" /><path d="M20 17h2" /><path d="M20 7h2" /><path d="M7 20v2" /><path d="M7 2v2" /><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="8" y="8" width="8" height="8" rx="1" /></svg>Compute (EC2)</th><td>4 × burstable instances</td><td>$35.04</td><td>18.2%</td></tr>
+                    <tr><th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5V19A9 3 0 0 0 21 19V5" /><path d="M3 12A9 3 0 0 0 21 12" /></svg>Database (RDS)</th><td>RDS MySQL (Multi-AZ)</td><td>$29.20</td><td>15.2%</td></tr>
+                    <tr><th scope="row"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /><path d="M12 22V12" /><polyline points="3.29 7 12 12 20.71 7" /><path d="m7.5 4.27 9 5.15" /></svg>Containers (ECR)</th><td>ECR repository storage</td><td>$0.10</td><td>0.1%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <button data-enlarge data-caption="Original Cloudcraft estimated monthly AWS cost for the development environment" type="button" class="cost-original-button" aria-label="Open original Cloudcraft monthly AWS cost estimate">
+              <img src="images/budget.png" alt="Cloudcraft estimate showing a projected monthly AWS development cost of 192 dollars and 40 cents" width="1786" height="1749" loading="lazy" />
+              <span>Open original Cloudcraft estimate ↗</span>
+            </button>
+          </section>
         </section>
 
-        <section id="tradeoffs" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">tradeoffs</h2>
-          <div class="mt-6 grid gap-4 md:grid-cols-2">
-            <article class="rounded border border-line p-5"><h3 class="text-white">Disposable database defaults</h3><p class="mt-2 text-sm leading-7 text-slate-400">Deletion protection and final snapshots are disabled so the demo can be destroyed without retaining chargeable resources.</p><p class="mt-3 text-xs leading-6 text-slate-500"><span class="text-accent">For a longer-lived environment:</span> enable deletion protection, retain final snapshots, increase backup retention and test restoration.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">NAT gateways over VPC endpoints</h3><p class="mt-2 text-sm leading-7 text-slate-400">NAT gateways keep initial networking simpler while private instances reach ECR, SSM and CloudWatch, but create recurring cost.</p><p class="mt-3 text-xs leading-6 text-slate-500"><span class="text-accent">For a longer-lived environment:</span> evaluate endpoints for SSM, ECR, CloudWatch Logs and S3.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Reduced observability</h3><p class="mt-2 text-sm leading-7 text-slate-400">ALB access logs, VPC Flow Logs and advanced database observability are not enabled by default to keep a temporary environment cheaper.</p><p class="mt-3 text-xs leading-6 text-slate-500"><span class="text-accent">For a longer-lived environment:</span> centralize logs and add retention, alarms, dashboards and an investigation strategy.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Internal HTTP</h3><p class="mt-2 text-sm leading-7 text-slate-400">TLS terminates at the public ALB; traffic behind it uses HTTP within private subnets as an explicit cost-and-complexity decision.</p><p class="mt-3 text-xs leading-6 text-slate-500"><span class="text-accent">For a production-oriented environment:</span> reassess the internal encryption boundary rather than treating private networking as automatic trust.</p></article>
+        <section id="tradeoffs" class="tradeoffs-section panel rounded-lg border border-line p-5 sm:p-7">
+          <div class="tradeoffs-header">
+            <div><h2 class="section-label section-title">trade_offs</h2><p class="section-intro mt-4">These are deliberate compromises that keep this portfolio demo simple and cost-effective while acknowledging what would change in a longer-lived or production-grade setup.</p></div>
+            <aside class="tradeoffs-glance rounded-lg border" aria-labelledby="tradeoffs-glance-title">
+              <h3 id="tradeoffs-glance-title">Trade-offs at a glance</h3>
+              <div class="tradeoffs-priorities"><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" /><path d="M12 18V6" /></svg><strong>Cost</strong><span>Minimize spend</span></p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M12 19h8" /><path d="m4 17 6-6-6-6" /></svg><strong>Simplicity</strong><span>Reduce complexity</span></p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg><strong>Scope</strong><span>Keep focus narrow</span></p></div>
+              <div class="tradeoffs-balance"><span>Balanced against</span></div>
+              <div class="tradeoffs-priorities tradeoffs-priorities-secondary"><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></svg><strong>Security</strong><span>Protect boundaries</span></p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><path d="m9 12 2 2 4-4" /></svg><strong>Reliability</strong><span>Improve resilience</span></p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M12 16v5" /><path d="M16 14v7" /><path d="M20 10v11" /><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15" /><path d="M4 18v3" /><path d="M8 14v7" /></svg><strong>Production readiness</strong><span>Strengthen for scale</span></p></div>
+            </aside>
           </div>
-          <details class="mt-5 rounded border border-line bg-[#090e13] p-4">
+          <div class="tradeoff-list mt-6 grid gap-3">
+            <article class="tradeoff-card rounded-lg border"><div class="tradeoff-number">01</div><div class="tradeoff-content"><h3 class="card-title">Disposable database defaults</h3><dl><div><dt>Reason</dt><dd>Allow the complete demo to be destroyed without retaining chargeable resources.</dd></div><div><dt>Current consequence</dt><dd>Deletion protection and final snapshots are disabled by default.</dd></div><div><dt>For a longer-lived environment</dt><dd>Enable deletion protection, retain final snapshots, increase backup retention and test restoration.</dd></div></dl></div></article>
+            <article class="tradeoff-card rounded-lg border"><div class="tradeoff-number">02</div><div class="tradeoff-content"><h3 class="card-title">NAT gateways over VPC endpoints</h3><dl><div><dt>Reason</dt><dd>Keep initial networking simpler while private instances reach required AWS services.</dd></div><div><dt>Current consequence</dt><dd>NAT gateways provide ECR, SSM and CloudWatch access but create recurring networking cost.</dd></div><div><dt>For a longer-lived environment</dt><dd>Evaluate endpoints for SSM, ECR, CloudWatch Logs and S3.</dd></div></dl></div></article>
+            <article class="tradeoff-card rounded-lg border"><div class="tradeoff-number">03</div><div class="tradeoff-content"><h3 class="card-title">Reduced observability</h3><dl><div><dt>Reason</dt><dd>Keep a temporary portfolio environment cheaper.</dd></div><div><dt>Current consequence</dt><dd>ALB access logs, VPC Flow Logs and advanced database observability are not enabled by default.</dd></div><div><dt>For a longer-lived environment</dt><dd>Centralize logs and add retention, alarms, dashboards and an investigation strategy.</dd></div></dl></div></article>
+            <article class="tradeoff-card rounded-lg border"><div class="tradeoff-number">04</div><div class="tradeoff-content"><h3 class="card-title">Internal HTTP</h3><dl><div><dt>Reason</dt><dd>Keep the internal encryption boundary simpler for this temporary environment.</dd></div><div><dt>Current consequence</dt><dd>TLS terminates at the public ALB and traffic behind it uses HTTP inside private subnets.</dd></div><div><dt>For a production-oriented environment</dt><dd>Reassess internal encryption rather than treating private networking as automatic trust.</dd></div></dl></div></article>
+          </div>
+          <details class="tradeoff-constraint mt-4 rounded border">
             <summary class="cursor-pointer text-sm text-accent">Additional implementation constraint</summary>
             <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-400">The ACM certificate, ECR repository, GitHub OIDC provider and some CloudWatch configuration must exist before deployment. Keeping them outside the main stack narrows its focus, but means the environment is not yet reproducible through one command.</p>
           </details>
         </section>
 
-        <section id="lessons" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">lessons_learned</h2>
-          <div class="mt-6 divide-y divide-line">
-            <article class="grid gap-3 py-5 first:pt-0 last:pb-0 md:grid-cols-[220px_1fr] md:gap-8"><h3 class="text-white">Private does not mean disconnected</h3><p class="text-sm leading-7 text-slate-400">I learned to design outbound access for ECR, SSM, CloudWatch and other AWS APIs alongside routing, IAM and instance bootstrapping.</p></article>
-            <article class="grid gap-3 py-5 first:pt-0 last:pb-0 md:grid-cols-[220px_1fr] md:gap-8"><h3 class="text-white">Infrastructure state has a different lifecycle</h3><p class="text-sm leading-7 text-slate-400">Bootstrapping the backend separately clarified why control-plane resources should outlive short-lived workload resources.</p></article>
-            <article class="grid gap-3 py-5 first:pt-0 last:pb-0 md:grid-cols-[220px_1fr] md:gap-8"><h3 class="text-white">CI/CD identity should match the operation</h3><p class="text-sm leading-7 text-slate-400">Separate OIDC roles made least privilege more concrete than one shared automation role with planning, apply and deployment access.</p></article>
-            <article class="grid gap-3 py-5 first:pt-0 last:pb-0 md:grid-cols-[220px_1fr] md:gap-8"><h3 class="text-white">Health checks are deployment logic</h3><p class="text-sm leading-7 text-slate-400">Starting an instance is not a completed rollout; replacement capacity must start its containers and pass target-group health checks.</p></article>
+        <section id="lessons" class="lessons-section panel rounded-lg border border-line p-5 sm:p-7">
+          <header class="lessons-header"><h2 class="section-label section-title">lessons_learned</h2></header>
+          <div class="lessons-grid mt-6 grid gap-4 md:grid-cols-2">
+            <article class="lessons-card rounded-lg border"><h3>Private does not mean disconnected</h3><p>I learned to design outbound access for ECR, SSM, CloudWatch and other AWS APIs alongside routing, IAM and instance bootstrapping.</p></article>
+            <article class="lessons-card rounded-lg border"><h3>Infrastructure state has a different lifecycle</h3><p>Bootstrapping the backend separately clarified why control-plane resources should outlive short-lived workload resources.</p></article>
+            <article class="lessons-card rounded-lg border"><h3>CI/CD identity should match the operation</h3><p>Separate OIDC roles made least privilege more concrete than one shared automation role with planning, apply and deployment access.</p></article>
+            <article class="lessons-card rounded-lg border"><h3>Health checks are deployment logic</h3><p>Starting an instance is not a completed rollout; replacement capacity must start its containers and pass target-group health checks.</p></article>
           </div>
         </section>
 
-        <section id="improvements" class="panel rounded-lg border border-line p-5 sm:p-7">
-          <h2 class="section-label text-sm text-accent">next_improvements</h2>
-          <div class="mt-6 grid gap-4 md:grid-cols-2">
-            <article class="rounded border border-line p-5"><h3 class="text-white">Add configurable VPC endpoints</h3><p class="mt-2 text-sm leading-7 text-slate-400">Reduce NAT dependency for SSM, ECR, CloudWatch Logs and S3 while keeping AWS service traffic on the AWS network.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Strengthen observability</h3><p class="mt-2 text-sm leading-7 text-slate-400">Enable VPC Flow Logs and ALB access logs, then add CloudWatch dashboards and alarms for the existing infrastructure and application signals.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Introduce environment profiles</h3><p class="mt-2 text-sm leading-7 text-slate-400">Add development, staging and production configurations with appropriate deletion protection, backups, retention, scaling and approval defaults.</p></article>
-            <article class="rounded border border-line p-5"><h3 class="text-white">Automate runtime prerequisites</h3><p class="mt-2 text-sm leading-7 text-slate-400">Bootstrap the remaining CloudWatch agent parameters and setup dependencies consistently to remove manual first-deployment steps.</p></article>
+        <section id="improvements" class="improvements-section panel rounded-lg border border-line p-5 sm:p-7">
+          <h2 class="section-label section-title">next_improvements</h2>
+          <div class="improvements-layout mt-7 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,0.38fr)]">
+            <ol class="roadmap-list rounded-lg border">
+              <li class="roadmap-item"><span class="roadmap-number">01</span><div><h3 class="card-title">Add configurable VPC endpoints</h3><p class="mt-2 card-details">Reduce NAT dependency for SSM, ECR, CloudWatch Logs and S3 while keeping AWS service traffic on the AWS network.</p></div></li>
+              <li class="roadmap-item"><span class="roadmap-number">02</span><div><h3 class="card-title">Strengthen observability</h3><p class="mt-2 card-details">Enable VPC Flow Logs and ALB access logs, then add CloudWatch dashboards and alarms for the existing infrastructure and application signals.</p></div></li>
+              <li class="roadmap-item"><span class="roadmap-number">03</span><div><h3 class="card-title">Introduce environment profiles</h3><p class="mt-2 card-details">Add development, staging and production configurations with appropriate deletion protection, backups, retention, scaling and approval defaults.</p></div></li>
+              <li class="roadmap-item"><span class="roadmap-number">04</span><div><h3 class="card-title">Automate runtime prerequisites</h3><p class="mt-2 card-details">Bootstrap the remaining CloudWatch agent parameters and setup dependencies consistently to remove manual first-deployment steps.</p></div></li>
+            </ol>
+            <aside class="expected-impact rounded-lg border" aria-labelledby="expected-impact-title">
+              <h3 id="expected-impact-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><line x1="12" x2="12" y1="20" y2="10" /><line x1="18" x2="18" y1="20" y2="4" /><line x1="6" x2="6" y1="20" y2="16" /></svg>Expected impact</h3>
+              <ul><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" /><path d="M12 18V6" /></svg>Lower networking cost</li><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></svg>Better visibility</li><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg>Safer environments</li><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>Less manual setup</li></ul>
+            </aside>
           </div>
         </section>
 
-        <section id="diagrams" class="panel rounded-lg border border-line p-4 sm:p-7"><div class="flex items-center justify-between"><div><h2 class="section-label text-sm text-accent">architecture_diagrams</h2><p class="mt-3 text-xs text-slate-500">Detailed views of topology, routing, runtime configuration and delivery.</p></div><span data-counter class="text-xs text-slate-500"></span></div>
+        <section id="diagrams" class="panel rounded-lg border border-line p-4 sm:p-7"><div class="flex items-center justify-between"><div><h2 class="section-label section-title">architecture_diagrams</h2><p class="section-intro mt-3">Detailed views of topology, routing, runtime configuration and delivery.</p></div><span data-counter class="text-xs text-slate-500"></span></div>
           <div data-carousel tabindex="0" class="mt-5" aria-label="Architecture diagrams carousel">
             <div class="overflow-hidden rounded-lg border border-line">
-              <button data-slide data-caption="How requests cross the public, web, application, and database tiers" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in bg-white" aria-label="Open AWS three-tier architecture diagram"><img src="images/aws-3tier-architecture.png" alt="AWS three-tier architecture showing public, web, application, and database tiers" width="1672" height="941" class="h-full w-full object-contain" /></button>
               <button data-slide data-caption="Availability Zone, subnet, route table, NAT, and security-group boundaries" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in bg-white" aria-label="Open AWS network and subnet layout diagram"><img src="images/aws-3tier-network-and-subnet-layout.png" alt="AWS three-tier network and subnet layout across two availability zones" width="1536" height="1024" loading="lazy" class="h-full w-full object-contain" /></button>
               <button data-slide data-caption="How Terraform, SSM Parameter Store, the RDS secret, and EC2 exchange runtime configuration" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in bg-white" aria-label="Open runtime configuration flow diagram"><img src="images/aws-3tier-runtime-configuration-flow.png" alt="Runtime secrets and configuration flow between Terraform, AWS services, and EC2" width="1672" height="941" loading="lazy" class="h-full w-full object-contain" /></button>
               <button data-slide data-caption="Separate infrastructure and application delivery flows using OIDC and approval gates" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in bg-white" aria-label="Open CI/CD flow diagram"><img src="images/aws-3tier-ci-cd.png" alt="Terraform infrastructure and application CI/CD workflows using GitHub Actions and AWS OIDC" width="1672" height="941" loading="lazy" class="h-full w-full object-contain" /></button>
