@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const distDir = "dist";
@@ -24,12 +24,7 @@ const hashedJsPath = path.join("assets", hashedJsFile);
 
 await cp(cssSource, path.join(distDir, hashedCssPath));
 await cp(jsSource, path.join(distDir, hashedJsPath));
-await mkdir(path.join(distDir, "images"), { recursive: true });
-for (const entry of await readdir("images", { withFileTypes: true })) {
-  if (entry.isFile() && /\.(?:avif|jpe?g|png|svg|webp)$/i.test(entry.name)) {
-    await cp(path.join("images", entry.name), path.join(distDir, "images", entry.name));
-  }
-}
+await cp("images", path.join(distDir, "images"), { recursive: true });
 const projectDiagrams = {
   "../docs/diagrams/acm-validation-flow.png": "acm-validation-flow.png",
   "../docs/diagrams/bootstrap.png": "bootstrap.png",
