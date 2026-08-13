@@ -31,7 +31,7 @@ const renderLightbox = () => {
   if (!activeLightbox || !lightbox) return;
   const { slides, index } = activeLightbox;
   const slide = slides[index];
-  const image = qs("img", slide);
+  const image = qs("img", slide) || qs("img", slide.closest(".architecture-diagram-panel"));
   lightboxImage.hidden = !image;
   lightboxPlaceholder.hidden = Boolean(image);
   if (image) {

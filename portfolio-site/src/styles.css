@@ -108,6 +108,7 @@
     line-height: 1;
   }
   .tech-logo { width: 1.75rem; height: 1.75rem; flex: none; object-fit: contain; }
+  .tech-alembic-logo { color: #72e34f; }
   .tech-mark { color: #72e34f; font-size: 1.05rem; }
   .tech-aws { border-color: rgba(58, 149, 222, 0.65); }
   .aws-wordmark { position: relative; padding-bottom: 0.35rem; color: #f8fafc; font-size: 1.2rem; font-weight: 500; letter-spacing: -0.08em; }
@@ -133,6 +134,22 @@
     font-size: 0.55rem;
   }
   .summary-card { min-height: 100%; }
+  .summary-card-body { display: grid; gap: 0.9rem; margin-top: 1rem; }
+  .project-hero-description { display: grid; gap: 0.75rem; }
+  .summary-list { display: grid; gap: 0.55rem; margin-top: 0.9rem; }
+  .summary-list li { position: relative; padding-left: 1.15rem; }
+  .summary-list li::before {
+    content: "";
+    position: absolute;
+    top: 0.72em;
+    left: 0;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 999px;
+    background: #72e34f;
+    box-shadow: 0 0 0 3px rgba(114, 227, 79, 0.1);
+  }
+  .summary-card-closing { margin-top: 0.9rem; }
   .summary-card-result {
     background: linear-gradient(145deg, rgba(114, 227, 79, 0.08), rgba(13, 21, 24, 0.97));
     border-color: rgba(114, 227, 79, 0.48);
@@ -151,8 +168,20 @@
       linear-gradient(145deg, rgba(10, 19, 24, 0.98), rgba(7, 13, 18, 0.98));
     box-shadow: inset 0 0 36px rgba(114, 227, 79, 0.025);
   }
-  .architecture-layout { display: grid; gap: 1.75rem; margin-top: 1.5rem; }
+  .architecture-layout {
+    display: grid;
+    grid-template-areas:
+      "intro"
+      "callout"
+      "flow"
+      "visuals"
+      "outcomes";
+    gap: 1.75rem;
+    margin-top: 1.5rem;
+  }
+  .architecture-intro { grid-area: intro; align-self: center; }
   .architecture-callout {
+    grid-area: callout;
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -175,13 +204,13 @@
     border-radius: 0.5rem;
     color: #72e34f;
   }
-  .architecture-flow { position: relative; }
+  .architecture-flow { position: relative; grid-area: flow; }
   .architecture-flow::before {
     content: "";
     position: absolute;
     top: 1.75rem;
     bottom: 1.75rem;
-    left: 1.7rem;
+    left: 2.75rem;
     width: 1px;
     background: repeating-linear-gradient(to bottom, rgba(114, 227, 79, 0.65) 0 4px, transparent 4px 8px);
   }
@@ -190,9 +219,13 @@
     display: grid;
     grid-template-columns: 3.5rem minmax(0, 1fr);
     gap: 1rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 0.85rem;
+    border: 1px solid #2b3742;
+    border-radius: 0.55rem;
+    background: rgba(13, 21, 28, 0.72);
+    padding: 1rem;
   }
-  .architecture-step:last-child { padding-bottom: 0; }
+  .architecture-step:last-child { margin-bottom: 0; }
   .architecture-number {
     position: relative;
     z-index: 1;
@@ -219,16 +252,46 @@
     font-size: 0.75rem;
     line-height: 1.35;
   }
-  .architecture-visuals { display: grid; align-content: start; gap: 1rem; }
+  .architecture-visuals { display: grid; grid-area: visuals; align-content: start; }
+  .architecture-layout-project-one { grid-template-areas: none; }
+  .architecture-layout-project-one > div { min-width: 0; }
+  .architecture-layout-project-one .architecture-visuals {
+    grid-area: auto;
+    gap: 1rem;
+  }
+  .architecture-layout-project-one .architecture-outcomes { grid-area: auto; }
   .architecture-diagram {
     position: relative;
     overflow: hidden;
     align-self: start;
     border: 1px solid #2b3742;
     border-radius: 0.5rem;
-    background: white;
+    background: #071016;
   }
   .architecture-diagram img { width: 100%; height: auto; object-fit: contain; }
+  .architecture-diagram-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #2b3742;
+    border-radius: 0.5rem;
+    background: rgba(8, 16, 22, 0.92);
+  }
+  .architecture-diagram-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+  }
+  .architecture-diagram-header > h3 {
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .architecture-diagram-header .architecture-diagram-cta { position: static; display: inline-flex; flex: 0 0 auto; }
+  .architecture-diagram-autodeploy { display: block; width: 100%; border: 0; border-radius: 0; text-align: left; }
   .architecture-diagram-cta {
     position: absolute;
     right: 1rem;
@@ -241,14 +304,26 @@
     font-size: 0.75rem;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
   }
-  .architecture-outcomes { border-color: #2b3742; background: rgba(13, 21, 28, 0.88); padding: 1.1rem; }
+  .architecture-outcomes { grid-area: outcomes; border-color: #2b3742; background: rgba(13, 21, 28, 0.88); padding: 1.1rem; }
+  .architecture-outcomes-autodeploy { grid-area: auto; }
   .architecture-outcomes > h3 { color: #72e34f; font-size: 0.875rem; font-weight: 600; }
   .architecture-outcomes-grid { display: grid; gap: 1rem; margin-top: 1rem; }
-  .architecture-outcomes-grid li { display: flex; gap: 0.75rem; color: #72e34f; }
-  .architecture-outcomes-grid li > svg { flex: 0 0 auto; margin-top: 0.1rem; }
+  .architecture-outcomes-grid li { display: flex; gap: 0.9rem; border: 1px solid #2b3742; border-radius: 0.5rem; background: rgba(10, 18, 24, 0.72); padding: 1rem; color: #72e34f; }
+  .architecture-outcome-icon { display: grid; width: 2.75rem; height: 2.75rem; flex: 0 0 auto; place-items: center; border: 1px solid rgba(114, 227, 79, 0.28); border-radius: 0.45rem; background: rgba(114, 227, 79, 0.035); }
   .architecture-outcomes-grid div { display: grid; gap: 0.45rem; color: #c4ced8; }
   .architecture-outcomes-grid strong { color: white; font-size: 0.8rem; font-weight: 600; line-height: 1.45; }
   .architecture-outcomes-grid span { color: #9da9b5; font-size: 0.72rem; line-height: 1.55; }
+  .architecture-outcomes-grid .architecture-outcome-icon {
+    width: 2.15rem;
+    height: 2.15rem;
+    color: #72e34f;
+  }
+  .architecture-outcomes-grid .architecture-outcome-icon svg { width: 1.05rem; height: 1.05rem; }
+  .architecture-outcomes-autodeploy .architecture-outcomes-grid li {
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.85rem;
+  }
   .decisions-header { display: grid; gap: 1.5rem; }
   .decisions-stats { display: grid; gap: 0.75rem; }
   .decisions-stats > div {
@@ -292,6 +367,24 @@
     line-height: 1.65;
   }
   .decision-reason strong { display: block; margin-bottom: 0.3rem; color: #72e34f; font-size: 0.72rem; }
+  .decisions-grid-autodeploy .decision-content { display: flex; flex-direction: column; }
+  .decisions-grid-autodeploy .decision-reason {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    margin-top: auto;
+    border: 0;
+    border-top: 1px solid #2b3742;
+    border-radius: 0;
+    background: transparent;
+    padding: 0.8rem 0 0;
+  }
+  .decisions-grid-autodeploy .decision-reason strong {
+    display: inline;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .decisions-grid-autodeploy .decision-reason p { flex: 1 1 16rem; }
   .decisions-outcome {
     display: grid;
     gap: 1rem;
@@ -351,6 +444,19 @@
   .deployment-details ul { margin: 0 1.25rem; border-top: 1px solid #2b3742; padding: 1rem 0 1.15rem 1.35rem; }
   .deployment-details li { position: relative; }
   .deployment-details li::before { content: "•"; position: absolute; left: -1.15rem; color: #72e34f; }
+  .deployment-note {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0 1.25rem 1.25rem;
+    border-left: 2px solid #72e34f;
+    border-radius: 0 0.4rem 0.4rem 0;
+    background: rgba(114, 227, 79, 0.055);
+    padding: 0.8rem 0.95rem;
+    color: #aeb9c4;
+    font-size: 0.75rem;
+    line-height: 1.65;
+  }
+  .deployment-note strong { flex: 0 0 auto; color: #72e34f; font-weight: 600; }
   .security-section {
     border-color: rgba(72, 132, 104, 0.42);
     background:
@@ -486,7 +592,11 @@
   .cost-original-button span { border: 1px solid rgba(114, 227, 79, 0.5); border-radius: 0.35rem; padding: 0.55rem 0.8rem; color: #72e34f; font-size: 0.7rem; }
   .tradeoffs-section { background: linear-gradient(145deg, rgba(9, 17, 23, 0.98), rgba(6, 13, 18, 0.98)); }
   .tradeoffs-header { display: grid; gap: 1.5rem; }
+  .tradeoffs-header-simple { display: block; width: 100%; }
+  .tradeoffs-header-simple > div { width: 100%; }
   .tradeoffs-header .section-intro { max-width: 48rem; }
+  .tradeoffs-header-simple .section-intro { width: 100%; max-width: none; }
+  .tradeoffs-intro-wide { text-align: justify; text-align-last: left; }
   .tradeoffs-glance { border-color: rgba(114, 227, 79, 0.42); background: rgba(10, 19, 23, 0.9); padding: 1rem; }
   .tradeoffs-glance > h3 { color: #72e34f; font-size: 0.8rem; font-weight: 600; }
   .tradeoffs-priorities { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.7rem; margin-top: 0.8rem; }
@@ -529,6 +639,43 @@
   .tradeoff-constraint summary::before { content: "›"; color: #72e34f; font-size: 1.25rem; transform: rotate(0deg); transition: transform 160ms ease; }
   .tradeoff-constraint[open] summary::before { transform: rotate(90deg); }
   .tradeoff-constraint > p { margin: 0 1.2rem; border-top: 1px solid #2b3742; padding: 1rem 0 1.2rem; }
+  .tradeoff-constraint-autodeploy > p {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 1rem 2rem 1.2rem 1.2rem;
+  }
+  .tradeoffs-section-autodeploy .tradeoff-list { gap: 1rem; }
+  .tradeoffs-section-autodeploy .tradeoff-card { width: 100%; }
+  .tradeoffs-section-autodeploy .tradeoff-content { min-width: 0; }
+  .tradeoffs-section-autodeploy .tradeoff-content dl { gap: 0; }
+  .tradeoffs-section-autodeploy .tradeoff-content dl > div {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 0.38fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding-block: 0.85rem;
+  }
+  .tradeoffs-section-autodeploy .tradeoff-content dl > div + div { border-top: 1px dashed #3a4652; }
+  .tradeoffs-section-autodeploy .tradeoff-content dt { display: flex; gap: 0.55rem; align-items: center; }
+  .tradeoffs-section-autodeploy .tradeoff-content dd {
+    margin-top: 0;
+    border-left: 1px dashed #3a4652;
+    padding-left: 1rem;
+  }
+  .tradeoff-label-icon {
+    display: grid;
+    width: 1.45rem;
+    height: 1.45rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(114, 227, 79, 0.35);
+    border-radius: 999px;
+    background: rgba(114, 227, 79, 0.045);
+    color: #72e34f;
+    font-size: 0.72rem;
+    line-height: 1;
+  }
   .lessons-section {
     background:
       linear-gradient(rgba(114, 227, 79, 0.012) 1px, transparent 1px),
@@ -544,7 +691,17 @@
     padding: 1.5rem;
   }
   .lessons-card h3 { color: white; font-size: 1rem; font-weight: 600; line-height: 1.5; }
-  .lessons-card p { margin-top: 1.2rem; color: #b8c2cc; font-size: 0.9rem; line-height: 1.9; }
+  .lessons-card h3::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    margin-top: 0.75rem;
+    border-radius: 999px;
+    background: #72e34f;
+    box-shadow: 0 0 10px rgba(114, 227, 79, 0.18);
+  }
+  .lessons-card p { margin-top: 1rem; color: #b8c2cc; font-size: 0.9rem; line-height: 1.9; }
   .improvements-section { background: linear-gradient(145deg, rgba(9, 17, 23, 0.98), rgba(6, 13, 18, 0.98)); }
   .roadmap-list { overflow: hidden; border-color: #2b3742; background: rgba(10, 18, 24, 0.72); }
   .roadmap-item {
@@ -634,12 +791,33 @@
 
 @media (min-width: 80rem) {
   .project-hero-mark { width: 3rem; height: 3rem; font-size: 1rem; }
-  .architecture-layout { grid-template-columns: minmax(25rem, 0.78fr) minmax(0, 1.35fr); align-items: start; gap: 2rem; }
-  .architecture-outcomes-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
-  .architecture-outcomes-grid li { padding-inline: 1rem; }
-  .architecture-outcomes-grid li:first-child { padding-left: 0; }
-  .architecture-outcomes-grid li:last-child { padding-right: 0; }
-  .architecture-outcomes-grid li + li { border-left: 1px dashed #3a4652; }
+  .architecture-layout {
+    grid-template-columns: minmax(25rem, 0.78fr) minmax(0, 1.35fr);
+    grid-template-areas:
+      "intro callout"
+      "flow visuals";
+    align-items: start;
+    column-gap: 2rem;
+    row-gap: 1rem;
+  }
+  .architecture-visuals-autodeploy { gap: 0.75rem; }
+  .architecture-visuals-autodeploy .architecture-outcomes-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .architecture-layout:not(.architecture-layout-project-one) .architecture-visuals-autodeploy {
+    align-self: stretch;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .architecture-visuals-autodeploy .architecture-outcomes-autodeploy {
+    align-self: end;
+  }
+  .architecture-outcomes-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .architecture-layout-project-one {
+    grid-template-columns: minmax(25rem, 0.78fr) minmax(0, 1.35fr);
+    grid-template-areas: none;
+    align-items: start;
+    column-gap: 2rem;
+    row-gap: 0;
+  }
+  .architecture-layout-project-one .architecture-outcomes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (min-width: 64rem) {
@@ -652,6 +830,26 @@
   .tradeoff-content dl > div:first-child { padding-left: 0; }
   .tradeoff-content dl > div:last-child { padding-right: 0; }
   .tradeoff-content dl > div + div { border-left: 1px dashed #3a4652; }
+  .tradeoffs-section-autodeploy .tradeoff-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tradeoffs-section-autodeploy .tradeoff-card {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    align-items: stretch;
+  }
+  .tradeoffs-section-autodeploy .tradeoff-content { padding: 1.25rem 1.35rem 1.3rem 0.75rem; }
+  .tradeoffs-section-autodeploy .tradeoff-content dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    align-items: start;
+    margin-top: 0.75rem;
+  }
+  .tradeoffs-section-autodeploy .tradeoff-content dl > div {
+    grid-template-columns: minmax(7.5rem, 0.38fr) minmax(0, 1fr);
+    height: auto;
+    padding: 0.8rem 0;
+  }
+  .tradeoffs-section-autodeploy .tradeoff-content dl > div:first-child { padding-top: 0; }
+  .tradeoffs-section-autodeploy .tradeoff-content dl > div:last-child { padding-bottom: 0; }
+  .tradeoffs-section-autodeploy .tradeoff-content dl > div + div { border-top: 1px dashed #3a4652; border-left: 0; }
   .decisions-header { grid-template-columns: minmax(0, 1fr) minmax(31rem, 0.75fr); align-items: start; }
   .decisions-outcome { grid-template-columns: auto minmax(20rem, 1fr) auto; }
   .decisions-outcome ul { grid-column: auto; justify-content: flex-end; }
