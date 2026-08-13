@@ -3,7 +3,7 @@ import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const distDir = "dist";
-const htmlFiles = ["index.html", "project-1.html", "project-2.html", "project-3.html", "error.html"];
+const htmlFiles = ["index.html", "aws-3tier-architecture.html", "autodeploy-platform.html", "project-3.html", "error.html"];
 const cssSource = "assets/styles.css";
 const jsSource = "assets/site.js";
 

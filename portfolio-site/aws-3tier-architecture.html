@@ -96,7 +96,7 @@
       <div class="grid gap-5 bg-[#05080c] p-3 sm:p-5">
         <section id="architecture" class="architecture-section compact-section panel rounded-lg border">
           <h2 class="section-label section-title">architecture</h2>
-          <p class="section-intro mt-4 max-w-2xl">Users can access the website, but they cannot connect directly to the servers or database behind it. Each request follows a controlled path through the application.</p>
+          <p class="section-intro architecture-intro-wide mt-4">Users can access the website, but they cannot connect directly to the servers or database behind it. Each request follows a controlled path through the application.</p>
           <div class="architecture-layout architecture-layout-project-one">
             <div>
               <aside class="architecture-callout" aria-label="Primary architecture principle">
@@ -110,7 +110,8 @@
                 <li class="architecture-step"><span class="architecture-number">04</span><div><h3 class="architecture-stage-title">Data tier</h3><p class="mt-2 card-details">Application data is stored in an isolated managed database with no public access.</p><p class="architecture-route mt-3">Flask/Gunicorn → RDS MySQL</p></div></li>
               </ol>
             </div>
-            <div class="architecture-visuals">
+            <div class="architecture-visuals architecture-visuals-aws">
+              <h3 class="architecture-visual-title">Architecture Diagram</h3>
               <button data-enlarge data-caption="How requests cross the public, web, application, and database tiers" type="button" class="architecture-diagram cursor-zoom-in" aria-label="Open full AWS three-tier architecture diagram">
                 <img src="images/aws-3tier-architecture.png" alt="AWS three-tier architecture showing public, web, application, and database tiers" width="1672" height="941" loading="lazy" />
                 <span class="architecture-diagram-cta">Open full architecture diagram ↗</span>
@@ -281,9 +282,9 @@
             <article class="tradeoff-card rounded-lg border"><div class="tradeoff-number">03</div><div class="tradeoff-content"><h3 class="card-title">Reduced observability</h3><dl><div><dt>Reason</dt><dd>Keep a temporary portfolio environment cheaper.</dd></div><div><dt>Current consequence</dt><dd>ALB access logs, VPC Flow Logs and advanced database observability are not enabled by default.</dd></div><div><dt>For a longer-lived environment</dt><dd>Centralize logs and add retention, alarms, dashboards and an investigation strategy.</dd></div></dl></div></article>
             <article class="tradeoff-card rounded-lg border"><div class="tradeoff-number">04</div><div class="tradeoff-content"><h3 class="card-title">Internal HTTP</h3><dl><div><dt>Reason</dt><dd>Keep the internal encryption boundary simpler for this temporary environment.</dd></div><div><dt>Current consequence</dt><dd>TLS terminates at the public ALB and traffic behind it uses HTTP inside private subnets.</dd></div><div><dt>For a production-oriented environment</dt><dd>Reassess internal encryption rather than treating private networking as automatic trust.</dd></div></dl></div></article>
           </div>
-          <details class="tradeoff-constraint mt-4 rounded border">
+          <details class="tradeoff-constraint tradeoff-constraint-aws mt-4 rounded border">
             <summary class="cursor-pointer text-sm text-accent">Additional implementation constraint</summary>
-            <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-400">The ACM certificate, ECR repository, GitHub OIDC provider and some CloudWatch configuration must exist before deployment. Keeping them outside the main stack narrows its focus, but means the environment is not yet reproducible through one command.</p>
+            <p class="text-sm leading-7 text-slate-400">The ACM certificate, ECR repository, GitHub OIDC provider and some CloudWatch configuration must exist before deployment. Keeping them outside the main stack narrows its focus, but means the environment is not yet reproducible through one command.</p>
           </details>
         </section>
 

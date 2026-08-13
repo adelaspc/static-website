@@ -180,6 +180,7 @@
     margin-top: 1.5rem;
   }
   .architecture-intro { grid-area: intro; align-self: center; }
+  .architecture-intro-wide { width: 100%; max-width: none; }
   .architecture-callout {
     grid-area: callout;
     display: flex;
@@ -253,6 +254,8 @@
     line-height: 1.35;
   }
   .architecture-visuals { display: grid; grid-area: visuals; align-content: start; }
+  .architecture-visual-title { color: white; font-size: 1.05rem; font-weight: 600; line-height: 1.4; }
+  .architecture-visuals-aws .architecture-visual-title { text-align: center; }
   .architecture-layout-project-one { grid-template-areas: none; }
   .architecture-layout-project-one > div { min-width: 0; }
   .architecture-layout-project-one .architecture-visuals {
@@ -260,6 +263,8 @@
     gap: 1rem;
   }
   .architecture-layout-project-one .architecture-outcomes { grid-area: auto; }
+  .architecture-layout-project-one .architecture-visuals-aws { gap: 0.85rem; }
+  .architecture-layout-project-one .architecture-visuals-aws .architecture-diagram { margin-top: 2rem; }
   .architecture-diagram {
     position: relative;
     overflow: hidden;
@@ -639,6 +644,13 @@
   .tradeoff-constraint summary::before { content: "›"; color: #72e34f; font-size: 1.25rem; transform: rotate(0deg); transition: transform 160ms ease; }
   .tradeoff-constraint[open] summary::before { transform: rotate(90deg); }
   .tradeoff-constraint > p { margin: 0 1.2rem; border-top: 1px solid #2b3742; padding: 1rem 0 1.2rem; }
+  .tradeoff-constraint-aws > p {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-top: 0;
+    padding: 0.35rem 1.2rem 1.2rem;
+  }
   .tradeoff-constraint-autodeploy > p {
     width: auto;
     max-width: none;
@@ -813,10 +825,15 @@
   .architecture-layout-project-one {
     grid-template-columns: minmax(25rem, 0.78fr) minmax(0, 1.35fr);
     grid-template-areas: none;
-    align-items: start;
+    align-items: stretch;
     column-gap: 2rem;
     row-gap: 0;
   }
+  .architecture-layout-project-one .architecture-visuals-aws {
+    align-self: stretch;
+    grid-template-rows: auto auto minmax(0, 1fr);
+  }
+  .architecture-layout-project-one .architecture-visuals-aws .architecture-outcomes { align-self: end; }
   .architecture-layout-project-one .architecture-outcomes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
