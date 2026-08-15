@@ -22,6 +22,8 @@
   :focus-visible { outline: 2px solid #72e34f; outline-offset: 3px; }
   ::selection { background: rgba(114, 227, 79, 0.25); color: white; }
   [id] { scroll-margin-top: 8rem; }
+  button:not(:disabled),
+  summary { cursor: pointer; }
 }
 
 @layer components {
