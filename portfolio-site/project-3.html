@@ -9,43 +9,321 @@
 </head>
 <body class="min-h-screen text-slate-300 antialiased">
   <div class="mx-auto max-w-[1440px] p-3 sm:p-5">
-    <main class="site-frame overflow-hidden rounded-lg border border-line">
+    <main class="site-frame overflow-clip rounded-lg border border-line">
       <header class="flex items-center justify-between gap-5 border-b border-line px-5 py-5 sm:px-8">
         <a href="index.html" class="flex items-center gap-3 text-sm text-white"><span class="terminal-prompt"></span><span>dev@portfolio:<span class="text-slate-500">~</span></span></a>
         <div class="flex items-center gap-5"><a href="https://github.com/adelaspc/static-website" target="_blank" rel="noopener noreferrer" aria-label="Project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg></a><a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg></a><a href="mailto:email@your-domain.dev" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg></a></div>
       </header>
 
-      <section class="px-6 py-8 sm:px-10 lg:px-14">
+      <section class="portfolio-hero px-6 py-8 sm:px-10 lg:px-14">
         <a href="index.html#projects" class="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg>back to projects</a>
-        <div class="mt-7 grid gap-8 lg:grid-cols-[1fr_260px] lg:items-start">
-          <div class="flex gap-5"><span class="grid h-16 w-16 shrink-0 place-items-center rounded-lg border border-line text-3xl text-accent">&gt;_</span><div><h1 class="text-3xl text-white sm:text-4xl">Portfolio Delivery</h1><p class="mt-3 max-w-3xl text-sm leading-7 text-slate-400">Terraform-managed static website delivery with a private S3 origin, CloudFront, Cloudflare DNS and credential-free GitHub Actions deployments.</p><p class="mt-5 text-xs text-slate-500">June 2026 <span class="mx-2">•</span> Infrastructure / DevOps <span class="mx-2">•</span> <a href="https://github.com/adelaspc/static-website" target="_blank" rel="noopener noreferrer" class="text-accent">View on GitHub ↗</a></p></div></div>
-          <dl class="panel rounded-lg border border-line p-5 text-xs"><div class="flex justify-between gap-4 border-b border-line pb-4"><dt>Project Status</dt><dd class="text-accent">● In Progress</dd></div><div class="flex justify-between gap-4 border-b border-line py-4"><dt>Type</dt><dd class="text-white">Infrastructure</dd></div><div class="flex justify-between gap-4 pt-4"><dt>Environment</dt><dd class="text-white">Dev</dd></div></dl>
+        <div class="portfolio-hero-grid mt-8">
+          <div class="portfolio-hero-main">
+            <div class="portfolio-hero-heading">
+              <span class="portfolio-hero-mark grid shrink-0 place-items-center rounded-lg border border-line bg-[#0d141b] text-accent shadow-glow">&gt;_</span>
+              <div>
+                <h1 class="text-3xl leading-tight text-white sm:text-4xl xl:text-5xl">Portfolio Delivery</h1>
+                <p class="portfolio-hero-eyebrow mt-4">Infrastructure behind this portfolio</p>
+                <p class="mt-4 max-w-4xl text-sm leading-7 text-slate-400 sm:text-base">This portfolio is also a live infrastructure project: provisioned with Terraform, deployed through GitHub Actions using AWS OIDC, and delivered globally through CloudFront from a private S3 origin.</p>
+                <p class="mt-5 text-xs text-slate-500">Infrastructure / DevOps <span class="mx-2">•</span> <a href="https://github.com/adelaspc/static-website" target="_blank" rel="noopener noreferrer" class="text-accent">View on GitHub ↗</a></p>
+
+                <ul class="portfolio-tech-list" aria-label="Project technologies">
+                  <li><img src="images/logos/terraform.svg" alt="" aria-hidden="true" />Terraform</li>
+                  <li><img src="images/logos/aws.svg" alt="" aria-hidden="true" />AWS</li>
+                  <li><img src="images/logos/cloudfront.png" alt="" aria-hidden="true" />CloudFront</li>
+                  <li><img src="images/logos/s3-bucket.png" alt="" aria-hidden="true" />S3</li>
+                  <li><img src="images/logos/github-actions.svg" alt="" aria-hidden="true" />GitHub Actions</li>
+                  <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="14" x="3" y="5" rx="2" /><path d="M7 9h4" /><path d="M7 13h2" /><circle cx="17" cy="12" r="2" /><path d="m19 14 1.5 1.5" /></svg>OIDC</li>
+                  <li><img src="images/logos/cloudflare.svg" alt="" aria-hidden="true" />Cloudflare</li>
+                </ul>
+
+                <aside class="portfolio-live-proof" aria-label="Live project proof">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3" /><path d="M16 3h3a2 2 0 0 1 2 2v3" /><path d="M8 21H5a2 2 0 0 1-2-2v-3" /><path d="M16 21h3a2 2 0 0 0 2-2v-3" /><circle cx="12" cy="12" r="2" /></svg>
+                  <p>You are currently viewing the application delivered by this infrastructure.</p>
+                </aside>
+              </div>
+            </div>
+          </div>
+
+          <dl class="portfolio-status panel rounded-lg border border-line">
+            <div><dt><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-9 4 18 3-9h4" /></svg>Status</dt><dd class="text-accent">● Live</dd></div>
+            <div><dt><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5Z" /><path d="m3 12 9 5 9-5" /><path d="m3 17 9 5 9-5" /></svg>Type</dt><dd>Infrastructure</dd></div>
+            <div><dt><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6" /><path d="M12 19h8" /></svg>Environment</dt><dd>Dev</dd></div>
+            <div><dt><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 0 20" /><path d="M12 2a15.3 15.3 0 0 0 0 20" /></svg>Delivery</dt><dd>Global CDN</dd></div>
+            <div><dt><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5" /><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3" /></svg>Origin</dt><dd>Private S3</dd></div>
+          </dl>
+        </div>
+
+        <div class="portfolio-capabilities">
+          <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 0 20" /><path d="M12 2a15.3 15.3 0 0 0 0 20" /></svg></span><div><h2>Global HTTPS Delivery</h2><p>CloudFront delivers the site globally with TLS and modern security headers.</p></div></article>
+          <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></span><div><h2>Private Origin</h2><p>Content is stored in a private S3 bucket and accessed via CloudFront and OAC.</p></div></article>
+          <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6" /><path d="M12 19h8" /></svg></span><div><h2>Keyless CI/CD</h2><p>GitHub Actions deploys with AWS OIDC—no long-lived AWS credentials.</p></div></article>
         </div>
       </section>
 
       <nav class="project-nav sticky top-0 z-20 flex overflow-x-auto border-y border-line bg-[#090e13]/95 px-4 backdrop-blur sm:px-8" aria-label="Project sections">
-        <a data-section-link aria-current="true" href="#overview" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/overview</a><a data-section-link aria-current="false" href="#architecture" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/architecture</a><a data-section-link aria-current="false" href="#tech-stack" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/tech_stack</a><a data-section-link aria-current="false" href="#features" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/features</a><a data-section-link aria-current="false" href="#lessons" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/lessons</a><a data-section-link aria-current="false" href="#screenshots" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/diagrams</a>
+        <a data-section-link aria-current="true" href="#architecture" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/architecture</a><a data-section-link aria-current="false" href="#terraform-design" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/terraform_design</a><a data-section-link aria-current="false" href="#cicd" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/cicd</a><a data-section-link aria-current="false" href="#engineering-decisions" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/engineering_decisions</a><a data-section-link aria-current="false" href="#trade-offs" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/trade_offs</a><a data-section-link aria-current="false" href="#diagrams" class="shrink-0 border-b-2 border-transparent px-4 py-4 text-xs">/diagrams</a>
       </nav>
 
       <div class="grid gap-3 bg-[#05080c] p-3 sm:p-5">
-        <section id="overview" class="grid gap-3 lg:grid-cols-[1fr_0.85fr]">
-          <article class="panel rounded-lg border border-line p-6"><h2 class="section-label text-sm text-accent">overview</h2><p class="mt-5 text-sm leading-7 text-slate-400">A production-inspired but cost-conscious platform for publishing this portfolio. CloudFront is the TLS and caching boundary, while a private S3 bucket remains accessible only through Origin Access Control. Terraform owns the infrastructure and GitHub Actions handles validation and delivery.</p><ul class="mt-5 space-y-2 text-sm"><li class="text-accent">✓ <span class="text-slate-400">Private, versioned and encrypted S3 origin</span></li><li class="text-accent">✓ <span class="text-slate-400">CloudFront TLS, caching and security headers</span></li><li class="text-accent">✓ <span class="text-slate-400">OIDC deployments without long-lived AWS keys</span></li><li class="text-accent">✓ <span class="text-slate-400">Logging, alarms and documented recovery procedures</span></li></ul></article>
-          <article id="tech-stack" class="panel rounded-lg border border-line p-6"><h2 class="section-label text-sm text-accent">tech_stack</h2><dl class="mt-5 grid gap-4 text-sm"><div class="flex gap-3"><dt class="w-28 text-accent">IaC:</dt><dd>Terraform</dd></div><div class="flex gap-3"><dt class="w-28 text-accent">Cloud:</dt><dd>S3, CloudFront, ACM, CloudWatch</dd></div><div class="flex gap-3"><dt class="w-28 text-accent">DNS:</dt><dd>Cloudflare</dd></div><div class="flex gap-3"><dt class="w-28 text-accent">CI/CD:</dt><dd>GitHub Actions, AWS OIDC</dd></div><div class="flex gap-3"><dt class="w-28 text-accent">Frontend:</dt><dd>HTML, Tailwind CSS, JavaScript</dd></div></dl></article>
+        <section id="architecture" class="portfolio-architecture panel rounded-lg border">
+          <h2 class="section-label section-title">architecture</h2>
+          <div class="portfolio-architecture-layout">
+            <div class="portfolio-architecture-copy">
+              <p class="portfolio-architecture-intro">Visitors reach the portfolio through Cloudflare DNS. Traffic is served by CloudFront over HTTPS. CloudFront accesses a private S3 origin through Origin Access Control. Infrastructure is provisioned with Terraform.</p>
+              <div class="portfolio-architecture-principles">
+                <article>
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 0 20" /><path d="M12 2a15.3 15.3 0 0 0 0 20" /></svg></span>
+                  <div><h3>Public entry point</h3><p>CloudFront is the only public entry point and handles TLS, caching, and security headers.</p></div>
+                </article>
+                <article>
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></span>
+                  <div><h3>Private origin</h3><p>The S3 bucket remains private and is reachable only through CloudFront using OAC.</p></div>
+                </article>
+                <article>
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6" /><path d="M12 19h8" /></svg></span>
+                  <div><h3>Infrastructure ownership</h3><p>Terraform provisions the infrastructure and GitHub Actions handles automated delivery.</p></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="portfolio-architecture-visual">
+              <div class="portfolio-architecture-visual-header">
+                <h3>Portfolio Infrastructure</h3>
+                <button data-enlarge data-caption="Runtime request flow from Cloudflare DNS through CloudFront to the private S3 origin" type="button" aria-label="Open full portfolio architecture diagram"><img src="images/portfolio/architecture-diagram-portfolio-site.png" alt="Portfolio delivery architecture diagram" class="hidden" />Open full architecture diagram ↗</button>
+              </div>
+              <button data-enlarge data-caption="Runtime request flow from Cloudflare DNS through CloudFront to the private S3 origin" type="button" class="portfolio-architecture-image" aria-label="Open full portfolio architecture diagram">
+                <img src="images/portfolio/architecture-diagram-portfolio-site.png" alt="Request path from users through Cloudflare DNS and CloudFront Origin Access Control to a private S3 bucket" width="1672" height="941" loading="lazy" />
+              </button>
+              <div class="portfolio-architecture-outcomes" aria-label="Architecture outcomes">
+                <article><span>✓</span><div><h3>Private by default</h3><p>Content stays in a private S3 bucket and is only accessible through OAC.</p></div></article>
+                <article><span>✓</span><div><h3>Global HTTPS delivery</h3><p>CloudFront delivers content over HTTPS with low latency and automatic TLS.</p></div></article>
+                <article><span>✓</span><div><h3>Cost-conscious design</h3><p>Leverages caching and serverless services to keep operating costs low.</p></div></article>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section id="architecture" class="panel rounded-lg border border-line p-5 sm:p-7"><h2 class="section-label text-sm text-accent">architecture</h2><button data-enlarge data-caption="Portfolio delivery architecture" type="button" class="mt-5 block w-full cursor-zoom-in overflow-hidden rounded-lg border border-line bg-[#080d12] p-3" aria-label="Open portfolio delivery architecture diagram"><img src="images/architecture-diagram-portfolio-site.png" alt="Request path from users through Cloudflare DNS and CloudFront to a private S3 bucket" width="1672" height="941" loading="lazy" class="h-auto w-full object-contain" /></button></section>
+        <section id="terraform-design" class="terraform-design-section">
+          <div class="terraform-design-intro panel rounded-lg border border-line">
+            <h2 class="section-label section-title">terraform_design</h2>
+            <p class="terraform-design-lead">Terraform keeps the portfolio infrastructure reproducible and low-maintenance by composing focused modules around a single environment root. The design separates backend bootstrap, runtime resources, and CI/CD identities while keeping the deployment workflow straightforward.</p>
+            <div class="terraform-design-pillars">
+              <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></span><div><h3>Remote state</h3><p>Encrypted S3 backend with native <code>.tflock</code> locking.</p></div></article>
+              <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 4 2.3v4.6L12 11.2 8 8.9V4.3L12 2Z" /><path d="m5 9 4 2.3v4.6L5 18.2 1 15.9v-4.6L5 9Z" /><path d="m19 9 4 2.3v4.6L19 18.2l-4-2.3v-4.6L19 9Z" /><path d="m12 15 4 2.3v4.6L12 24.2 8 21.9v-4.6L12 15Z" /></svg></span><div><h3>Focused modules</h3><p>Small modules with explicit responsibilities and clear contracts.</p></div></article>
+              <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg></span><div><h3>Explicit dependencies</h3><p>Outputs connect modules and make resource relationships visible.</p></div></article>
+            </div>
+          </div>
 
-        <section id="features" class="panel rounded-lg border border-line p-5 sm:p-7"><h2 class="section-label text-sm text-accent">features</h2><div class="mt-6 grid gap-4 md:grid-cols-3"><article class="rounded border border-line p-5"><p class="text-accent">01</p><h3 class="mt-3 text-white">Private delivery</h3><p class="mt-3 text-sm leading-6 text-slate-400">CloudFront signs origin requests with OAC; the website bucket blocks all public access.</p></article><article class="rounded border border-line p-5"><p class="text-accent">02</p><h3 class="mt-3 text-white">Passwordless CI/CD</h3><p class="mt-3 text-sm leading-6 text-slate-400">Repository-scoped OIDC roles provide temporary credentials with bounded permissions.</p></article><article class="rounded border border-line p-5"><p class="text-accent">03</p><h3 class="mt-3 text-white">Operational readiness</h3><p class="mt-3 text-sm leading-6 text-slate-400">Versioning, access logs, alarms, cache policies and recovery documentation support safe operation.</p></article></div></section>
+          <div class="terraform-design-details panel rounded-lg border border-line">
+            <div class="terraform-design-top">
+              <article class="terraform-structure-card">
+                <h3>Infrastructure structure</h3>
+                <pre aria-label="Terraform directory structure"><code>terraform/
+├── bootstrap/
+│   └── backend/
+└── environments/
+    ├── dev/
+    └── modules/
+        ├── s3/
+        ├── acm-cloudflare/
+        ├── cloudfront/
+        ├── cloudflare-dns/
+        ├── github-actions-iam/
+        └── monitoring/</code></pre>
+              </article>
+              <article class="terraform-principles-card">
+                <h3>Design principles</h3>
+                <ul>
+                  <li><span></span>Single <code>dev</code> root module</li>
+                  <li><span></span>AWS provider alias <code>us_east_1</code></li>
+                  <li><span></span>Module contracts through inputs and outputs</li>
+                  <li><span></span>Terraform validation and policy checks in CI</li>
+                </ul>
+              </article>
+            </div>
 
-        <section id="lessons" class="panel rounded-lg border border-line p-5 sm:p-7"><h2 class="section-label text-sm text-accent">lessons</h2><div class="mt-6 grid gap-7 md:grid-cols-2 md:divide-x md:divide-line"><div><h3 class="text-white">What I learned</h3><ul class="mt-4 space-y-3 text-sm text-slate-400"><li>• Designing least-privilege OIDC trust and permissions</li><li>• Handling private-origin 403/404 behavior correctly</li><li>• Separating infrastructure apply from frontend delivery</li></ul></div><div class="md:pl-7"><h3 class="text-white">Accepted trade-offs</h3><ul class="mt-4 space-y-3 text-sm text-slate-400"><li>• A single dev environment keeps portfolio costs low</li><li>• Full CloudFront invalidation favors simplicity at this scale</li><li>• WAF and multi-region recovery remain outside the demo scope</li></ul></div></div></section>
+            <section class="terraform-modules" aria-labelledby="terraform-modules-title">
+              <h3 id="terraform-modules-title">Module responsibilities</h3>
+              <div>
+                <article><span><img src="images/logos/s3-bucket.png" alt="" aria-hidden="true" /></span><div><h4>s3</h4><p>Private origin bucket and CloudFront access logs bucket</p></div></article>
+                <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v4" /><path d="M9 21H5a2 2 0 0 1-2-2v-4" /><rect width="12" height="12" x="6" y="6" rx="2" /><path d="m9 12 2 2 4-4" /></svg></span><div><h4>acm-cloudflare</h4><p>ACM certificate and Cloudflare DNS validation</p></div></article>
+                <article><span><img src="images/logos/cloudfront.png" alt="" aria-hidden="true" /></span><div><h4>cloudfront</h4><p>CDN, OAC, security headers, caching, logging and error handling</p></div></article>
+                <article><span><img src="images/logos/cloudflare.svg" alt="" aria-hidden="true" /></span><div><h4>cloudflare-dns</h4><p>Public DNS records pointing to the CloudFront distribution</p></div></article>
+                <article><span><img src="images/logos/github-actions.svg" alt="" aria-hidden="true" /></span><div><h4>github-actions-iam</h4><p>OIDC provider, scoped roles, policies and permissions boundary</p></div></article>
+                <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18" /><path d="m7 16 4-5 4 3 5-7" /></svg></span><div><h4>monitoring</h4><p>CloudFront 4xx/5xx alarms and operational visibility</p></div></article>
+              </div>
+            </section>
 
-        <section id="screenshots" class="panel rounded-lg border border-line p-4 sm:p-7"><div class="flex items-center justify-between"><h2 class="section-label text-sm text-accent">project_diagrams</h2><span data-counter class="text-xs text-slate-500"></span></div>
+            <ul class="terraform-design-outcomes" aria-label="Terraform design outcomes">
+              <li><span>✓</span>Reproducible infrastructure</li>
+              <li><span>✓</span>Cross-provider automation</li>
+              <li><span>✓</span>Low operational complexity</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="cicd" class="portfolio-cicd panel rounded-lg border">
+          <div class="portfolio-cicd-header">
+            <div><h2 class="section-label section-title">cicd</h2><p>Automated delivery and explicit trust boundaries keep AWS credentials temporary, permissions scoped, and infrastructure and content delivery responsibilities separate.</p></div>
+            <aside><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg><div><strong>No long-lived AWS credentials in GitHub.</strong><span>AWS access is granted just-in-time through GitHub OIDC.</span></div></aside>
+          </div>
+
+          <div class="portfolio-cicd-layout">
+            <div class="portfolio-cicd-left">
+              <section class="cicd-pipelines" aria-labelledby="cicd-pipelines-title">
+                <h3 id="cicd-pipelines-title">Delivery pipelines</h3>
+                <div>
+                  <article>
+                    <div class="cicd-pipeline-copy"><span>01</span><div><h4>Infrastructure pipeline</h4><p>PRs run static validation only. Push and manual runs revalidate, pass through the <code>dev</code> environment, assume the Terraform role, then run init, plan and apply.</p></div></div>
+                  </article>
+                  <article>
+                    <div class="cicd-pipeline-copy"><span>02</span><div><h4>Website delivery pipeline</h4><p>PRs validate the build without deploying. Main and manual runs build a fresh artifact, then a restricted publishing role synchronizes S3 metadata and invalidates CloudFront.</p></div></div>
+                  </article>
+                </div>
+              </section>
+
+              <section class="cicd-boundaries" aria-labelledby="cicd-boundaries-title">
+                <h3 id="cicd-boundaries-title">Trust boundaries</h3>
+                <div>
+                  <article><span class="cicd-boundary-icon"><img src="images/logos/github-actions.svg" alt="" aria-hidden="true" /></span><div><h4>GitHub Actions</h4><p>Builds and validates code, requests short-lived AWS access through OIDC, and stores the scoped Cloudflare token in the protected environment.</p></div><small>CI platform</small></article>
+                  <article><span class="cicd-boundary-icon"><img src="images/logos/aws.svg" alt="" aria-hidden="true" /></span><div><h4>AWS account</h4><p>Hosts the infrastructure and issues temporary credentials only when repository, audience, and environment claims match.</p></div><small>Cloud boundary</small></article>
+                  <article><span class="cicd-boundary-icon cicd-boundary-cloudflare"><img src="images/logos/cloudflare.svg" alt="" aria-hidden="true" /></span><div><h4>Cloudflare DNS</h4><p>Terraform manages DNS records through a separately scoped API token, independent of the AWS IAM roles.</p></div><small>DNS provider</small></article>
+                  <article><span class="cicd-boundary-icon cicd-boundary-bootstrap"><img src="images/logos/terraform.svg" alt="" aria-hidden="true" /></span><div><h4>Privileged bootstrap identity</h4><p>Creates the backend and initially provisions or changes OIDC and IAM resources outside normal CI/CD.</p></div><small>Operator boundary</small></article>
+                </div>
+              </section>
+            </div>
+
+            <div class="portfolio-cicd-right">
+              <section class="cicd-identity" aria-labelledby="cicd-identity-title">
+                <h3 id="cicd-identity-title">Identity &amp; access flow</h3>
+                <div class="cicd-identity-chain">
+                  <article><span><img src="images/logos/github-actions.svg" alt="" aria-hidden="true" /></span><h4>GitHub Actions</h4><p>Requests AWS access</p></article><b>→</b>
+                  <article><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="14" x="3" y="5" rx="2" /><path d="M7 9h4" /><path d="M7 13h2" /><circle cx="17" cy="12" r="2" /><path d="m19 14 1.5 1.5" /></svg></span><h4>GitHub OIDC</h4><p>Issues identity token</p></article><b>→</b>
+                  <article><span><img src="images/logos/aws.svg" alt="" aria-hidden="true" /></span><h4>AWS STS</h4><p>Returns temporary credentials</p></article>
+                </div>
+                <div class="cicd-access-paths">
+                  <article><h4>Terraform Apply Role</h4><p>Manages scoped AWS infrastructure. A permissions boundary caps its maximum access and it has no IAM write permissions.</p><span>Terraform workflow</span></article>
+                  <article><h4>Frontend Deploy Role</h4><p>Publishes website objects and invalidates only the managed CloudFront distribution.</p><span>Website workflow</span></article>
+                  <article class="cicd-cloudflare-path"><h4>Cloudflare API Token</h4><p>Authenticates the Cloudflare provider separately for DNS record management.</p><span>Separate credential path</span></article>
+                </div>
+              </section>
+
+              <section class="cicd-principles" aria-labelledby="cicd-principles-title">
+                <h3 id="cicd-principles-title">Key trust principles</h3>
+                <div>
+                  <article><span>✓</span><div><h4>Least privilege</h4><p>Each AWS role has only the permissions required by its workflow.</p></div></article>
+                  <article><span>✓</span><div><h4>Short-lived AWS access</h4><p>OIDC tokens and STS credentials expire automatically.</p></div></article>
+                  <article><span>✓</span><div><h4>Separation of concerns</h4><p>Infrastructure, website publishing and DNS use distinct authorization paths.</p></div></article>
+                  <article><span>✓</span><div><h4>Protected deployments</h4><p>GitHub Environment protections and reviewers can gate deployments when configured.</p></div></article>
+                  <article><span>✓</span><div><h4>No AWS key sprawl</h4><p>No long-lived AWS access keys are stored as repository or environment secrets.</p></div></article>
+                  <article><span>✓</span><div><h4>Delivery traceability</h4><p>GitHub workflow history, CloudFront access logs and CloudWatch alarms support investigation.</p></div></article>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <p class="portfolio-cicd-summary"><span>ⓘ</span>CI/CD uses GitHub OIDC for AWS access and a separately scoped API token for Cloudflare DNS—no long-lived AWS credentials are stored in GitHub.</p>
+        </section>
+
+        <section id="engineering-decisions" class="portfolio-engineering-decisions">
+          <aside class="engineering-decisions-intro panel rounded-lg border border-line">
+            <h2 class="section-label section-title">engineering_decisions</h2>
+            <p>The project stays intentionally small, but the delivery model is opinionated. Each decision favors private-by-default delivery, reproducible infrastructure, and low operational overhead for a personal portfolio.</p>
+            <div><span>ⓘ</span><p>These choices trade a small amount of setup complexity for clearer boundaries and safer automation.</p></div>
+          </aside>
+
+          <div class="engineering-decisions-grid">
+            <article class="engineering-decision-card panel rounded-lg border border-line">
+              <header><span>1</span><h3>Private S3 origin</h3></header>
+              <dl>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="m3 8 9 5 9-5"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>Choice</dt><dd>CloudFront with OAC instead of public S3 website hosting</dd></div>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>Why</dt><dd>Keeps the bucket private and makes CloudFront the only public content entry point</dd></div>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8a5 5 0 0 1-6 0"/><path d="m2 16 3-8 3 8a5 5 0 0 1-6 0"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/></svg></span>Trade-off</dt><dd>Requires additional origin access configuration and bucket policies</dd></div>
+              </dl>
+            </article>
+
+            <article class="engineering-decision-card panel rounded-lg border border-line">
+              <header><span>2</span><h3>Cloudflare + ACM</h3></header>
+              <dl>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="m3 8 9 5 9-5"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>Choice</dt><dd>Keep authoritative DNS in Cloudflare while using ACM and CloudFront for HTTPS</dd></div>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>Why</dt><dd>Preserves existing DNS management while keeping content delivery on AWS</dd></div>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8a5 5 0 0 1-6 0"/><path d="m2 16 3-8 3 8a5 5 0 0 1-6 0"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/></svg></span>Trade-off</dt><dd>Cross-provider Terraform and automated DNS validation add coordination</dd></div>
+              </dl>
+            </article>
+
+            <article class="engineering-decision-card panel rounded-lg border border-line">
+              <header><span>3</span><h3>Separate delivery paths</h3></header>
+              <dl>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="m3 8 9 5 9-5"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>Choice</dt><dd>Split infrastructure changes from website content deployments</dd></div>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>Why</dt><dd>HTML, CSS and JavaScript updates do not require a Terraform apply</dd></div>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8a5 5 0 0 1-6 0"/><path d="m2 16 3-8 3 8a5 5 0 0 1-6 0"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/></svg></span>Trade-off</dt><dd>Requires separate workflows, roles and deployment logic</dd></div>
+              </dl>
+            </article>
+
+            <article class="engineering-decision-card panel rounded-lg border border-line">
+              <header><span>4</span><h3>Bootstrap outside CI/CD</h3></header>
+              <dl>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="m3 8 9 5 9-5"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>Choice</dt><dd>Handle backend and IAM bootstrap outside routine automation</dd></div>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>Why</dt><dd>Prevents normal delivery pipelines from controlling their own trust boundary</dd></div>
+                <div><dt><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8a5 5 0 0 1-6 0"/><path d="m2 16 3-8 3 8a5 5 0 0 1-6 0"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/></svg></span>Trade-off</dt><dd>Sensitive IAM and bootstrap changes remain privileged operator tasks</dd></div>
+              </dl>
+            </article>
+          </div>
+
+          <ul class="engineering-decisions-outcomes" aria-label="Engineering decision outcomes">
+            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg></span>Private by default</li>
+            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0" /><circle cx="12" cy="7" r="4" /></svg></span>Least privilege</li>
+            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /><circle cx="12" cy="12" r="3" /></svg></span>Low operational complexity</li>
+          </ul>
+        </section>
+
+        <section id="trade-offs" class="portfolio-trade-offs">
+          <aside class="portfolio-trade-offs-intro panel rounded-lg border border-line">
+            <h2 class="section-label section-title">trade_offs</h2>
+            <p>The project is intentionally scoped for a personal portfolio. It prioritizes reproducibility, security, and low operational overhead over production-grade resilience features that would add complexity and cost.</p>
+            <div><span>ⓘ</span><p>These constraints are deliberate design choices, not missing fundamentals.</p></div>
+          </aside>
+
+          <div class="portfolio-trade-offs-grid">
+            <article class="portfolio-trade-off-card panel rounded-lg border border-line">
+              <header><span>1</span><h3>Single dev environment</h3></header>
+              <dl><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>Choice</dt><dd>One <code>dev</code> environment keeps the project simple and reproducible.</dd></div><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg></span>Trade-off</dt><dd>No staging/production split or artifact promotion workflow.</dd></div></dl>
+            </article>
+            <article class="portfolio-trade-off-card panel rounded-lg border border-line">
+              <header><span>2</span><h3>PriceClass_100</h3></header>
+              <dl><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>Choice</dt><dd>CloudFront edge coverage is intentionally limited to control CDN cost.</dd></div><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg></span>Trade-off</dt><dd>Less geographic coverage than broader CloudFront price classes.</dd></div></dl>
+            </article>
+            <article class="portfolio-trade-off-card panel rounded-lg border border-line">
+              <header><span>3</span><h3>Full invalidation</h3></header>
+              <dl><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>Choice</dt><dd>Invalidate the full CloudFront distribution with <code>/*</code> after deployment.</dd></div><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg></span>Trade-off</dt><dd>Less efficient than targeted invalidation, but simpler at this scale.</dd></div></dl>
+            </article>
+            <article class="portfolio-trade-off-card panel rounded-lg border border-line">
+              <header><span>4</span><h3>Explicit cache strategy</h3></header>
+              <dl><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>Choice</dt><dd>HTML is <code>no-cache</code>, hashed CSS/JS is immutable, and other assets cache for one hour.</dd></div><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg></span>Trade-off</dt><dd>The deployment must apply object metadata in multiple passes.</dd></div></dl>
+            </article>
+            <article class="portfolio-trade-off-card panel rounded-lg border border-line">
+              <header><span>5</span><h3>No advanced resilience layer</h3></header>
+              <dl><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>Choice</dt><dd>No WAF, origin failover, or cross-region replication is provisioned.</dd></div><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg></span>Trade-off</dt><dd>Lower complexity and cost, but fewer resilience and edge-security capabilities.</dd></div></dl>
+            </article>
+            <article class="portfolio-trade-off-card panel rounded-lg border border-line">
+              <header><span>6</span><h3>Redeploy-based recovery</h3></header>
+              <dl><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>Choice</dt><dd>Recover a partial or failed publish by redeploying a complete known-good build.</dd></div><div><dt><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="trade-off-row-icon" aria-hidden="true" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg></span>Trade-off</dt><dd>Recovery requires a clean workflow rerun instead of an automatic atomic rollback.</dd></div></dl>
+            </article>
+          </div>
+
+          <ul class="portfolio-trade-offs-outcomes" aria-label="Trade-off priorities">
+            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7h-9" /><path d="M14 17H5" /><circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" /></svg></span>Low cost</li>
+            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg></span>Low maintenance</li>
+            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg></span>Deliberate scope</li>
+          </ul>
+        </section>
+
+        <section id="diagrams" class="panel rounded-lg border border-line p-4 sm:p-7"><div class="flex items-center justify-between"><h2 class="section-label section-title">diagrams</h2><span data-counter class="text-xs text-slate-500"></span></div>
           <div data-carousel tabindex="0" class="mt-5" aria-label="Portfolio delivery diagrams carousel"><div class="overflow-hidden rounded-lg border border-line bg-[#080d12]">
-            <button data-slide data-caption="Portfolio delivery architecture" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in p-3" aria-label="Open portfolio delivery architecture"><img src="images/architecture-diagram-portfolio-site.png" alt="Portfolio delivery request path architecture" width="1672" height="941" loading="lazy" class="h-full w-full object-contain" /></button>
-            <button data-slide data-caption="Terraform dependency graph" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in p-3" aria-label="Open Terraform dependency graph"><img src="images/dependency-graph.png" alt="Dependency graph between Terraform infrastructure modules" width="1536" height="1024" loading="lazy" class="h-full w-full object-contain" /></button>
-            <button data-slide data-caption="Main deployment flow" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in p-3" aria-label="Open main deployment flow"><img src="images/main-deploy-flow.png" alt="Terraform and frontend deployment workflow" width="1536" height="1024" loading="lazy" class="h-full w-full object-contain" /></button>
-            <button data-slide data-caption="Terraform backend bootstrap" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in p-3" aria-label="Open backend bootstrap flow"><img src="images/bootstrap.png" alt="Terraform backend bootstrap lifecycle" width="1672" height="941" loading="lazy" class="h-full w-full object-contain" /></button>
-            <button data-slide data-caption="ACM validation flow" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in p-3" aria-label="Open ACM validation flow"><img src="images/acm-validation-flow.png" alt="ACM certificate validation through Cloudflare DNS" width="1536" height="1024" loading="lazy" class="h-full w-full object-contain" /></button>
+            <button data-slide data-caption="Portfolio delivery architecture" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in p-3" aria-label="Open portfolio delivery architecture"><img src="images/portfolio/architecture-diagram-portfolio-site.png" alt="Portfolio delivery request path architecture" width="1672" height="941" loading="lazy" class="h-full w-full object-contain" /></button>
+            <button data-slide data-caption="Terraform infrastructure pipeline" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in p-3" aria-label="Open infrastructure pipeline diagram"><img src="images/portfolio/infrastructure-pipeline.png" alt="Terraform validation and infrastructure delivery through GitHub OIDC to AWS and Cloudflare" width="1672" height="941" loading="lazy" class="h-full w-full object-contain" /></button>
+            <button data-slide data-caption="Website delivery pipeline" type="button" class="carousel-slide aspect-video w-full cursor-zoom-in p-3" aria-label="Open website delivery pipeline diagram"><img src="images/portfolio/website-delivery-pipeline.png" alt="Static website build and deployment through GitHub OIDC to S3 and CloudFront" width="1672" height="941" loading="lazy" class="h-full w-full object-contain" /></button>
           </div><div class="mt-4 flex items-center justify-between"><button data-prev type="button" class="rounded border border-line p-2 hover:text-accent" aria-label="Previous diagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button><div data-dots class="flex gap-2" aria-label="Choose diagram"></div><button data-next type="button" class="rounded border border-line p-2 hover:text-accent" aria-label="Next diagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></button></div></div>
         </section>
       </div>

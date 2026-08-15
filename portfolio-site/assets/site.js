@@ -4,20 +4,37 @@ const qsa = (selector, root = document) => [...root.querySelectorAll(selector)];
 const navLinks = qsa("[data-section-link]");
 const sections = navLinks.map((link) => qs(link.hash)).filter(Boolean);
 const projectNav = navLinks[0]?.closest(".project-nav");
-if (sections.length && "IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (!visible) return;
-    navLinks.forEach((link) => link.setAttribute("aria-current", String(link.hash === `#${visible.target.id}`)));
-    const activeLink = qs(`[data-section-link][href="#${visible.target.id}"]`);
+if (sections.length) {
+  let activeSectionId = "";
+  let scrollFrame;
+
+  const updateActiveSection = () => {
+    const navBottom = projectNav?.getBoundingClientRect().bottom ?? 0;
+    const probeY = navBottom + (window.innerHeight - navBottom) * 0.28;
+    const activeSection = sections.reduce((active, section) =>
+      section.getBoundingClientRect().top <= probeY ? section : active, sections[0]);
+
+    if (activeSection.id === activeSectionId) return;
+    activeSectionId = activeSection.id;
+    navLinks.forEach((link) => link.setAttribute("aria-current", String(link.hash === `#${activeSectionId}`)));
+
+    const activeLink = qs(`[data-section-link][href="#${activeSectionId}"]`);
     if (activeLink && projectNav) {
       projectNav.scrollTo({
         left: activeLink.offsetLeft - (projectNav.clientWidth - activeLink.clientWidth) / 2,
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
       });
     }
-  }, { rootMargin: "-25% 0px -60%", threshold: [0, 0.2, 0.6] });
-  sections.forEach((section) => observer.observe(section));
+  };
+
+  const queueActiveSectionUpdate = () => {
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = requestAnimationFrame(updateActiveSection);
+  };
+
+  window.addEventListener("scroll", queueActiveSectionUpdate, { passive: true });
+  window.addEventListener("resize", queueActiveSectionUpdate);
+  updateActiveSection();
 }
 
 let activeLightbox;

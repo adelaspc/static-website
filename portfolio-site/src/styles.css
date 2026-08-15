@@ -774,6 +774,7 @@
     -webkit-overflow-scrolling: touch;
   }
   .project-nav::-webkit-scrollbar { display: none; }
+  .project-nav a { font-size: 1rem; }
   .project-nav a[aria-current="true"] { color: #72e34f; border-color: #72e34f; }
   .carousel-slide { display: block; }
   .carousel-slide[data-active="false"] { display: none; }
@@ -786,6 +787,317 @@
   .lightbox[hidden] { display: none; }
   .lightbox { display: grid; }
   body.lightbox-open { overflow: hidden; }
+
+  .portfolio-hero {
+    background:
+      radial-gradient(circle at 78% 18%, rgba(51, 111, 143, 0.08), transparent 34%),
+      linear-gradient(145deg, rgba(8, 16, 22, 0.98), rgba(6, 13, 18, 0.98));
+  }
+  .portfolio-hero-grid { display: grid; gap: 1.75rem; }
+  .portfolio-hero-heading { display: flex; gap: 1rem; align-items: flex-start; }
+  .portfolio-hero-eyebrow {
+    color: #72e34f;
+    font-size: clamp(1.15rem, 1.5vw, 1.3rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+  .portfolio-hero-eyebrow::before { content: "/"; margin-right: 0.15rem; }
+  .portfolio-tech-list { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.65rem; }
+  .portfolio-tech-list li {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid #2b3742;
+    border-radius: 0.4rem;
+    background: rgba(10, 18, 24, 0.72);
+    padding: 0.65rem 0.9rem;
+    color: #e5ebf0;
+    font-size: 0.95rem;
+  }
+  .portfolio-tech-list img,
+  .portfolio-tech-list svg { width: 1.4rem; height: 1.4rem; flex: 0 0 auto; object-fit: contain; }
+  .portfolio-tech-list svg { color: #72e34f; }
+  .portfolio-live-proof {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.45rem;
+    border: 1px solid rgba(114, 227, 79, 0.55);
+    border-radius: 0.45rem;
+    background: linear-gradient(90deg, rgba(114, 227, 79, 0.07), rgba(114, 227, 79, 0.025));
+    padding: 1.1rem 1.5rem;
+    color: #72e34f;
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.7;
+  }
+  .portfolio-live-proof svg { width: 1.7rem; height: 1.7rem; flex: 0 0 auto; }
+  .portfolio-status { overflow: hidden; align-self: stretch; padding: 0 1.25rem; }
+  .portfolio-status > div { display: flex; min-height: 4.35rem; align-items: center; justify-content: space-between; gap: 1rem; }
+  .portfolio-status > div + div { border-top: 1px solid #2b3742; }
+  .portfolio-status dt { display: inline-flex; align-items: center; gap: 0.75rem; color: #aeb9c5; font-size: 0.76rem; }
+  .portfolio-status dt svg { width: 1.3rem; height: 1.3rem; color: #72e34f; }
+  .portfolio-status dd { color: white; font-size: 0.76rem; text-align: right; }
+  .portfolio-status dd.text-accent { color: #72e34f; }
+  .portfolio-capabilities { display: grid; gap: 0.9rem; margin-top: 1.75rem; }
+  .portfolio-capabilities article {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    min-height: 7.25rem;
+    border: 1px solid #2b3742;
+    border-radius: 0.45rem;
+    background: linear-gradient(145deg, rgba(14, 24, 31, 0.88), rgba(8, 16, 22, 0.92));
+    padding: 1.25rem;
+  }
+  .portfolio-capabilities article > span {
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(114, 227, 79, 0.38);
+    border-radius: 0.45rem;
+    background: rgba(114, 227, 79, 0.045);
+    color: #72e34f;
+  }
+  .portfolio-capabilities article > span svg { width: 1.45rem; height: 1.45rem; }
+  .portfolio-capabilities h2 { color: white; font-size: 1.05rem; font-weight: 600; }
+  .portfolio-capabilities p { margin-top: 0.55rem; color: #9eabb8; font-size: 0.95rem; line-height: 1.75; }
+
+  .portfolio-architecture {
+    border-color: rgba(114, 227, 79, 0.42);
+    background:
+      linear-gradient(rgba(114, 227, 79, 0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(114, 227, 79, 0.012) 1px, transparent 1px),
+      linear-gradient(145deg, rgba(7, 16, 21, 0.98), rgba(6, 13, 18, 0.98));
+    background-size: 24px 24px, 24px 24px, auto;
+    padding: 1.5rem;
+  }
+  .portfolio-architecture-layout { display: grid; gap: 1.5rem; margin-top: 1.75rem; }
+  .portfolio-architecture-intro { color: #c1cad3; font-size: 0.95rem; line-height: 2; }
+  .portfolio-architecture-principles { display: grid; gap: 0.8rem; margin-top: 1.5rem; }
+  .portfolio-architecture-principles article {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border: 1px solid #34414d;
+    border-radius: 0.45rem;
+    background: linear-gradient(145deg, rgba(14, 24, 31, 0.9), rgba(8, 16, 22, 0.94));
+    padding: 1.15rem;
+  }
+  .portfolio-architecture-principles article > span {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(114, 227, 79, 0.38);
+    border-radius: 999px;
+    background: rgba(114, 227, 79, 0.035);
+    color: #72e34f;
+  }
+  .portfolio-architecture-principles svg { width: 1.35rem; height: 1.35rem; }
+  .portfolio-architecture-principles h3 { color: #72e34f; font-size: 1.05rem; font-weight: 600; }
+  .portfolio-architecture-principles p { margin-top: 0.55rem; color: #b8c2cc; font-size: 0.95rem; line-height: 1.8; }
+  .portfolio-architecture-visual {
+    border: 1px solid #34414d;
+    border-radius: 0.55rem;
+    background: rgba(7, 15, 20, 0.78);
+    padding: 1rem;
+  }
+  .portfolio-architecture-visual-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.9rem; }
+  .portfolio-architecture-visual-header h3 { color: white; font-size: 1.1rem; font-weight: 600; }
+  .portfolio-architecture-visual-header button {
+    border: 1px solid rgba(114, 227, 79, 0.35);
+    border-radius: 0.4rem;
+    background: rgba(114, 227, 79, 0.035);
+    padding: 0.65rem 0.85rem;
+    color: #72e34f;
+    font-size: 0.9rem;
+    cursor: zoom-in;
+  }
+  .portfolio-architecture-image {
+    display: block;
+    width: 100%;
+    margin-top: 1.25rem;
+    overflow: hidden;
+    border: 1px solid #34414d;
+    border-radius: 0.45rem;
+    background: white;
+    cursor: zoom-in;
+  }
+  .portfolio-architecture-image img { width: 100%; height: auto; object-fit: contain; }
+  .portfolio-architecture-outcomes { display: grid; gap: 0.75rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #2b3742; }
+  .portfolio-architecture-outcomes article { display: flex; gap: 0.75rem; border: 1px solid #34414d; border-radius: 0.4rem; background: rgba(13, 22, 28, 0.82); padding: 1rem; }
+  .portfolio-architecture-outcomes article > span { display: grid; width: 1.75rem; height: 1.75rem; flex: 0 0 auto; place-items: center; border: 1px solid rgba(114, 227, 79, 0.35); border-radius: 999px; background: rgba(114, 227, 79, 0.045); color: #72e34f; font-size: 0.72rem; }
+  .portfolio-architecture-outcomes h3 { color: #72e34f; font-size: 1rem; font-weight: 600; line-height: 1.5; }
+  .portfolio-architecture-outcomes p { margin-top: 0.45rem; color: #aeb9c5; font-size: 0.9rem; line-height: 1.75; }
+
+  .terraform-design-section { display: grid; gap: 1rem; }
+  .terraform-design-intro,
+  .terraform-design-details { padding: 1.5rem; }
+  .terraform-design-lead { margin-top: 1.25rem; color: #c0cad3; font-size: 0.92rem; line-height: 2; }
+  .terraform-design-pillars { display: grid; gap: 0.8rem; margin-top: 1.35rem; }
+  .terraform-design-pillars article {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border: 1px solid #34414d;
+    border-radius: 0.45rem;
+    background: linear-gradient(145deg, rgba(14, 24, 31, 0.9), rgba(8, 16, 22, 0.94));
+    padding: 1rem;
+  }
+  .terraform-design-pillars article > span {
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(114, 227, 79, 0.48);
+    border-radius: 0.45rem;
+    background: rgba(114, 227, 79, 0.035);
+    color: #72e34f;
+  }
+  .terraform-design-pillars svg { width: 1.5rem; height: 1.5rem; }
+  .terraform-design-pillars h3 { color: white; font-size: 1.05rem; font-weight: 600; }
+  .terraform-design-pillars p { margin-top: 0.45rem; color: #aeb9c5; font-size: 0.95rem; line-height: 1.75; }
+  .terraform-design-pillars code,
+  .terraform-principles-card code { color: #dbe4ec; }
+  .terraform-design-details { background: linear-gradient(145deg, rgba(13, 23, 30, 0.96), rgba(7, 14, 20, 0.98)); }
+  .terraform-design-top { display: grid; gap: 0.9rem; }
+  .terraform-structure-card,
+  .terraform-principles-card,
+  .terraform-modules {
+    border: 1px solid #34414d;
+    border-radius: 0.45rem;
+    background: rgba(6, 14, 19, 0.58);
+    padding: 1.15rem;
+  }
+  .terraform-structure-card > h3,
+  .terraform-principles-card > h3,
+  .terraform-modules > h3 { color: #72e34f; font-size: 1.1rem; font-weight: 600; }
+  .terraform-structure-card pre { margin-top: 1rem; overflow-x: auto; color: #e5ebf0; font-size: 0.92rem; line-height: 1.65; white-space: pre; }
+  .terraform-principles-card ul { display: grid; gap: 0.65rem; margin-top: 1rem; }
+  .terraform-principles-card li { display: flex; gap: 0.8rem; align-items: center; border: 1px solid #2b3742; border-radius: 0.4rem; background: rgba(15, 25, 32, 0.88); padding: 0.85rem 0.95rem; color: #e5ebf0; font-size: 0.92rem; line-height: 1.6; }
+  .terraform-principles-card li > span { width: 0.38rem; height: 0.38rem; flex: 0 0 auto; border-radius: 999px; background: #72e34f; box-shadow: 0 0 8px rgba(114, 227, 79, 0.3); }
+  .terraform-modules { margin-top: 0.9rem; }
+  .terraform-modules > div { display: grid; gap: 0.7rem; margin-top: 0.85rem; }
+  .terraform-modules article { display: flex; gap: 0.8rem; align-items: flex-start; border: 1px solid #2b3742; border-radius: 0.4rem; background: rgba(14, 24, 31, 0.82); padding: 0.85rem; }
+  .terraform-modules article > span { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border: 1px solid rgba(114, 227, 79, 0.38); border-radius: 0.4rem; background: rgba(114, 227, 79, 0.035); color: #72e34f; }
+  .terraform-modules article > span img,
+  .terraform-modules article > span svg { width: 1.55rem; height: 1.55rem; object-fit: contain; }
+  .terraform-modules h4 { color: white; font-size: 1rem; font-weight: 600; }
+  .terraform-modules p { margin-top: 0.35rem; color: #aeb9c5; font-size: 0.9rem; line-height: 1.7; }
+  .terraform-design-outcomes { display: grid; gap: 0.75rem; margin-top: 0.9rem; border: 1px solid #34414d; border-radius: 0.45rem; background: rgba(10, 19, 25, 0.76); padding: 0.9rem; }
+  .terraform-design-outcomes li { display: flex; gap: 0.65rem; align-items: center; color: #e5ebf0; font-size: 0.95rem; }
+  .terraform-design-outcomes li > span { display: grid; width: 1.2rem; height: 1.2rem; place-items: center; border: 1px solid #72e34f; border-radius: 999px; color: #72e34f; font-size: 0.58rem; }
+
+  .portfolio-cicd { border-color: rgba(114, 227, 79, 0.42); background: linear-gradient(145deg, rgba(7, 16, 21, 0.98), rgba(6, 13, 18, 0.98)); padding: 1.5rem; }
+  .portfolio-cicd-header { display: grid; gap: 1rem; }
+  .portfolio-cicd-header > div > p { margin-top: 1rem; max-width: 48rem; color: #b8c2cc; font-size: 0.95rem; line-height: 1.9; }
+  .portfolio-cicd-header aside { display: flex; gap: 0.9rem; align-items: center; border: 1px solid rgba(114, 227, 79, 0.35); border-radius: 0.45rem; background: rgba(114, 227, 79, 0.025); padding: 1rem; }
+  .portfolio-cicd-header aside > svg { width: 2.1rem; height: 2.1rem; flex: 0 0 auto; color: #72e34f; }
+  .portfolio-cicd-header aside div { display: grid; gap: 0.3rem; }
+  .portfolio-cicd-header aside strong { color: #72e34f; font-size: 1rem; }
+  .portfolio-cicd-header aside span { color: #9eabb8; font-size: 0.9rem; line-height: 1.65; }
+  .portfolio-cicd-layout { display: grid; gap: 1rem; margin-top: 1.4rem; }
+  .portfolio-cicd-left,
+  .portfolio-cicd-right { display: grid; align-content: start; gap: 1rem; }
+  .cicd-pipelines,
+  .cicd-boundaries,
+  .cicd-identity,
+  .cicd-principles { border: 1px solid #34414d; border-radius: 0.5rem; background: rgba(7, 15, 20, 0.68); padding: 1rem; }
+  .cicd-pipelines > h3,
+  .cicd-boundaries > h3,
+  .cicd-identity > h3,
+  .cicd-principles > h3 { color: #72e34f; font-size: 1.1rem; font-weight: 600; }
+  .cicd-pipelines > div { display: grid; gap: 0.85rem; margin-top: 1rem; }
+  .cicd-pipelines article { overflow: hidden; border: 1px solid #2b3742; border-radius: 0.4rem; background: rgba(13, 22, 29, 0.86); }
+  .cicd-pipeline-copy { display: flex; gap: 0.8rem; padding: 0.9rem; }
+  .cicd-pipeline-copy > span { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border: 1px solid rgba(114, 227, 79, 0.4); border-radius: 0.35rem; color: #72e34f; font-size: 1rem; font-weight: 600; }
+  .cicd-pipeline-copy h4 { color: white; font-size: 1.05rem; font-weight: 600; }
+  .cicd-pipeline-copy p { margin-top: 0.4rem; color: #aeb9c5; font-size: 0.92rem; line-height: 1.75; }
+  .cicd-pipeline-copy code { color: #dce5ec; }
+  .cicd-boundaries > div { display: grid; gap: 0.65rem; margin-top: 1rem; }
+  .cicd-boundaries article { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.75rem; align-items: center; border: 1px solid #2b3742; border-radius: 0.4rem; background: rgba(13, 22, 29, 0.82); padding: 0.75rem; }
+  .cicd-boundary-icon { display: grid; width: 3.25rem; height: 3.25rem; place-items: center; border: 1px solid #72e34f; border-radius: 0.4rem; color: white; }
+  .cicd-boundary-icon img { width: 2.1rem; height: 2.1rem; object-fit: contain; }
+  .cicd-boundary-cloudflare { border-color: #f38020; color: #f38020; }
+  .cicd-boundary-bootstrap { border-color: #a66cff; color: #a66cff; }
+  .cicd-boundaries h4 { color: white; font-size: 1.05rem; font-weight: 600; }
+  .cicd-boundaries p { margin-top: 0.35rem; color: #aeb9c5; font-size: 0.92rem; line-height: 1.65; }
+  .cicd-boundaries small { grid-column: 2; color: #72e34f; font-size: 0.82rem; }
+  .cicd-identity-chain { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 0.35rem; align-items: center; margin-top: 1rem; }
+  .cicd-identity-chain article { min-height: 8.5rem; border: 1px solid #34414d; border-radius: 0.4rem; background: rgba(13, 22, 29, 0.82); padding: 0.85rem; text-align: center; }
+  .cicd-identity-chain article > span { display: grid; width: 3rem; height: 3rem; margin: 0 auto 0.7rem; place-items: center; border: 1px solid rgba(114, 227, 79, 0.35); border-radius: 999px; color: #72e34f; font-size: 0.7rem; font-weight: 700; }
+  .cicd-identity-chain article > span img,
+  .cicd-identity-chain article > span svg { width: 1.8rem; height: 1.8rem; object-fit: contain; }
+  .cicd-identity-chain h4 { color: white; font-size: 1rem; font-weight: 600; line-height: 1.4; }
+  .cicd-identity-chain p { margin-top: 0.4rem; color: #aeb9c5; font-size: 0.88rem; line-height: 1.6; }
+  .cicd-identity-chain > b { color: #9eabb8; font-size: 1rem; }
+  .cicd-access-paths { display: grid; gap: 0.65rem; margin-top: 0.8rem; }
+  .cicd-access-paths article { border: 1px solid #34414d; border-radius: 0.4rem; background: rgba(13, 22, 29, 0.82); padding: 0.8rem; }
+  .cicd-access-paths h4 { color: white; font-size: 1rem; font-weight: 600; }
+  .cicd-access-paths p { margin-top: 0.4rem; color: #aeb9c5; font-size: 0.9rem; line-height: 1.65; }
+  .cicd-access-paths article > span { display: block; margin-top: 0.55rem; color: #72e34f; font-size: 0.82rem; }
+  .cicd-access-paths .cicd-cloudflare-path { border-color: rgba(243, 128, 32, 0.5); }
+  .cicd-access-paths .cicd-cloudflare-path h4,
+  .cicd-access-paths .cicd-cloudflare-path > span { color: #f38020; }
+  .cicd-principles > div { display: grid; gap: 0.8rem; margin-top: 1rem; }
+  .cicd-principles article { display: flex; gap: 0.7rem; align-items: flex-start; }
+  .cicd-principles article > span { display: grid; width: 1.55rem; height: 1.55rem; flex: 0 0 auto; place-items: center; border: 1px solid #72e34f; border-radius: 999px; color: #72e34f; font-size: 0.68rem; }
+  .cicd-principles h4 { color: white; font-size: 1rem; font-weight: 600; }
+  .cicd-principles p { margin-top: 0.3rem; color: #aeb9c5; font-size: 0.9rem; line-height: 1.7; }
+  .portfolio-cicd-summary { display: flex; gap: 0.7rem; align-items: center; margin-top: 1rem; border: 1px solid rgba(114, 227, 79, 0.35); border-radius: 0.4rem; background: rgba(114, 227, 79, 0.025); padding: 0.95rem 1.1rem; color: #72e34f; font-size: 0.9rem; line-height: 1.7; }
+  .portfolio-cicd-summary > span { font-size: 1rem; }
+
+  .portfolio-engineering-decisions { display: grid; gap: 1rem; }
+  .engineering-decisions-intro { padding: 1.5rem; }
+  .engineering-decisions-intro > p { margin-top: 1.25rem; color: #c0cad3; font-size: 0.95rem; line-height: 2; }
+  .engineering-decisions-intro > div { display: flex; gap: 1rem; align-items: center; margin-top: 2rem; border: 1px solid #34414d; border-radius: 0.45rem; background: rgba(13, 22, 29, 0.82); padding: 1rem; }
+  .engineering-decisions-intro > div > span { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border: 1px solid #72e34f; border-radius: 999px; color: #72e34f; font-size: 1.1rem; }
+  .engineering-decisions-intro > div p { color: #b8c2cc; font-size: 0.92rem; line-height: 1.75; }
+  .engineering-decisions-grid { display: grid; gap: 1rem; }
+  .engineering-decision-card { padding: 1rem; }
+  .engineering-decision-card header { display: flex; gap: 0.75rem; align-items: center; }
+  .engineering-decision-card header > span { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border: 1px solid #72e34f; border-radius: 0.4rem; color: #72e34f; font-size: 1.1rem; font-weight: 600; }
+  .engineering-decision-card header h3 { color: #72e34f; font-size: 1.05rem; font-weight: 600; }
+  .engineering-decision-card dl { display: grid; gap: 0.5rem; margin-top: 0.8rem; }
+  .engineering-decision-card dl > div { display: grid; border: 1px solid #34414d; border-radius: 0.4rem; overflow: hidden; background: rgba(9, 18, 24, 0.76); }
+  .engineering-decision-card dt { display: flex; gap: 0.65rem; align-items: center; border-bottom: 1px solid #34414d; padding: 0.8rem; color: #72e34f; font-size: 0.95rem; font-weight: 600; }
+  .engineering-decision-card dt > span { width: 1.35rem; color: #72e34f; font-size: 1.2rem; text-align: center; }
+  .engineering-decision-card dt > span svg { width: 1.25rem; height: 1.25rem; }
+  .engineering-decision-card dd { padding: 0.8rem; color: #b8c2cc; font-size: 0.92rem; line-height: 1.7; }
+  .engineering-decisions-outcomes { display: grid; gap: 0.75rem; border: 1px solid #34414d; border-radius: 0.5rem; background: linear-gradient(145deg, rgba(13, 23, 30, 0.94), rgba(7, 14, 20, 0.96)); padding: 1rem; }
+  .engineering-decisions-outcomes li { display: flex; gap: 0.9rem; align-items: center; color: white; font-size: 1rem; font-weight: 600; }
+  .engineering-decisions-outcomes li > span { display: grid; width: 2.75rem; height: 2.75rem; flex: 0 0 auto; place-items: center; border: 1px solid rgba(114, 227, 79, 0.4); border-radius: 0.45rem; background: rgba(114, 227, 79, 0.035); color: #72e34f; }
+  .engineering-decisions-outcomes svg { width: 1.5rem; height: 1.5rem; }
+
+  .portfolio-trade-offs { display: grid; gap: 1rem; border: 1px solid rgba(114, 227, 79, 0.42); border-radius: 0.5rem; background: linear-gradient(145deg, rgba(7, 16, 21, 0.98), rgba(6, 13, 18, 0.98)); padding: 1rem; }
+  .portfolio-trade-offs-intro { padding: 1.5rem; }
+  .portfolio-trade-offs-intro > p { margin-top: 1.25rem; color: #c0cad3; font-size: 0.95rem; line-height: 2; }
+  .portfolio-trade-offs-intro > div { display: flex; gap: 1rem; align-items: center; margin-top: 2rem; border: 1px solid #34414d; border-radius: 0.45rem; background: rgba(13, 22, 29, 0.82); padding: 1rem; }
+  .portfolio-trade-offs-intro > div > span { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border: 1px solid #72e34f; border-radius: 999px; color: #72e34f; font-size: 1.1rem; }
+  .portfolio-trade-offs-intro > div p { color: #b8c2cc; font-size: 0.92rem; line-height: 1.75; }
+  .portfolio-trade-offs-grid { display: grid; gap: 0.75rem; }
+  .portfolio-trade-off-card { padding: 0.85rem; }
+  .portfolio-trade-off-card header { display: flex; gap: 0.75rem; align-items: center; }
+  .portfolio-trade-off-card header > span { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border: 1px solid #72e34f; border-radius: 0.4rem; color: #72e34f; font-size: 1.1rem; font-weight: 600; }
+  .portfolio-trade-off-card header h3 { color: #72e34f; font-size: 1.05rem; font-weight: 600; }
+  .portfolio-trade-off-card dl { display: grid; gap: 0.4rem; margin-top: 0.65rem; }
+  .portfolio-trade-off-card dl > div { display: grid; overflow: hidden; border: 1px solid #34414d; border-radius: 0.4rem; background: rgba(9, 18, 24, 0.76); }
+  .portfolio-trade-off-card dt { display: flex; gap: 0.65rem; align-items: center; border-bottom: 1px solid #34414d; padding: 0.8rem; color: #72e34f; font-size: 0.95rem; font-weight: 600; }
+  .portfolio-trade-off-card dt > span { width: 1.35rem; color: #72e34f; text-align: center; }
+  .portfolio-trade-off-card dt > span svg { width: 1.25rem; height: 1.25rem; }
+  .portfolio-trade-off-card dd { padding: 0.8rem; color: #b8c2cc; font-size: 0.92rem; line-height: 1.7; }
+  .portfolio-trade-off-card code { color: #e5ebf0; }
+  .portfolio-trade-offs-outcomes { display: grid; gap: 0.75rem; border: 1px solid #34414d; border-radius: 0.5rem; background: linear-gradient(145deg, rgba(13, 23, 30, 0.94), rgba(7, 14, 20, 0.96)); padding: 1rem; }
+  .portfolio-trade-offs-outcomes li { display: flex; gap: 0.9rem; align-items: center; color: white; font-size: 1rem; font-weight: 600; }
+  .portfolio-trade-offs-outcomes li > span { display: grid; width: 2.75rem; height: 2.75rem; flex: 0 0 auto; place-items: center; border: 1px solid rgba(114, 227, 79, 0.4); border-radius: 0.45rem; background: rgba(114, 227, 79, 0.035); color: #72e34f; }
+  .portfolio-trade-offs-outcomes svg { width: 1.5rem; height: 1.5rem; }
 }
 
 @media (min-width: 40rem) {
@@ -799,6 +1111,36 @@
   .decisions-outcome ul { grid-column: 2; }
   .cost-report-summary { grid-template-columns: minmax(0, 1fr) auto; }
   .cost-report-summary dl { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .portfolio-hero-heading { gap: 1.5rem; }
+  .portfolio-capabilities { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .portfolio-architecture { padding: 2rem; }
+  .portfolio-architecture-outcomes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .terraform-design-intro,
+  .terraform-design-details { padding: 1.75rem; }
+  .terraform-design-top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .terraform-modules > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .terraform-design-outcomes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .terraform-design-outcomes li { justify-content: center; }
+  .portfolio-cicd { padding: 1.75rem; }
+  .portfolio-cicd-header { grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.42fr); align-items: start; }
+  .cicd-pipelines > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cicd-boundaries article { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .cicd-boundaries small { grid-column: auto; text-align: right; }
+  .cicd-access-paths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cicd-cloudflare-path { grid-column: 1 / -1; }
+  .cicd-principles > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .engineering-decisions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .engineering-decision-card dl > div { grid-template-columns: minmax(8rem, 0.38fr) minmax(0, 1fr); }
+  .engineering-decision-card dt { border-right: 1px solid #34414d; border-bottom: 0; }
+  .engineering-decisions-outcomes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .engineering-decisions-outcomes li { justify-content: center; padding-inline: 1rem; }
+  .engineering-decisions-outcomes li + li { border-left: 1px solid #34414d; }
+  .portfolio-trade-offs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .portfolio-trade-off-card dl > div { grid-template-columns: minmax(8rem, 0.38fr) minmax(0, 1fr); }
+  .portfolio-trade-off-card dt { border-right: 1px solid #34414d; border-bottom: 0; }
+  .portfolio-trade-offs-outcomes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .portfolio-trade-offs-outcomes li { justify-content: center; padding-inline: 1rem; }
+  .portfolio-trade-offs-outcomes li + li { border-left: 1px solid #34414d; }
 }
 
 @media (min-width: 80rem) {
@@ -838,6 +1180,21 @@
 }
 
 @media (min-width: 64rem) {
+  .portfolio-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.34fr); align-items: stretch; }
+  .portfolio-architecture-layout { grid-template-columns: minmax(16rem, 0.36fr) minmax(0, 1fr); align-items: start; gap: 1.75rem; }
+  .terraform-design-section { grid-template-columns: minmax(18rem, 0.32fr) minmax(0, 1fr); align-items: stretch; }
+  .terraform-design-intro { display: flex; flex-direction: column; }
+  .terraform-design-pillars { margin-top: 1.5rem; }
+  .terraform-modules > div { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .portfolio-cicd-layout { grid-template-columns: minmax(21rem, 0.82fr) minmax(0, 1fr); align-items: start; }
+  .portfolio-engineering-decisions { grid-template-columns: minmax(18rem, 0.3fr) minmax(0, 1fr); align-items: stretch; }
+  .engineering-decisions-intro { grid-row: 1; }
+  .engineering-decisions-grid { grid-column: 2; grid-row: 1; }
+  .engineering-decisions-outcomes { grid-column: 1 / -1; }
+  .portfolio-trade-offs { grid-template-columns: minmax(21rem, 0.45fr) minmax(0, 1fr); align-items: stretch; }
+  .portfolio-trade-offs-intro { grid-row: 1; }
+  .portfolio-trade-offs-grid { grid-column: 2; grid-row: 1; }
+  .portfolio-trade-offs-outcomes { grid-column: 1 / -1; }
   .stack-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr) minmax(0, 0.9fr); }
   .tradeoffs-header { grid-template-columns: minmax(0, 1.1fr) minmax(30rem, 0.9fr); align-items: start; }
   .tradeoff-card { grid-template-columns: 5rem minmax(0, 1fr); }
@@ -901,3 +1258,156 @@
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Index typography overrides sit after Tailwind utilities so inline size classes do not win the cascade. */
+#certifications article h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.5; }
+#certifications article p { font-size: 1.05rem; line-height: 1.7; }
+#certifications article div > a { font-size: 0.8rem; font-weight: 600; }
+#technical-focus h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.5; }
+#technical-focus h3 svg { width: 1.4rem; height: 1.4rem; flex: 0 0 auto; }
+#technical-focus ul { font-size: 1.05rem; line-height: 1.7; }
+#projects .featured-projects-intro { max-width: 52rem; margin-top: 0.8rem; color: #aeb9c5; font-size: 1rem; line-height: 1.75; }
+#projects .featured-project-card {
+  --project-accent: #72e34f;
+  position: relative;
+  display: flex;
+  min-height: 25rem;
+  flex-direction: column;
+  overflow: hidden;
+  border-color: #34414d;
+  background: linear-gradient(150deg, rgba(17, 27, 35, 0.98), rgba(8, 15, 21, 0.98));
+  padding: 1.75rem 1.5rem;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+#projects .featured-project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--project-accent);
+  opacity: 0.8;
+}
+#projects .featured-project-card:hover {
+  border-color: var(--project-accent);
+  box-shadow: 0 14px 38px color-mix(in srgb, var(--project-accent) 10%, transparent), inset 0 1px rgba(255, 255, 255, 0.04);
+  transform: translateY(-3px);
+}
+#projects .featured-project-aws { --project-accent: #4da3ff; }
+#projects .featured-project-autodeploy { --project-accent: #72e34f; }
+#projects .featured-project-portfolio { --project-accent: #fd9b30; }
+#projects .featured-project-role {
+  color: var(--project-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+#projects .featured-project-card h3 { margin-top: 0.8rem; font-size: 1.2rem; font-weight: 600; line-height: 1.45; }
+#projects .featured-project-card h3 > span { border-color: color-mix(in srgb, var(--project-accent) 42%, #34414d); color: var(--project-accent); }
+#projects .featured-project-tags { margin-top: 1rem; font-size: 0.78rem; }
+#projects .featured-project-tags span {
+  border: 1px solid color-mix(in srgb, var(--project-accent) 24%, #34414d);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--project-accent) 5%, transparent);
+  padding: 0.3rem 0.6rem;
+  color: #cbd5df;
+}
+#projects .featured-project-description { margin-top: 1rem; font-size: 1rem; line-height: 1.75; }
+#projects .featured-project-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  align-self: flex-start;
+  margin-top: auto;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 40%, #34414d);
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--project-accent) 6%, transparent);
+  padding: 0.65rem 0.85rem;
+  color: var(--project-accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+#projects .featured-project-cta span { transition: transform 180ms ease; }
+#projects .featured-project-cta:hover span { transform: translateX(0.2rem); }
+.index-hero .hero-greeting { font-size: 1rem; }
+.index-hero .hero-summary { font-size: 1.1rem; line-height: 1.8; }
+.index-hero .hero-focus-command { font-size: 1rem; font-weight: 600; }
+.index-hero .hero-focus-value { font-size: 1.1rem; font-weight: 600; line-height: 1.7; }
+.whoami-card > div:first-child { font-size: 1rem; font-weight: 600; }
+.whoami-card > div:nth-child(2) > div { grid-template-columns: 24px 112px minmax(0, 1fr); gap: 0.6rem; }
+.whoami-card > div:nth-child(2) > div > svg { width: 1.15rem; height: 1.15rem; }
+.whoami-card dt { font-size: 1rem; font-weight: 600; }
+.whoami-card dd { font-size: 1rem; line-height: 1.65; }
+.whoami-card > div:nth-child(2) > p { font-size: 1.1rem; }
+.autodeploy-hero-description { gap: 1rem; }
+.autodeploy-hero .autodeploy-hero-lead { max-width: 52rem; color: #e5ebf0; font-size: 1.15rem; font-weight: 500; line-height: 1.75; }
+.autodeploy-hero-flow { display: grid; gap: 0.75rem; }
+.autodeploy-hero-flow article {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  border: 1px solid #34414d;
+  border-radius: 0.5rem;
+  background: linear-gradient(145deg, rgba(15, 25, 33, 0.9), rgba(8, 16, 22, 0.94));
+  padding: 1rem;
+}
+.autodeploy-hero-flow article > span {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(114, 227, 79, 0.42);
+  border-radius: 0.45rem;
+  background: rgba(114, 227, 79, 0.04);
+  color: #72e34f;
+}
+.autodeploy-hero-flow-icon { width: 1.35rem; height: 1.35rem; }
+.autodeploy-hero-flow h2 { color: #72e34f; font-size: 1rem; font-weight: 600; line-height: 1.5; }
+.autodeploy-hero-flow p { margin-top: 0.35rem; color: #aeb9c5; font-size: 0.95rem; line-height: 1.7; }
+.autodeploy-hero-purpose {
+  border-left: 3px solid rgba(114, 227, 79, 0.72);
+  border-radius: 0 0.4rem 0.4rem 0;
+  background: linear-gradient(90deg, rgba(114, 227, 79, 0.07), rgba(114, 227, 79, 0.015));
+  padding: 0.9rem 1rem;
+  color: #b8c2cc;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+@media (min-width: 40rem) {
+  .autodeploy-hero-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.project-nav a { font-size: 1rem; }
+.autodeploy-overview .overview-eyebrow { font-size: 1.15rem; font-weight: 600; line-height: 1.5; }
+.autodeploy-overview .overview-lead > div > p:last-child { font-size: 1rem; line-height: 1.75; }
+.autodeploy-overview .summary-card-title { font-size: 1.15rem; line-height: 1.5; }
+.autodeploy-overview .summary-card-title svg { width: 1.35rem; height: 1.35rem; flex: 0 0 auto; }
+.autodeploy-overview .summary-card-body { font-size: 1rem; line-height: 1.75; }
+.architecture-outcomes-autodeploy > h3 { font-size: 1.1rem; line-height: 1.5; }
+.architecture-outcomes-autodeploy .architecture-outcomes-grid strong { font-size: 1rem; line-height: 1.5; }
+.architecture-outcomes-autodeploy .architecture-outcomes-grid div > span { font-size: 0.92rem; line-height: 1.7; }
+.decisions-grid-autodeploy .decision-reason strong { font-size: 1rem; font-weight: 600; line-height: 1.6; }
+.decisions-grid-autodeploy .decision-reason p { color: #d0d8e0; font-size: 0.95rem; line-height: 1.7; }
+.decisions-grid-autodeploy .decision-number { width: 3.15rem; height: 3.15rem; font-size: 1.05rem; font-weight: 600; }
+#decisions .decisions-outcome-copy h3 { font-size: 1.1rem; line-height: 1.5; }
+#decisions .decisions-outcome-copy p { font-size: 0.95rem; line-height: 1.7; }
+.tradeoffs-section-autodeploy .tradeoffs-intro-wide { font-size: 1rem; line-height: 1.8; }
+.tradeoffs-section-autodeploy .tradeoff-content > h3 { font-size: 1.1rem; line-height: 1.5; }
+.tradeoffs-section-autodeploy .tradeoff-number { width: 3.2rem; height: 3.2rem; font-size: 1.05rem; }
+.tradeoffs-section-autodeploy .tradeoff-content dt { font-size: 1rem; line-height: 1.5; }
+.tradeoffs-section-autodeploy .tradeoff-content dd { color: #d8e0e8; font-size: 1rem; line-height: 1.7; }
+.tradeoffs-section-autodeploy .tradeoff-label-icon { width: 2rem; height: 2rem; }
+.tradeoffs-section-autodeploy .tradeoff-label-icon svg { width: 1.15rem; height: 1.15rem; }
+.tradeoff-constraint-autodeploy summary { font-size: 1rem; font-weight: 600; }
+.tradeoff-constraint-autodeploy > p { font-size: 1rem; line-height: 1.75; }
+.lessons-section .lessons-card h3 { font-size: 1.1rem; line-height: 1.5; }
+.lessons-section .lessons-card p { font-size: 1rem; line-height: 1.8; }
+.improvements-section .roadmap-item h3 { font-size: 1.1rem; line-height: 1.5; }
+.improvements-section .roadmap-item p { font-size: 1rem; line-height: 1.75; }
+.improvements-section .roadmap-number { width: 3.3rem; height: 3.3rem; font-size: 1.05rem; }
+.improvements-section .expected-impact > h3 { font-size: 1.1rem; line-height: 1.5; }
+.improvements-section .expected-impact > h3 svg { width: 1.4rem; height: 1.4rem; }
+.improvements-section .expected-impact li { font-size: 1rem; line-height: 1.5; }
+.improvements-section .expected-impact li svg { width: 1.6rem; height: 1.6rem; }
