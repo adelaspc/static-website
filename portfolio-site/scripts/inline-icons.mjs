@@ -1,7 +1,7 @@
 import { icons } from "lucide";
 import { readFile, writeFile } from "node:fs/promises";
 
-const files = ["index.html", "aws-3tier-architecture.html", "autodeploy-platform.html", "project-3.html", "error.html"];
+const files = ["index.html", "aws-3tier-architecture.html", "autodeploy-platform.html", "static-website.html", "error.html"];
 const attrsToString = (attrs) =>
   attrs
     .map(([name, value]) => `${name}="${String(value).replaceAll('"', "&quot;")}"`)
