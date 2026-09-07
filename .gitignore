@@ -5,6 +5,26 @@
 tfplan
 **/tfplan
 *.tfvars
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.secrets
+*.secrets.*
+credentials
+.aws/
+
+# Private keys and credential containers
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Terraform local and generated files
 crash.log
 crash.*.log
 override.tf
@@ -17,3 +37,7 @@ dist/
 **/dist/
 frontend-dist/
 *:Zone.Identifier
+
+# Local AI agent metadata and context
+.agents/
+.codex/
