@@ -1,0 +1,62 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /portfolio-site
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Bucharest
+    open-pull-requests-limit: 5
+    groups:
+      npm-minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:15"
+      timezone: Europe/Bucharest
+    open-pull-requests-limit: 5
+    groups:
+      actions-minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: terraform
+    directory: /terraform/environments/dev
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:30"
+      timezone: Europe/Bucharest
+    open-pull-requests-limit: 3
+    groups:
+      terraform-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: terraform
+    directory: /terraform/bootstrap/backend
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:45"
+      timezone: Europe/Bucharest
+    open-pull-requests-limit: 3
+    groups:
+      terraform-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
