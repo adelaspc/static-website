@@ -24,6 +24,8 @@ Implemented patterns include:
 
 The detailed design and accepted limitations are documented in [Architecture](docs/architecture.md) and [Checkov Trade-offs](docs/checkov-tradeoffs.md).
 
+Repository security controls include full-history secret scanning, dependency review, GitHub Actions analysis, CodeQL for JavaScript, and pull-request checks intended for the `main` ruleset. Vulnerabilities should be reported privately according to the [Security Policy](SECURITY.md).
+
 ## Estimated Cost
 
 This stack is intended to stay inexpensive for a low-traffic portfolio site. Exact charges depend on region, traffic, request volume, retained logs, free-tier eligibility, and any Cloudflare or domain-registration costs outside AWS. Use the [AWS Pricing Calculator](https://calculator.aws/) for a real estimate before leaving the stack running long term.
@@ -123,6 +125,8 @@ The Terraform and frontend workflows are independent and use different path filt
 Required reviewers are optional. Deployments pause for approval only when the `dev` GitHub Environment has that protection rule enabled.
 
 Pull requests run static Terraform validation and frontend builds without cloud credentials, remote state, deployment variables, or the Cloudflare API token. Credentialed Terraform apply and frontend deploy jobs run only for `main` pushes or manual dispatches and target the `dev` GitHub Environment, so their secrets and variables can be environment-scoped.
+
+Both Terraform validation and frontend CI run on every pull request targeting `main` so they can be configured as stable required checks. Push-triggered deployments retain path filters and run only when their respective source or workflow files change.
 
 ## Repository Hygiene
 

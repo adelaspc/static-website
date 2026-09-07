@@ -110,7 +110,7 @@ Restoring one HTML file may not be sufficient if it references hashed assets fro
 The preferred rollback is to redeploy a known-good repository commit rather than restore files individually:
 
 1. Check out or revert to the known-good frontend commit on a recovery branch.
-2. Run `npm ci` and `npm run build` in `portfolio-site`.
+2. Run `npm ci` and `npm run ci` in `portfolio-site`.
 3. Verify the generated `dist` directory.
 4. Run the frontend workflow through `workflow_dispatch`, or merge the rollback change according to repository policy.
 5. Verify S3 objects, cache headers, the invalidation, and the public site.
@@ -137,6 +137,6 @@ The resources to reconcile are defined in `terraform/bootstrap/backend/main.tf`;
 - The website returns HTTPS responses through CloudFront.
 - A missing URL returns the branded page with HTTP 404.
 - HTML has `Cache-Control: no-cache`.
-- The hashed CSS asset exists and has immutable cache metadata.
+- The hashed CSS and JavaScript assets exist and have immutable cache metadata.
 - CloudFront invalidation completes.
 - DNS, logs, and CloudWatch alarms remain operational.

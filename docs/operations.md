@@ -10,7 +10,7 @@ Run these checks after the first deployment and after material infrastructure ch
 aws s3 ls s3://<website-bucket-name> --recursive
 ```
 
-Confirm that `index.html`, `error.html`, project pages, images, and a hashed CSS file exist.
+Confirm that `index.html`, `error.html`, project pages, images, and hashed CSS and JavaScript files exist.
 
 Inspect metadata:
 
@@ -22,12 +22,16 @@ aws s3api head-object \
 aws s3api head-object \
   --bucket <website-bucket-name> \
   --key assets/styles.<hash>.css
+
+aws s3api head-object \
+  --bucket <website-bucket-name> \
+  --key assets/site.<hash>.js
 ```
 
 Expected cache metadata:
 
 - HTML: `no-cache`;
-- hashed CSS: `public, max-age=31536000, immutable`;
+- hashed CSS and JavaScript: `public, max-age=31536000, immutable`;
 - other assets: `public, max-age=3600`.
 
 ### CloudFront Status and Invalidations
@@ -52,6 +56,8 @@ curl -I https://<domain-name>
 ```
 
 Confirm that DNS points to CloudFront, the certificate is valid, and the response includes CloudFront and configured security headers.
+
+For deployments with `WEBSITE_URL` configured, the frontend workflow also verifies the homepage, branded 404 response, and core security headers automatically after invalidation.
 
 ### Error Handling
 
@@ -100,10 +106,11 @@ Periodically verify:
 - backend state versions are present;
 - no stale `.tflock` object remains after Terraform runs;
 - GitHub variables still match current Terraform outputs.
+- Dependency Review, Actionlint, and Zizmor runs remain successful or triaged.
 
 ## Release Verification
 
-The strongest frontend release check is to compare the deployed HTML with the expected hashed CSS reference:
+The strongest frontend release check is to compare the deployed HTML with the expected hashed CSS and JavaScript references:
 
 ```bash
 aws s3 cp s3://<website-bucket-name>/index.html -
@@ -135,8 +142,8 @@ Treat major version changes as planned maintenance. Minor and patch updates stil
 Root-stack input and output tables are generated with `terraform-docs`. Regenerate them after changing variables, outputs, required providers, or root module composition:
 
 ```bash
-terraform-docs --config .terraform-docs.yml --output-file README.md --output-mode inject terraform/environments/dev
-terraform-docs --config .terraform-docs.yml --output-file README.md --output-mode inject terraform/bootstrap/backend
+terraform-docs --config .terraform-docs.yml --output-file terraform/environments/dev/README.md --output-mode inject terraform/environments/dev
+terraform-docs --config .terraform-docs.yml --output-file terraform/bootstrap/backend/README.md --output-mode inject terraform/bootstrap/backend
 ```
 
 The generated sections are intentionally limited to the two root stacks. Child module READMEs and CI/pre-commit enforcement can be added later if the project needs stricter generated-documentation coverage.
@@ -149,7 +156,7 @@ The generated sections are intentionally limited to the two root stacks. Child m
 4. Run `terraform init -upgrade` only in the intended stack directories.
 5. Review `.terraform.lock.hcl` changes.
 6. Run Terraform formatting, initialization, validation, TFLint, and Checkov.
-7. Run `npm ci` and `npm run build` for frontend/runtime changes.
+7. Run `npm ci`, `npm audit --audit-level=high`, and `npm run ci` for frontend/runtime changes.
 8. Open a pull request and inspect the remote Terraform plan.
 9. Apply only after the plan contains no unexplained replacements or deletions.
 10. Perform the deployment verification checks above.

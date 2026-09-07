@@ -9,14 +9,25 @@ Infrastructure and frontend delivery are intentionally independent:
 
 Terraform does not manage website objects, and the frontend workflow does not modify infrastructure configuration.
 
+Additional repository-wide checks run independently of the path-filtered delivery workflows:
+
+- `Dependency Review` checks dependency changes in pull requests and blocks newly introduced high or critical vulnerabilities;
+- `Actionlint` validates GitHub Actions syntax and expressions;
+- `Zizmor` audits GitHub Actions security patterns and uploads findings to code scanning;
+- `Documentation Links` checks local Markdown references;
+- the frontend build runs `npm audit --audit-level=high` before building.
+- `CodeQL` analyzes JavaScript and workflow-supporting JavaScript on pull requests, `main`, and a weekly schedule.
+
+Dependabot checks npm, GitHub Actions, and both Terraform root modules weekly. Minor and patch updates are grouped by ecosystem; major updates remain separate for explicit review.
+
 ![Main deploy flow](/docs/diagrams/maindeployflow.png)
 
 ## Terraform Workflow
 
 Triggers:
 
-- pull requests changing `terraform/**` or the workflow file;
-- pushes to `main` changing those paths;
+- every pull request targeting `main` so `Validate` is a stable required check;
+- pushes to `main` changing `terraform/**` or the Terraform workflow;
 - manual `workflow_dispatch` runs.
 
 ### Validate Job
@@ -67,8 +78,8 @@ The workflow requests a four-hour AWS role session, matching the apply role's ma
 
 Triggers:
 
-- pull requests changing `portfolio-site/**` or the workflow file;
-- pushes to `main` changing those paths;
+- every pull request targeting `main` so `Build` is a stable required check;
+- pushes to `main` changing `portfolio-site/**` or the frontend workflow;
 - manual `workflow_dispatch` runs.
 
 ### Build Job
@@ -79,13 +90,31 @@ The build job runs for every trigger:
 Checkout
 -> Node.js 24 setup
 -> npm ci
--> npm run build
+-> npm run ci (lint + test + build)
 -> upload portfolio-site/dist artifact
 ```
 
-The build rewrites HTML references to the content-hashed CSS file and includes `index.html`, project pages, `error.html`, and static images in `dist`.
+The CI command checks JavaScript syntax and the required HTML structure, builds the site, verifies the generated output, and rewrites HTML references to content-hashed CSS and JavaScript files. The output includes `index.html`, project pages, `error.html`, and static images in `dist`.
 
 Pull requests stop after the artifact upload and do not deploy.
+
+The `Build` job is also the required frontend quality check for rulesets and runs on every pull request. Push-triggered frontend runs retain path filtering to avoid unnecessary deployments.
+
+## Repository Security Checks
+
+The following checks are intended to become required in the `main` ruleset after each has completed successfully at least once:
+
+- `Validate`;
+- `Build`;
+- `Scan for secrets`;
+- `Actionlint`;
+- `Documentation Links`;
+- `Dependency Review`;
+- `CodeQL`.
+
+Zizmor uploads GitHub Actions security findings to code scanning. The post-deployment `Smoke Test` is not a merge check because it runs only after a deployment. GitHub-hosted secret scanning, push protection, Dependabot alerts, security updates, private vulnerability reporting, and code-scanning merge protection are enabled separately in repository settings.
+
+Until this repository is public, CodeQL, Zizmor SARIF upload, and Dependency Review may require GitHub Advanced Security and can fail even when their workflow configuration is valid. Enable the repository security features immediately after changing visibility, run these workflows once to establish their baseline, and only then add their stable check names to the active ruleset.
 
 ### Deploy Job
 
@@ -98,6 +127,7 @@ Download build artifact
 -> Apply immutable CSS metadata
 -> Apply no-cache HTML metadata
 -> Invalidate CloudFront /*
+-> Smoke test public homepage, 404 behavior, and security headers
 ```
 
 The GitHub artifact is an internal transfer mechanism between jobs. S3 receives the extracted files, not an archive.
