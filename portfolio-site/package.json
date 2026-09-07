@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "lint": "node ./scripts/lint.mjs",
+    "test": "node ./scripts/test-build.mjs",
+    "ci": "npm run lint && npm test",
     "build:css": "tailwindcss -i ./src/styles.css -o ./assets/styles.css --minify",
     "build:dist": "node ./scripts/build-dist.mjs",
     "inline-icons": "node ./scripts/inline-icons.mjs",
