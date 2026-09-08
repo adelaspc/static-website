@@ -70,6 +70,9 @@ jobs:
     permissions:
       contents: read
       id-token: write
+    env:
+      S3_BUCKET_NAME: ${{ vars.S3_BUCKET_NAME }}
+      CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
 
     steps:
       - name: Download frontend artifact
@@ -86,13 +89,13 @@ jobs:
 
       - name: Sync static assets to S3
         run: |
-          aws s3 sync "${DIST_DIR}" "s3://${{ vars.S3_BUCKET_NAME }}" \
+          aws s3 sync "${DIST_DIR}" "s3://${S3_BUCKET_NAME}" \
             --delete \
             --cache-control "public, max-age=3600"
 
       - name: Set immutable cache policy for hashed assets
         run: |
-          aws s3 cp "${DIST_DIR}" "s3://${{ vars.S3_BUCKET_NAME }}" \
+          aws s3 cp "${DIST_DIR}" "s3://${S3_BUCKET_NAME}" \
             --recursive \
             --exclude "*" \
             --include "assets/styles.*.css" \
@@ -101,7 +104,7 @@ jobs:
 
       - name: Set immutable cache policy for JavaScript
         run: |
-          aws s3 cp "${DIST_DIR}" "s3://${{ vars.S3_BUCKET_NAME }}" \
+          aws s3 cp "${DIST_DIR}" "s3://${S3_BUCKET_NAME}" \
             --recursive \
             --exclude "*" \
             --include "assets/site.*.js" \
@@ -110,7 +113,7 @@ jobs:
 
       - name: Set HTML cache policy
         run: |
-          aws s3 cp "${DIST_DIR}" "s3://${{ vars.S3_BUCKET_NAME }}" \
+          aws s3 cp "${DIST_DIR}" "s3://${S3_BUCKET_NAME}" \
             --recursive \
             --exclude "*" \
             --include "*.html" \
@@ -120,7 +123,7 @@ jobs:
       - name: Invalidate CloudFront
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" \
             --paths "/*"
 
   smoke-test:
