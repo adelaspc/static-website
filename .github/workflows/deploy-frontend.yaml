@@ -142,7 +142,7 @@ jobs:
             --output /tmp/missing-page.html --write-out '%{http_code}' \
             "${WEBSITE_URL}/definitely-missing-page")
           test "$status" = "404"
-          rg -q 'resource_not_found|404' /tmp/missing-page.html
+          grep -Eq 'resource_not_found|404' /tmp/missing-page.html
 
       - name: Check security headers
         run: |
