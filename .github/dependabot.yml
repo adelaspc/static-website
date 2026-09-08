@@ -8,6 +8,8 @@ updates:
       day: monday
       time: "06:00"
       timezone: Europe/Bucharest
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     groups:
       npm-minor-and-patch:
@@ -22,6 +24,8 @@ updates:
       day: monday
       time: "06:15"
       timezone: Europe/Bucharest
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     groups:
       actions-minor-and-patch:
@@ -36,6 +40,8 @@ updates:
       day: monday
       time: "06:30"
       timezone: Europe/Bucharest
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 3
     groups:
       terraform-minor-and-patch:
@@ -52,6 +58,8 @@ updates:
       day: monday
       time: "06:45"
       timezone: Europe/Bucharest
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 3
     groups:
       terraform-minor-and-patch:
