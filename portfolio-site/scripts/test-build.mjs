@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { access, cp, mkdir, mkdtemp, readFile, rm, symlink } from "node:fs/promises";
+import { access, cp, mkdir, mkdtemp, open, readFile, rm, symlink } from "node:fs/promises";
 import path from "node:path";
 import { tmpdir } from "node:os";
 
@@ -57,12 +57,23 @@ try {
       if (/^(?:https?:|mailto:|data:|javascript:|#)/i.test(reference)) continue;
       const [target, fragment] = reference.split("#", 2);
       const targetPath = path.join(appRoot, "dist", target || file);
-      await access(targetPath);
-      if (fragment) {
-        const targetHtml = await readFile(targetPath, "utf8");
-        if (!new RegExp(`(?:id|name)=["']${fragment.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`).test(targetHtml)) {
-          throw new Error(`dist/${file}: missing anchor #${fragment} in ${target}`);
+
+      let targetHandle;
+      try {
+        targetHandle = await open(targetPath, "r");
+      } catch {
+        throw new Error(`dist/${file}: missing local reference ${reference}`);
+      }
+
+      try {
+        if (fragment) {
+          const targetHtml = await targetHandle.readFile("utf8");
+          if (!new RegExp(`(?:id|name)=["']${fragment.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`).test(targetHtml)) {
+            throw new Error(`dist/${file}: missing anchor #${fragment} in ${target}`);
+          }
         }
+      } finally {
+        await targetHandle.close();
       }
     }
   }
