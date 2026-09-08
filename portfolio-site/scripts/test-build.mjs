@@ -34,14 +34,24 @@ try {
 
   for (const file of htmlFiles) {
     await access(path.join(appRoot, "dist", file));
+    const sourceHtml = await readFile(path.join(appRoot, file), "utf8");
     const html = await readFile(path.join(appRoot, "dist", file), "utf8");
 
     const cssMatch = html.match(/assets\/styles\.([a-f0-9]{12})\.css/);
     const jsMatch = html.match(/assets\/site\.([a-f0-9]{12})\.js/);
     if (!cssMatch) throw new Error(`dist/${file}: missing hashed CSS asset reference`);
-    if (!jsMatch) throw new Error(`dist/${file}: missing hashed JavaScript asset reference`);
     await access(path.join(appRoot, "dist", "assets", `styles.${cssMatch[1]}.css`));
-    await access(path.join(appRoot, "dist", "assets", `site.${jsMatch[1]}.js`));
+
+    const expectsJavaScript = /<script\b[^>]*\bsrc=["']assets\/site\.js["']/i.test(sourceHtml);
+    if (expectsJavaScript && !jsMatch) {
+      throw new Error(`dist/${file}: missing hashed JavaScript asset reference`);
+    }
+    if (!expectsJavaScript && jsMatch) {
+      throw new Error(`dist/${file}: contains an unexpected JavaScript asset reference`);
+    }
+    if (jsMatch) {
+      await access(path.join(appRoot, "dist", "assets", `site.${jsMatch[1]}.js`));
+    }
 
     for (const [, reference] of html.matchAll(/(?:src|href)=["']([^"']+)["']/g)) {
       if (/^(?:https?:|mailto:|data:|javascript:|#)/i.test(reference)) continue;
