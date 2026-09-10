@@ -48,11 +48,11 @@ Pricing references: [S3](https://aws.amazon.com/s3/pricing/), [CloudFront](https
 ### 1. Bootstrap the Remote Backend
 
 ```bash
-cd terraform/bootstrap/backend
-cp terraform.tfvars.example terraform.tfvars
-terraform init
-terraform plan
-terraform apply
+cp terraform/bootstrap/backend/terraform.tfvars.example \
+  terraform/bootstrap/backend/terraform.tfvars
+terraform -chdir=terraform/bootstrap/backend init
+terraform -chdir=terraform/bootstrap/backend plan
+terraform -chdir=terraform/bootstrap/backend apply
 ```
 
 This creates the encrypted, versioned S3 state bucket. Terraform locking uses an S3 `.tflock` object; no DynamoDB table is required.
@@ -69,18 +69,17 @@ Populate the local `terraform.tfvars` with the real project, domain, bucket, rep
 ### 3. Initialize and Apply
 
 ```bash
-cd terraform/environments/dev
-terraform init \
+terraform -chdir=terraform/environments/dev init \
   -backend-config="bucket=<state-bucket-name>" \
   -backend-config="key=static-website/dev/terraform.tfstate" \
   -backend-config="region=eu-central-1" \
   -backend-config="use_lockfile=true" \
   -backend-config="encrypt=true"
 
-terraform fmt -recursive
-terraform validate
-terraform plan
-terraform apply
+terraform -chdir=terraform/environments/dev fmt -recursive
+terraform -chdir=terraform/environments/dev validate
+terraform -chdir=terraform/environments/dev plan
+terraform -chdir=terraform/environments/dev apply
 ```
 
 The first apply must use an existing AWS identity that can create IAM roles and the GitHub OIDC provider. The workflow roles cannot be used until this apply creates them. The Terraform workflow role intentionally has read-only IAM access, so later changes to the GitHub Actions roles, policies, or OIDC provider must also be applied with that privileged bootstrap identity.

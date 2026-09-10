@@ -15,11 +15,11 @@ The bootstrap stack itself keeps local state by default. Keep that state and its
 The bootstrap stack currently requires Terraform `>= 1.15.5, < 1.16.0`.
 
 ```bash
-cd terraform/bootstrap/backend
-cp terraform.tfvars.example terraform.tfvars
-terraform init
-terraform plan
-terraform apply
+cp terraform/bootstrap/backend/terraform.tfvars.example \
+  terraform/bootstrap/backend/terraform.tfvars
+terraform -chdir=terraform/bootstrap/backend init
+terraform -chdir=terraform/bootstrap/backend plan
+terraform -chdir=terraform/bootstrap/backend apply
 ```
 
 It creates one S3 bucket with:
@@ -39,8 +39,7 @@ The `noncurrent_state_version_retention_days` input controls recovery history an
 ## Initialize the Main Stack
 
 ```bash
-cd terraform/environments/dev
-terraform init \
+terraform -chdir=terraform/environments/dev init \
   -backend-config="bucket=<state-bucket-name>" \
   -backend-config="key=static-website/dev/terraform.tfstate" \
   -backend-config="region=eu-central-1" \
@@ -56,17 +55,17 @@ The first main apply must use an existing AWS identity with permissions to creat
 
 ```bash
 export CLOUDFLARE_API_TOKEN="..."
-terraform plan
-terraform apply
+terraform -chdir=terraform/environments/dev plan
+terraform -chdir=terraform/environments/dev apply
 ```
 
 After apply, map these outputs into GitHub variables:
 
 ```bash
-terraform output bucket_name
-terraform output cloudfront_distribution_id
-terraform output github_actions_frontend_role_arn
-terraform output github_actions_terraform_role_arn
+terraform -chdir=terraform/environments/dev output bucket_name
+terraform -chdir=terraform/environments/dev output cloudfront_distribution_id
+terraform -chdir=terraform/environments/dev output github_actions_frontend_role_arn
+terraform -chdir=terraform/environments/dev output github_actions_terraform_role_arn
 ```
 
 The remaining required GitHub values are listed in the root [README](../README.md).

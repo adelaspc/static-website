@@ -125,6 +125,7 @@ Download build artifact
 -> Assume frontend role through OIDC
 -> aws s3 sync --delete
 -> Apply immutable CSS metadata
+-> Apply immutable JavaScript metadata
 -> Apply no-cache HTML metadata
 -> Invalidate CloudFront /*
 -> Smoke test public homepage, 404 behavior, and security headers

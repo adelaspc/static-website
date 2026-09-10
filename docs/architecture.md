@@ -98,10 +98,11 @@ The custom error response minimum TTL is `0`.
 
 ## Caching
 
-The frontend build generates a content hash for the compiled CSS filename. Deployment metadata is applied in three stages:
+The frontend build generates content hashes for the compiled CSS and JavaScript filenames. Deployment metadata is applied in four stages:
 
 - all synchronized files initially receive `public, max-age=3600`;
 - `assets/styles.<hash>.css` receives `public, max-age=31536000, immutable`;
+- `assets/site.<hash>.js` receives `public, max-age=31536000, immutable`;
 - all HTML files receive `no-cache`.
 
 The workflow invalidates `/*` after deployment. This is simple and reliable for a small portfolio site, although targeted HTML invalidations would be more efficient at larger scale.
