@@ -12,8 +12,8 @@
     "build": "npm run inline-icons && npm run build:css && npm run build:dist"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.3",
-    "lucide": "^1.39.0",
+    "@tailwindcss/cli": "^4.3.5",
+    "lucide": "^1.70.0",
     "tailwindcss": "^4.1.8"
   }
 }
